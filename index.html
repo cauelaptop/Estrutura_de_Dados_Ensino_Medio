@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Nome do Site-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estrutura de Dados do Ensino Médio - Menu</title>
+    
+
+<!--Mini CSS-->
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .menu-toggle {
+            background: #33373f;
+            color: #ffffff;
+            border-color: #33373f;
+        }
+
+        .menu-toggle:hover,
+        .menu-toggle.active {
+            background: #33373f;
+        }
+
+        #languageDropdown .menu-link img, #osDropdown .menu-link img {
+            width: 2vh;
+            height: 2vh;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <div>
+
+                <h1>Estrutura de Dados do ensino médio</h1>
+                <p>Escolha uma opção para continuar.</p>
+            
+            </div>
+        </div>
+    </header>
+
+
+<!-- Menu dos menus -->
+
+
+    <main class="page-background">
+        <aside class="menu-sidebar">
+
+<!-- Menu de Humanas -->
+
+            <div class="language-menu">
+                <button class="menu-toggle" id="languageToggle">
+                    <span>Humanas</span>
+                    <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="menu-dropdown" id="languageDropdown">
+                    <a class="menu-link" href="humanas/Filosofia/indexfilosofia.html"><img src="icon/Brainfuck.svg" alt="Brainfuck">Filosofia</a>
+                    <a class="menu-link" href="humanas/Geografia/indexgeografia.html"><img src="icon/Apple.svg" alt="Apple">Geografia</a>
+                    <a class="menu-link" href="humanas/Historia/indexhistoria.html"><img src="icon/Apple.svg" alt="Apple">Historia</a>
+                    <a class="menu-link" href="humanas/Sociologia/indexsociologia.html"><img src="icon/Apple.svg" alt="Apple">Sociologia</a>
+                </div>
+            </div>
+
+            <br>
+
+
+<!-- Menu de exatas -->
+
+            <div class="language-menu">
+                <button class="menu-toggle" id="osToggle">
+                    <span>Exatas</span>
+                    <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="menu-dropdown" id="osDropdown">
+                 <a class="menu-link" href="Exatas/fisica/indexfisica.html"><img src="icon/Apple.svg" alt="Apple">física</a>
+                 <a class="menu-link" href="Exatas/Geometria/indexgeometria.html"><img src="icon/Apple.svg" alt="Apple">Geometria</a>
+                 <a class="menu-link" href="Exatas/Matemática/indexmatematica.html"><img src="icon/Apple.svg" alt="Apple">Matemática</a>
+                 <a class="menu-link" href="Exatas/MatemáticaFinanceira/indexmatematicafinanceira.html"><img src="icon/Apple.svg" alt="Apple">Matemática Financeira</a>
+                </div>
+            </div>
+
+            <br>
+
+<!--Menu de Linguagens-->
+
+            <div class="language-menu">
+                <button class="menu-toggle" id="hardwareToggle">
+                    <span>Linguagens--</span>
+                    <svg class="toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="menu-dropdown" id="hardwareDropdown">
+                    <a class="menu-link" href="linguagem/espanhol/indexespanhol.html">Espanhol</a>
+                    <a class="menu-link" href="linguagem/ingles/indexingles.html">Inglês</a>
+                    <a class="menu-link" href="linguagem/Portugues/indexportugues.html">Português</a>
+
+                </div>
+            </div>
+
+            <br>
+         
+            <br>
+
+        </aside>
+
+        <!-- Conteúdo Painel -->
+
+        <section class="menu-panel">
+            <h2>Bem-vindo a Estrutura de Dados do ensino médio</h2>
+            <p>Selecione dentre as opções para explorar o vasto conhecimento sobre o ensino médio.</p>
+        </section>
+
+    </main>
+
+
+<!-- créditos e direitos autorais -->
+
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; Todos os direitos reservados 2026 David Delgado & Cauê Shishido</p>
+            <br>
+            <p>Este projeto é para fins educacionais.</p>
+            <br>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </footer>
+
+<!--Mini Javascript-->
+
+    <script>
+        // Ativa toggles para todos os botões .menu-toggle e fecha ao clicar em link ou fora
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggles = document.querySelectorAll('.menu-toggle');
+            const links = document.querySelectorAll('.menu-link');
+
+            toggles.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Alterna o dropdown associado (assume que é o próximo elemento .menu-dropdown)
+                    const dropdown = btn.nextElementSibling;
+                    if (!dropdown) return;
+                    dropdown.classList.toggle('open');
+                    btn.classList.toggle('active');
+                });
+            });
+
+            // Fechar todos os menus
+            function closeAll() {
+                document.querySelectorAll('.menu-dropdown.open').forEach(d => d.classList.remove('open'));
+                document.querySelectorAll('.menu-toggle.active').forEach(b => b.classList.remove('active'));
+            }
+
+            // Fechar ao clicar em um link
+            links.forEach(link => link.addEventListener('click', closeAll));
+
+            // Fechar ao clicar fora dos menus
+            document.addEventListener('click', (e) => {
+                const isToggle = e.target.closest('.menu-toggle');
+                const isDropdown = e.target.closest('.menu-dropdown');
+                if (!isToggle && !isDropdown) closeAll();
+            });
+        });
+    </script>
+</body>
+</html>
