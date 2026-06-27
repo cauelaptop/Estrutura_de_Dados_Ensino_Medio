@@ -32,14 +32,6 @@
         padding: 1rem;
         margin: 1rem 0;
       }
-      .keyword  { color: #b45309; }
-      .type     { color: #854d0e; }
-      .string   { color: #c2410f; }
-      .comment  { color: #854d0e; font-style: italic; }
-      .function { color: #9a3412; }
-      .builtin  { color: #b45309; }
-      .pp       { color: #9a3412; } 
-      .number   { color: #854d0e; }
       .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
       .dropdown-content.open { max-height: 500px; }
       .content-section { display: none; }
@@ -112,6 +104,12 @@
               <i class="fas fa-play mr-3 w-5 text-center"></i>
               <span>Introdução à Física</span>
             </a>
+            
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="vetores" data-explanation="Vetores: operações, decomposição e soma vetorial.">
+              <i class="fas fa-arrow-right mr-3 w-5 text-center"></i>
+              <span>Vetores</span>
+            </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
               data-section="cinematica" data-explanation="Cinemática: estudo do movimento sem considerar suas causas. MRU, MRUV, queda livre e lançamento.">
@@ -123,6 +121,12 @@
               data-section="dinamica" data-explanation="Dinâmica: estudo das causas do movimento. Leis de Newton, forças e aplicações.">
               <i class="fas fa-fist-raised mr-3 w-5 text-center"></i>
               <span>Dinâmica</span>
+            </a>
+            
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="gravitacao" data-explanation="Gravitação Universal: Leis de Kepler, Força Gravitacional e satélites.">
+              <i class="fas fa-globe mr-3 w-5 text-center"></i>
+              <span>Gravitação</span>
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
@@ -150,6 +154,12 @@
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="termodinamica" data-explanation="Termodinâmica: leis da termodinâmica, trabalho de um gás, máquinas térmicas e ciclo de Carnot.">
+              <i class="fas fa-fire-alt mr-3 w-5 text-center"></i>
+              <span>Termodinâmica</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
               data-section="optica" data-explanation="Óptica Geométrica: reflexão, refração, espelhos e lentes.">
               <i class="fas fa-lightbulb mr-3 w-5 text-center"></i>
               <span>Óptica Geométrica</span>
@@ -159,6 +169,12 @@
               data-section="ondulatoria" data-explanation="Ondulatória: propriedades das ondas, som e fenômenos ondulatórios.">
               <i class="fas fa-wave-square mr-3 w-5 text-center"></i>
               <span>Ondulatória</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="acustica" data-explanation="Acústica: propriedades do som, efeito Doppler, tubos sonoros e cordas.">
+              <i class="fas fa-volume-up mr-3 w-5 text-center"></i>
+              <span>Acústica</span>
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
@@ -177,6 +193,12 @@
               data-section="eletromagnetismo" data-explanation="Eletromagnetismo: campo magnético, força magnética e indução eletromagnética.">
               <i class="fas fa-magnet mr-3 w-5 text-center"></i>
               <span>Eletromagnetismo</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="moderna" data-explanation="Física Moderna: introdução à relatividade e à física quântica.">
+              <i class="fas fa-atom mr-3 w-5 text-center"></i>
+              <span>Física Moderna</span>
             </a>
 
             <div class="mt-6 pt-4 border-t border-orange-200">
@@ -231,6 +253,11 @@
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
             <h3 class="font-bold text-orange-700 mb-3 flex items-center"><i class="fas fa-ruler-combined mr-2"></i> Grandezas Físicas e Unidades</h3>
             <p class="text-gray-700">Toda grandeza física é expressa por um número e uma unidade. No Sistema Internacional (SI), as unidades fundamentais são: metro (m) para comprimento, quilograma (kg) para massa, segundo (s) para tempo, ampere (A) para corrente elétrica, kelvin (K) para temperatura termodinâmica, mol (mol) para quantidade de matéria e candela (cd) para intensidade luminosa.</p>
+            <div class="formula-block mt-3">
+              <strong>Múltiplos e Submúltiplos (Prefixos do SI):</strong>
+              <div class="katex-display-math">\text{kilo (k)} = 10^3, \quad \text{mega (M)} = 10^6, \quad \text{giga (G)} = 10^9</div>
+              <div class="katex-display-math">\text{mili (m)} = 10^{-3}, \quad \text{micro (\mu)} = 10^{-6}, \quad \text{nano (n)} = 10^{-9}</div>
+            </div>
             <p class="mt-2 text-sm text-orange-600">Exemplo: a velocidade de 72 km/h equivale a 20 m/s (divida por 3,6).</p>
           </div>
           
@@ -249,6 +276,46 @@
             A distância da Terra ao Sol é aproximadamente 149.600.000 km.<br>
             Em notação científica: <strong>1,496 × 10⁸ km</strong>.<br>
             Se a medição tem 4 algarismos significativos, escrevemos 1,496 × 10⁸ km.
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <template id="tpl-vetores">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 52 L48 16" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+              <polygon points="48,12 52,12 52,16 48,16" fill="#f59e0b" transform="rotate(45 50 14)"/>
+              <path d="M12 52 L48 52" stroke="#d97706" stroke-width="2" stroke-dasharray="4 4"/>
+              <path d="M48 52 L48 16" stroke="#d97706" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Vetores</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Grandezas vetoriais possuem módulo (intensidade), direção e sentido. A matemática de vetores é essencial para descrever forças, velocidades e campos na Física.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Soma Vetorial</h3>
+            <p class="text-gray-700 mb-3">Quando os vetores não possuem a mesma direção, utilizamos a Regra do Paralelogramo ou a Regra do Polígono. Para o cálculo do módulo da soma de dois vetores com ângulo <span class="katex-math">\theta</span> entre eles, usamos a Lei dos Cossenos adaptada para vetores:</p>
+            <div class="formula-block">
+              <div class="katex-display-math">|\vec{S}|^2 = |\vec{A}|^2 + |\vec{B}|^2 + 2|\vec{A}||\vec{B}|\cos\theta</div>
+              <div class="katex-display-math">S = \sqrt{A^2 + B^2} \quad \text{(se } \theta = 90^\circ)</div>
+            </div>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Decomposição Vetorial</h3>
+            <p class="text-gray-700 mb-3">Qualquer vetor pode ser decomposto em dois eixos perpendiculares (x e y), facilitando os cálculos em duas dimensões.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V_x = V \cdot \cos\theta</div>
+              <div class="katex-display-math">V_y = V \cdot \sin\theta</div>
+              <div class="katex-display-math">V = \sqrt{V_x^2 + V_y^2}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Onde <span class="katex-math">\theta</span> é o ângulo que o vetor faz com o eixo x horizontal.</p>
           </div>
         </div>
       </div>
@@ -299,7 +366,7 @@
             <div class="formula-block">
               <div class="katex-display-math">v = v_0 + a \cdot t</div>
               <div class="katex-display-math">s = s_0 + v_0 t + \dfrac{1}{2} a t^2</div>
-              <div class="katex-display-math">v^2 = v_0^2 + 2a \,\Delta s</div>
+              <div class="katex-display-math">v^2 = v_0^2 + 2a \,\Delta s \quad \text{(Torricelli)}</div>
             </div>
             
             <div class="example-block">
@@ -308,6 +375,15 @@
               Usando a equação de Torricelli <span class="katex-math">v^2 = v_0^2 + 2a\,\Delta s</span>: v² = 0 + 2 × 0,8 × 200 = 320<br>
               v = √320 ≈ <strong>17,89 m/s</strong> (cerca de 64,4 km/h).
             </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-white">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Cinemática Vetorial (Uma e Duas Dimensões)</h3>
+          <p class="text-gray-700 mb-4">Para descrevermos movimentos complexos (como o lançamento oblíquo e circular), lidamos com a posição, velocidade e aceleração na sua forma vetorial completa.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\vec{r} = x\hat{i} + y\hat{j} \quad \text{(Vetor Posição 2D)}</div>
+            <div class="katex-display-math">\vec{v}_m = \dfrac{\Delta \vec{r}}{\Delta t} \quad \text{e} \quad \vec{a}_m = \dfrac{\Delta \vec{v}}{\Delta t}</div>
           </div>
         </div>
 
@@ -320,6 +396,7 @@
               <div class="formula-block">
                 <div class="katex-display-math">v = g \cdot t</div>
                 <div class="katex-display-math">h = \dfrac{1}{2}\, g\, t^2</div>
+                <div class="katex-display-math">v = \sqrt{2 \cdot g \cdot h}</div>
               </div>
               <p class="text-sm text-gray-600">Para queda livre de altura h.</p>
             </div>
@@ -329,7 +406,17 @@
             </div>
           </div>
           
-          <p class="mt-4 text-gray-700">No lançamento oblíquo, o movimento é decomposto em horizontal (MRU) e vertical (MRUV). O alcance máximo ocorre em 45° e a altura máxima em 90° (vertical).</p>
+          <p class="mt-4 text-gray-700">No lançamento oblíquo (2 dimensões), o movimento é decomposto em horizontal (MRU, <span class="katex-math">v_x = v_0 \cdot \cos\theta</span>) e vertical (MRUV, <span class="katex-math">v_{0y} = v_0 \cdot \sin\theta</span>). O alcance máximo ocorre em 45°.</p>
+        </div>
+        
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Movimento Circular Uniforme (MCU)</h3>
+          <p class="text-gray-700 mb-4">Movimento em trajetória circular com velocidade escalar constante. Possui aceleração centrípeta que muda continuamente a direção do vetor velocidade.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\omega = \dfrac{\Delta \theta}{\Delta t} = 2\pi f = \dfrac{2\pi}{T} \quad \text{(Velocidade Angular)}</div>
+            <div class="katex-display-math">v = \omega \cdot R \quad \text{(Velocidade Linear)}</div>
+            <div class="katex-display-math">a_{cp} = \dfrac{v^2}{R} = \omega^2 R \quad \text{(Aceleração Centrípeta)}</div>
+          </div>
         </div>
       </div>
     </template>
@@ -355,8 +442,8 @@
           <div class="physics-card border-l-4 border-orange-500 bg-orange-50 p-6 rounded-r-xl">
             <h3 class="font-bold text-xl text-orange-700 mb-2">1ª Lei de Newton (Lei da Inércia)</h3>
             <p class="text-gray-700">Todo corpo permanece em repouso ou em movimento retilíneo uniforme, a menos que seja obrigado a mudar seu estado por forças externas. A inércia é a resistência que um corpo oferece à mudança de seu estado de movimento.</p>
-            <div class="example-block mt-3">
-              <strong>Exemplo:</strong> Quando um ônibus freia bruscamente, os passageiros são lançados para frente porque seus corpos tendem a continuar em movimento (inércia).
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">\text{Se } \sum \vec{F} = \vec{0} \Rightarrow \vec{v} = \text{constante (repouso ou MRU)}</div>
             </div>
           </div>
 
@@ -379,8 +466,8 @@
           <div class="physics-card border-l-4 border-orange-500 bg-orange-50 p-6 rounded-r-xl">
             <h3 class="font-bold text-xl text-orange-700 mb-2">3ª Lei de Newton (Lei da Ação e Reação)</h3>
             <p class="text-gray-700">Para toda ação existe uma reação de mesma intensidade, mesma direção e sentido oposto. As forças de ação e reação atuam em corpos diferentes.</p>
-            <div class="example-block mt-3">
-              <strong>Exemplo:</strong> Quando você empurra uma parede, a parede empurra você com força igual e oposta. Um foguete sobe porque expulsa gases para baixo (ação), recebendo reação para cima.
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">\vec{F}_{A \rightarrow B} = -\vec{F}_{B \rightarrow A}</div>
             </div>
           </div>
         </div>
@@ -389,8 +476,74 @@
           <h3 class="font-bold text-orange-700 mb-3">Força Peso, Normal e Atrito</h3>
           <p class="text-gray-700">Peso (P = m g) é a força gravitacional. Força normal (N) é perpendicular à superfície. Força de atrito (f = μ N) se opõe ao movimento relativo entre superfícies.</p>
           <div class="formula-block">
-            <div class="katex-display-math">f_{\text{atrito}} \leq \mu \cdot N \quad \text{(atrito estático)}</div>
-            <div class="katex-display-math">f_{\text{atrito}} = \mu \cdot N \quad \text{(atrito cinético)}</div>
+            <div class="katex-display-math">\vec{P} = m \cdot \vec{g} \quad \text{(Força Peso)}</div>
+            <div class="katex-display-math">f_{\text{atrito}} \leq \mu_e \cdot N \quad \text{(atrito estático máximo)}</div>
+            <div class="katex-display-math">f_{\text{atrito}} = \mu_c \cdot N \quad \text{(atrito cinético)}</div>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-orange-50 border border-orange-200 rounded-xl p-6 physics-card">
+          <h3 class="font-bold text-orange-700 mb-3">Trabalho, Energia e Conservação</h3>
+          <p class="text-gray-700">A energia não pode ser criada nem destruída, apenas transformada. O Trabalho é a medida da energia transferida por uma força ao longo de um deslocamento. O <strong>Teorema da Energia Cinética</strong> afirma que o trabalho resultante altera a energia cinética, e o Princípio de <strong>Conservação da Energia Mecânica</strong> estabelece que, em sistemas conservativos, a energia total não se altera.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\tau = F \cdot d \cdot \cos\theta \quad \text{(Trabalho de força constante)}</div>
+            <div class="katex-display-math">\tau_{\text{res}} = \Delta E_c \quad \text{(Teorema da Energia Cinética)}</div>
+            <div class="katex-display-math">E_c = \dfrac{m \cdot v^2}{2} \quad \text{(Energia Cinética)}</div>
+            <div class="katex-display-math">E_{pg} = m \cdot g \cdot h \quad \text{(Energia Potencial Gravitacional)}</div>
+            <div class="katex-display-math">E_{pe} = \dfrac{k \cdot x^2}{2} \quad \text{(Energia Potencial Elástica)}</div>
+            <div class="katex-display-math">E_{mec}^{(i)} = E_{mec}^{(f)} \Rightarrow E_{c}^{(i)} + E_{p}^{(i)} = E_{c}^{(f)} + E_{p}^{(f)} \quad \text{(Conservação de Energia)}</div>
+            <div class="katex-display-math">P_m = \dfrac{\tau}{\Delta t} \quad \text{(Potência Média)}</div>
+          </div>
+        </div>
+        
+        <div class="mt-6 bg-orange-50 border border-orange-200 rounded-xl p-6 physics-card">
+          <h3 class="font-bold text-orange-700 mb-3">Quantidade de Movimento e Impulso</h3>
+          <p class="text-gray-700">A quantidade de movimento mede a "dificuldade" de parar um corpo, enquanto o impulso reflete a aplicação de uma força em um intervalo de tempo. Em sistemas isolados, a quantidade de movimento total se conserva (como em colisões).</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\vec{Q} = m \cdot \vec{v} \quad \text{(Quantidade de Movimento)}</div>
+            <div class="katex-display-math">\vec{I} = \vec{F}_m \cdot \Delta t \quad \text{(Impulso)}</div>
+            <div class="katex-display-math">\vec{I} = \Delta \vec{Q} \quad \text{(Teorema do Impulso)}</div>
+            <div class="katex-display-math">\sum \vec{Q}_{\text{antes}} = \sum \vec{Q}_{\text{depois}} \quad \text{(Conservação da Quantidade de Movimento)}</div>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <template id="tpl-gravitacao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="32" cy="32" rx="28" ry="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 2"/>
+              <circle cx="20" cy="32" r="8" fill="#d97706"/>
+              <circle cx="60" cy="32" r="4" fill="#f59e0b"/>
+              <path d="M20 32 L60 32" stroke="#b45309" stroke-width="1" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Gravitação Universal</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">A gravitação descreve as forças de atração mútua entre massas em grandes escalas, explicando desde a queda dos corpos na Terra até a órbita dos planetas e satélites.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Lei da Gravitação de Newton</h3>
+            <p class="text-gray-700 mb-3">Dois corpos quaisquer se atraem com uma força proporcional às suas massas e inversamente proporcional ao quadrado da distância que os separa.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">F = G \cdot \dfrac{M \cdot m}{d^2}</div>
+              <div class="katex-display-math">g = G \cdot \dfrac{M}{R^2} \quad \text{(Aceleração da gravidade)}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">G = 6,67 \times 10^{-11} \text{ N}\cdot\text{m}^2/\text{kg}^2</span> (Constante de gravitação universal).</p>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Leis de Kepler e Órbitas</h3>
+            <p class="text-gray-700 mb-3">Leis que descrevem a cinemática dos planetas: Órbitas elípticas, Lei das Áreas (velocidade areolar constante) e a Lei dos Períodos.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\dfrac{T^2}{R^3} = K \quad \text{(3ª Lei de Kepler)}</div>
+              <div class="katex-display-math">v_o = \sqrt{\dfrac{G \cdot M}{R}} \quad \text{(Velocidade Orbital)}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Onde <span class="katex-math">T</span> é o período de translação e <span class="katex-math">R</span> é o raio médio da órbita.</p>
           </div>
         </div>
       </div>
@@ -420,7 +573,7 @@
               <div class="katex-display-math">\sum \vec{F} = 0 \quad \text{(equilíbrio de translação)}</div>
               <div class="katex-display-math">\sum \vec{\tau} = 0 \quad \text{(equilíbrio de rotação)}</div>
             </div>
-            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">\tau</span> (torque) = <span class="katex-math">F \times d</span> (braço de alavanca), com sinal de acordo com o sentido de rotação.</p>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">\tau</span> (torque ou momento) = <span class="katex-math">F \cdot d \cdot \sin\theta</span> (onde d é o braço de alavanca), com sinal de acordo com o sentido de rotação.</p>
           </div>
           
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
@@ -466,14 +619,22 @@
         <div class="space-y-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
             <h3 class="font-bold text-orange-700 mb-3">Pressão em Fluidos</h3>
-            <p class="text-gray-700">Pressão é a força por unidade de área. Em fluidos em repouso, a pressão é transmitida igualmente em todas as direções (Princípio de Pascal).</p>
+            <p class="text-gray-700">Pressão é a força por unidade de área. A Densidade é a relação entre massa e volume (<span class="katex-math">\rho = m/V</span>). O Teorema de Stevin determina a pressão devido à profundidade.</p>
             <div class="formula-block">
               <div class="katex-display-math">P = \dfrac{F}{A}</div>
-              <div class="katex-display-math">P = P_0 + \rho\, g\, h \quad \text{(pressão hidrostática)}</div>
+              <div class="katex-display-math">P = P_0 + \rho \cdot g \cdot h \quad \text{(Teorema de Stevin)}</div>
             </div>
-            <div class="example-block">
+            <div class="example-block mt-3">
               <strong>Exemplo:</strong> Qual a pressão exercida por uma coluna de água de 5 m de altura? (ρ_água = 1000 kg/m³, g = 9,8 m/s²)<br>
               Usando <span class="katex-math">P = \rho\, g\, h</span>: P = 1000 × 9,8 × 5 = <strong>49.000 Pa = 49 kPa</strong> (além da pressão atmosférica).
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Princípio de Pascal e Prensa Hidráulica</h3>
+            <p class="text-gray-700">Um acréscimo de pressão exercido num ponto de um fluido ideal em equilíbrio é transmitido integralmente a todos os pontos desse fluido.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\Delta P_1 = \Delta P_2 \Rightarrow \dfrac{F_1}{A_1} = \dfrac{F_2}{A_2}</div>
             </div>
           </div>
 
@@ -482,8 +643,9 @@
             <p class="text-gray-700">Todo corpo imerso em um fluido sofre uma força vertical para cima (empuxo) igual ao peso do fluido deslocado pelo corpo.</p>
             <div class="formula-block">
               <div class="katex-display-math">E = \rho_{\text{fluido}} \cdot V_{\text{deslocado}} \cdot g</div>
+              <div class="katex-display-math">P_{aparente} = P_{real} - E</div>
             </div>
-            <div class="example-block">
+            <div class="example-block mt-3">
               <strong>Exemplo resolvido:</strong> Um objeto de 2,5 kg e volume 0,0012 m³ é colocado na água. O objeto flutua ou afunda?<br>
               Peso = 2,5 × 9,8 = 24,5 N<br>
               Empuxo usando <span class="katex-math">E = \rho_{\text{fluido}} \cdot V \cdot g</span> = 1000 × 0,0012 × 9,8 = 11,76 N<br>
@@ -513,8 +675,9 @@
           <h3 class="font-bold text-orange-700 mb-3">Equação de Continuidade</h3>
           <p class="text-gray-700">Em um fluido incompressível que flui em um tubo, a vazão (volume por tempo) é constante. Quando a área diminui, a velocidade aumenta.</p>
           <div class="formula-block">
-            <div class="katex-display-math">Q = A_1\, v_1 = A_2\, v_2</div>
-            <span class="text-sm"><span class="katex-math">Q</span> = vazão (m³/s), <span class="katex-math">A</span> = área da seção transversal (m²), <span class="katex-math">v</span> = velocidade (m/s)</span>
+            <div class="katex-display-math">Z = \dfrac{\Delta V}{\Delta t} = A \cdot v \quad \text{(Vazão Volumétrica)}</div>
+            <div class="katex-display-math">A_1 \cdot v_1 = A_2 \cdot v_2 \quad \text{(Equação da Continuidade)}</div>
+            <span class="text-sm"><span class="katex-math">Z</span> = vazão (m³/s), <span class="katex-math">A</span> = área da seção transversal (m²), <span class="katex-math">v</span> = velocidade (m/s)</span>
           </div>
         </div>
 
@@ -522,9 +685,9 @@
           <h3 class="font-bold text-orange-700 mb-3">Equação de Bernoulli</h3>
           <p class="text-gray-700">Ao longo de uma linha de corrente, a soma da pressão, da energia potencial gravitacional por volume e da energia cinética por volume permanece constante (conservação de energia para fluidos ideais).</p>
           <div class="formula-block">
-            <div class="katex-display-math">P + \rho\, g\, h + \dfrac{1}{2}\,\rho\, v^2 = \text{constante}</div>
+            <div class="katex-display-math">P + \rho \cdot g \cdot h + \dfrac{1}{2}\,\rho \cdot v^2 = \text{constante}</div>
           </div>
-          <div class="example-block">
+          <div class="example-block mt-3">
             <strong>Aplicação:</strong> As asas de avião geram sustentação porque o ar flui mais rápido na parte superior (menor pressão) do que na inferior, criando força para cima.
           </div>
         </div>
@@ -545,17 +708,20 @@
           <h2 class="text-3xl font-bold text-orange-800">Termologia</h2>
         </div>
         
-        <p class="text-gray-700 mb-6">A Termologia estuda os fenômenos relacionados ao calor e à temperatura. Inclui dilatação térmica, calorimetria e comportamento dos gases.</p>
+        <p class="text-gray-700 mb-6">A Termologia estuda os fenômenos relacionados ao calor e à temperatura. Inclui dilatação térmica, calorimetria, propagação do calor e comportamento dos gases.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
             <h3 class="font-bold text-orange-700 mb-3">Dilatação Térmica</h3>
-            <p class="text-gray-700">Os corpos aumentam de tamanho quando aquecidos. A dilatação linear é a mais comum em barras e trilhos.</p>
+            <p class="text-gray-700">Os corpos aumentam de tamanho quando aquecidos. A dilatação pode ocorrer de forma linear, superficial ou volumétrica dependendo das dimensões principais do material.</p>
             <div class="formula-block">
-              <div class="katex-display-math">\Delta L = L_0 \cdot \alpha \cdot \Delta T</div>
-              <span class="text-sm"><span class="katex-math">\alpha</span> = coeficiente de dilatação linear (°C⁻¹)</span>
+              <div class="katex-display-math">\Delta L = L_0 \cdot \alpha \cdot \Delta T \quad \text{(Linear)}</div>
+              <div class="katex-display-math">\Delta A = A_0 \cdot \beta \cdot \Delta T \quad \text{(Superficial)}</div>
+              <div class="katex-display-math">\Delta V = V_0 \cdot \gamma \cdot \Delta T \quad \text{(Volumétrica)}</div>
+              <div class="katex-display-math">\dfrac{\alpha}{1} = \dfrac{\beta}{2} = \dfrac{\gamma}{3}</div>
+              <span class="text-sm"><span class="katex-math">\alpha, \beta, \gamma</span> = coeficientes de dilatação (°C⁻¹)</span>
             </div>
-            <div class="example-block">
+            <div class="example-block mt-3">
               <strong>Exemplo:</strong> Um trilho de trem de 12 m a 20°C. Qual o aumento de comprimento a 45°C? (α = 12 × 10⁻⁶ /°C)<br>
               Usando <span class="katex-math">\Delta L = L_0 \cdot \alpha \cdot \Delta T</span>: <span class="katex-math">\Delta L</span> = 12 × 12×10⁻⁶ × 25 = <strong>0,0036 m = 3,6 mm</strong>.
             </div>
@@ -565,22 +731,71 @@
             <h3 class="font-bold text-orange-700 mb-3">Calorimetria</h3>
             <p class="text-gray-700">Calor sensível muda temperatura; calor latente muda estado físico sem mudar temperatura.</p>
             <div class="formula-block">
-              <div class="katex-display-math">Q = m \cdot c \cdot \Delta T \quad \text{(calor sensível)}</div>
-              <div class="katex-display-math">Q = m \cdot L \quad \text{(calor latente)}</div>
+              <div class="katex-display-math">Q = m \cdot c \cdot \Delta T \quad \text{(Sensível)}</div>
+              <div class="katex-display-math">Q = m \cdot L \quad \text{(Latente)}</div>
+              <div class="katex-display-math">C = \dfrac{Q}{\Delta T} = m \cdot c \quad \text{(Capacidade Térmica)}</div>
             </div>
           </div>
         </div>
 
-        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6">
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+          <h3 class="font-bold text-orange-700 mb-3">Transmissão de Calor (Lei de Fourier)</h3>
+          <p class="text-gray-700">O calor pode se propagar por condução, convecção e irradiação. A condução de calor através de uma parede segue a Lei de Fourier.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\Phi = \dfrac{Q}{\Delta t} = \dfrac{k \cdot A \cdot (T_{\text{maior}} - T_{\text{menor}})}{L}</div>
+            <span class="text-sm">Fluxo de calor (<span class="katex-math">\Phi</span>), condutividade térmica (<span class="katex-math">k</span>), área (<span class="katex-math">A</span>) e espessura (<span class="katex-math">L</span>).</span>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-white">
           <h3 class="font-bold text-orange-700 mb-3">Gases Ideais</h3>
           <p class="text-gray-700">Um gás ideal obedece à equação de estado que relaciona pressão, volume, temperatura e quantidade de matéria.</p>
           <div class="formula-block">
-            <div class="katex-display-math">PV = nRT</div>
-            <span class="text-sm"><span class="katex-math">R</span> = 0,082 atm·L/(mol·K) ou 8,314 J/(mol·K)</span>
+            <div class="katex-display-math">P \cdot V = n \cdot R \cdot T \quad \text{(Equação de Clapeyron)}</div>
+            <div class="katex-display-math">\dfrac{P_1 \cdot V_1}{T_1} = \dfrac{P_2 \cdot V_2}{T_2} \quad \text{(Lei Geral dos Gases)}</div>
+            <span class="text-sm"><span class="katex-math">R</span> = 0,082 atm·L/(mol·K) ou 8,314 J/(mol·K). Importante: Temperaturas sempre em Kelvin (K = °C + 273).</span>
           </div>
-          <div class="example-block">
-            <strong>Exemplo:</strong> Quantos mols de gás existem em 22,4 L a 0°C e 1 atm?<br>
-            n = PV / RT = (1 × 22,4) / (0,082 × 273) ≈ <strong>1 mol</strong> (volume molar padrão).
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-termodinamica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <i class="fas fa-fire-alt text-orange-500 text-5xl"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Termodinâmica</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">A Termodinâmica une as áreas de calor (Termologia) e movimento (Dinâmica). Estuda como o calor pode ser convertido em trabalho e as limitações naturais dessa conversão (como nas máquinas térmicas e motores).</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Trabalho e Energia Interna</h3>
+            <p class="text-gray-700 mb-3">A energia interna (<span class="katex-math">U</span>) de um gás ideal depende unicamente da sua temperatura. O trabalho (<span class="katex-math">\tau</span>) ocorre quando há variação de volume.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">U = \dfrac{3}{2} n \cdot R \cdot T \quad \text{(Gás monoatômico)}</div>
+              <div class="katex-display-math">\tau = P \cdot \Delta V \quad \text{(Transformação Isobárica)}</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Primeira Lei da Termodinâmica</h3>
+            <p class="text-gray-700 mb-3">Princípio da Conservação de Energia aplicado à Termodinâmica: O calor (<span class="katex-math">Q</span>) fornecido a um gás é igual ao trabalho (<span class="katex-math">\tau</span>) por ele realizado somado à variação de sua energia interna (<span class="katex-math">\Delta U</span>).</p>
+            <div class="formula-block">
+              <div class="katex-display-math">Q = \tau + \Delta U \Rightarrow \Delta U = Q - \tau</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+          <h3 class="font-bold text-orange-700 mb-3">Segunda Lei, Máquinas Térmicas e Ciclo de Carnot</h3>
+          <p class="text-gray-700 mb-3">É impossível que uma máquina térmica converta todo o calor fornecido integralmente em trabalho (Rendimento nunca é 100%). O rendimento máximo possível operando entre duas temperaturas é o do Ciclo de Carnot.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\eta = \dfrac{\tau}{Q_1} = 1 - \dfrac{Q_2}{Q_1} \quad \text{(Rendimento de Máquina Térmica)}</div>
+            <div class="katex-display-math">\eta_c = 1 - \dfrac{T_2}{T_1} \quad \text{(Rendimento de Carnot)}</div>
+            <span class="text-sm">Onde <span class="katex-math">Q_1, T_1</span> representam a fonte quente e <span class="katex-math">Q_2, T_2</span> a fonte fria. Temperaturas devem estar em Kelvin.</span>
           </div>
         </div>
       </div>
@@ -607,25 +822,28 @@
             <h3 class="font-bold text-orange-700 mb-3">Leis da Reflexão e Refração</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <p class="font-semibold text-orange-600">Reflexão:</p>
-                <p class="text-gray-700">Ângulo de incidência = ângulo de reflexão. O raio incidente, o normal e o raio refletido estão no mesmo plano.</p>
+                <p class="font-semibold text-orange-600 mb-2">Reflexão:</p>
+                <p class="text-gray-700">O ângulo de incidência (<span class="katex-math">\hat{i}</span>) é sempre igual ao ângulo de reflexão (<span class="katex-math">\hat{r}</span>). O raio incidente, a reta normal e o raio refletido são coplanares.</p>
               </div>
               <div>
-                <p class="font-semibold text-orange-600">Refração (Lei de Snell):</p>
+                <p class="font-semibold text-orange-600 mb-2">Refração e Ângulo Limite:</p>
                 <div class="formula-block">
-                  <div class="katex-display-math">n_1 \sin i = n_2 \sin r</div>
+                  <div class="katex-display-math">n = \dfrac{c}{v} \quad \text{(Índice de refração)}</div>
+                  <div class="katex-display-math">n_1 \cdot \sin \hat{i} = n_2 \cdot \sin \hat{r} \quad \text{(Lei de Snell)}</div>
+                  <div class="katex-display-math">\sin L = \dfrac{n_{\text{menor}}}{n_{\text{maior}}} \quad \text{(Ângulo Limite para Reflexão Total)}</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Espelhos e Lentes</h3>
+            <h3 class="font-bold text-orange-700 mb-3">Espelhos Esféricos e Lentes</h3>
             <div class="formula-block">
-              <div class="katex-display-math">\dfrac{1}{f} = \dfrac{1}{p} + \dfrac{1}{p'} \quad \text{(equação dos espelhos/lentes)}</div>
-              <div class="katex-display-math">A = -\dfrac{p'}{p} \quad \text{(aumento linear)}</div>
+              <div class="katex-display-math">\dfrac{1}{f} = \dfrac{1}{p} + \dfrac{1}{p'} \quad \text{(Equação de Gauss)}</div>
+              <div class="katex-display-math">A = \dfrac{i}{o} = -\dfrac{p'}{p} = \dfrac{f}{f - p} \quad \text{(Aumento Linear Transversal)}</div>
+              <div class="katex-display-math">V = \dfrac{1}{f} \quad \text{(Vergência ou "Grau" da lente, em dioptrias)}</div>
             </div>
-            <div class="example-block">
+            <div class="example-block mt-3">
               <strong>Exemplo:</strong> Um objeto de 4 cm está a 30 cm de um espelho côncavo de foco 10 cm. Onde se forma a imagem e qual seu tamanho?<br>
               1/10 = 1/30 + 1/p' → p' = 15 cm (imagem real, invertida).<br>
               A = -15/30 = -0,5 → altura da imagem = 4 × 0,5 = <strong>2 cm</strong>.
@@ -652,33 +870,77 @@
         <p class="text-gray-700 mb-6">A Ondulatória estuda as ondas, perturbações que se propagam transportando energia sem transportar matéria. Inclui ondas mecânicas (som) e eletromagnéticas (luz).</p>
 
         <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
-          <h3 class="font-bold text-orange-700 mb-3">Características das Ondas</h3>
+          <h3 class="font-bold text-orange-700 mb-3">Características Fundamentais das Ondas</h3>
           <div class="formula-block">
-            <div class="katex-display-math">v = \lambda \cdot f \quad \text{(velocidade de propagação)}</div>
-            <div class="katex-display-math">T = \dfrac{1}{f} \quad \text{(período)}</div>
+            <div class="katex-display-math">v = \lambda \cdot f = \dfrac{\lambda}{T} \quad \text{(Equação Fundamental)}</div>
+            <div class="katex-display-math">T = \dfrac{1}{f} \quad \text{(Relação Período-Frequência)}</div>
+            <div class="katex-display-math">v = \sqrt{\dfrac{F}{\mu}} \quad \text{(Fórmula de Taylor para cordas)}</div>
           </div>
-          <p class="text-sm text-gray-600 mt-2"><span class="katex-math">\lambda</span> = comprimento de onda, <span class="katex-math">f</span> = frequência, <span class="katex-math">T</span> = período, <span class="katex-math">v</span> = velocidade.</p>
+          <p class="text-sm text-gray-600 mt-2"><span class="katex-math">\lambda</span> = comprimento de onda, <span class="katex-math">f</span> = frequência, <span class="katex-math">T</span> = período, <span class="katex-math">v</span> = velocidade de propagação, <span class="katex-math">\mu</span> = densidade linear de massa da corda.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Som</h3>
-            <p class="text-gray-700">O som é uma onda mecânica longitudinal que precisa de meio material para se propagar. Velocidade no ar ≈ 340 m/s a 20°C. A intensidade sonora é medida em decibéis (dB).</p>
-            <div class="example-block">
-              <strong>Exemplo:</strong> Qual o comprimento de onda de um som de 440 Hz (lá central) no ar?<br>
-              λ = v / f = 340 / 440 ≈ <strong>0,773 m</strong>.
+            <h3 class="font-bold text-orange-700 mb-3">Ondas Estacionárias (Cordas)</h3>
+            <p class="text-gray-700 mb-3">Ondas formadas pela interferência de ondas refletidas num meio delimitado. Formam-se ventres e nós (harmônicos).</p>
+            <div class="formula-block">
+              <div class="katex-display-math">f_n = n \cdot \dfrac{v}{2L} \quad \text{(Frequências naturais na corda)}</div>
             </div>
+            <p class="text-sm text-gray-600 mt-2">Onde <span class="katex-math">n</span> é o número do harmônico (1, 2, 3...) e <span class="katex-math">L</span> é o comprimento da corda.</p>
           </div>
           
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
             <h3 class="font-bold text-orange-700 mb-3">Fenômenos Ondulatórios</h3>
             <ul class="text-gray-700 space-y-2">
-              <li><strong>Reflexão:</strong> onda volta ao meio original (eco).</li>
-              <li><strong>Refração:</strong> mudança de velocidade ao mudar de meio.</li>
-              <li><strong>Difração:</strong> contorno de obstáculos.</li>
-              <li><strong>Interferência:</strong> sobreposição de ondas (construtiva ou destrutiva).</li>
-              <li><strong>Ressonância:</strong> vibração em frequência natural.</li>
+              <li><strong>Reflexão:</strong> onda volta ao meio original mantendo sua frequência e velocidade (ex: eco).</li>
+              <li><strong>Refração:</strong> mudança de meio que altera velocidade e comprimento de onda, mas mantém a frequência.</li>
+              <li><strong>Difração:</strong> capacidade da onda de contornar obstáculos ou fendas.</li>
+              <li><strong>Interferência:</strong> sobreposição de ondas gerando regiões construtivas ou destrutivas.</li>
+              <li><strong>Ressonância:</strong> transferência máxima de energia em frequência natural.</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-acustica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <i class="fas fa-volume-up text-orange-500 text-5xl"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Acústica</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">A Acústica é o ramo da ondulatória dedicado especificamente ao estudo do som: uma onda mecânica e longitudinal, cujo meio material é necessário para sua propagação (não se propaga no vácuo). Velocidade no ar ≈ 340 m/s a 20°C.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Intensidade e Nível Sonoro</h3>
+            <p class="text-gray-700 mb-3">A intensidade representa a potência do som por área. O nível sonoro (medido em decibéis, dB) reflete como o ouvido humano percebe esta intensidade numa escala logarítmica.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">I = \dfrac{P}{A} = \dfrac{P}{4\pi R^2} \quad \text{(Intensidade Sonora)}</div>
+              <div class="katex-display-math">\beta = 10 \cdot \log_{10}\left(\dfrac{I}{I_0}\right) \quad \text{(Nível Sonoro em dB)}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">I_0 = 10^{-12} \text{ W/m}^2</span> (Limiar da audição).</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Efeito Doppler</h3>
+            <p class="text-gray-700 mb-3">Alteração aparente da frequência de uma onda causada pelo movimento relativo entre a fonte e o observador (ex: sirene da ambulância passando).</p>
+            <div class="formula-block">
+              <div class="katex-display-math">f_{\text{aparente}} = f_{\text{real}} \cdot \left( \dfrac{v_{som} \pm v_{obs}}{v_{som} \mp v_{fonte}} \right)</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Dica de sinal: Aceleração mútua (aproximação) tende a aumentar a frequência aparente, logo usa-se o sinal (+) no numerador e (-) no denominador.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+          <h3 class="font-bold text-orange-700 mb-3">Tubos Sonoros</h3>
+          <p class="text-gray-700 mb-3">Usados como base para instrumentos de sopro. Um tubo aberto ressoa com todos os harmônicos, enquanto o fechado numa ponta ressoa apenas com harmônicos ímpares.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">f_n = n \cdot \dfrac{v}{2L} \quad \text{(Tubos Abertos: } n = 1, 2, 3... \text{)}</div>
+            <div class="katex-display-math">f_n = n \cdot \dfrac{v}{4L} \quad \text{(Tubos Fechados: } n = 1, 3, 5... \text{)}</div>
           </div>
         </div>
       </div>
@@ -699,36 +961,48 @@
           <h2 class="text-3xl font-bold text-orange-800">Eletrostática</h2>
         </div>
         
-        <p class="text-gray-700 mb-6">A Eletrostática estuda as cargas elétricas em repouso e as forças entre elas. A carga elétrica é quantizada e conservada.</p>
+        <p class="text-gray-700 mb-6">A Eletrostática estuda as cargas elétricas em repouso e as forças entre elas. A carga elétrica é quantizada e conservada na natureza (<span class="katex-math">Q = n \cdot e</span>, onde e = 1,6 × 10⁻¹⁹ C).</p>
 
         <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
-          <h3 class="font-bold text-orange-700 mb-3">Lei de Coulomb</h3>
+          <h3 class="font-bold text-orange-700 mb-3">Força Elétrica (Lei de Coulomb)</h3>
           <p class="text-gray-700">A força elétrica entre duas cargas puntiformes é proporcional ao produto das cargas e inversamente proporcional ao quadrado da distância entre elas.</p>
           <div class="formula-block">
-            <div class="katex-display-math">F = k\,\dfrac{|q_1\, q_2|}{r^2}</div>
-            <span class="text-sm"><span class="katex-math">k</span> = 9 × 10⁹ N·m²/C² (constante eletrostática)</span>
+            <div class="katex-display-math">F = k \cdot \dfrac{|q_1 \cdot q_2|}{d^2}</div>
+            <span class="text-sm"><span class="katex-math">k_0</span> = 9 × 10⁹ N·m²/C² (constante eletrostática do vácuo)</span>
           </div>
-          <div class="example-block">
+          <div class="example-block mt-3">
             <strong>Exemplo resolvido:</strong><br>
             Duas cargas de +3 μC e −2 μC estão separadas por 0,5 m. Qual a força entre elas?<br>
-            F = 9×10⁹ × (3×10⁻⁶ × 2×10⁻⁶) / (0,5)² = 9×10⁹ × 6×10⁻¹² / 0,25 = <strong>0,216 N</strong> (atração).
+            F = 9×10⁹ × (3×10⁻⁶ × 2×10⁻⁶) / (0,5)² = 9×10⁹ × 6×10⁻¹² / 0,25 = <strong>0,216 N</strong> (força de atração).
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
             <h3 class="font-bold text-orange-700 mb-3">Campo Elétrico</h3>
+            <p class="text-gray-700 mb-3">Região de influência gerada por uma carga. Vetor que indica direção e sentido da força elétrica sobre uma carga de prova positiva.</p>
             <div class="formula-block">
               <div class="katex-display-math">\vec{E} = \dfrac{\vec{F}}{q}</div>
-              <div class="katex-display-math">E = k\,\dfrac{q}{r^2}</div>
+              <div class="katex-display-math">E = k \cdot \dfrac{|Q|}{d^2} \quad \text{(Carga puntiforme)}</div>
             </div>
           </div>
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Potencial Elétrico</h3>
+            <h3 class="font-bold text-orange-700 mb-3">Potencial e Energia</h3>
+            <p class="text-gray-700 mb-3">Medida de energia potencial elétrica por unidade de carga. É uma grandeza escalar.</p>
             <div class="formula-block">
-              <div class="katex-display-math">V = k\,\dfrac{q}{r}</div>
-              <span class="text-sm">Unidade: volt (V). 1 V = 1 J/C</span>
+              <div class="katex-display-math">V = k \cdot \dfrac{Q}{d} \quad \text{(Potencial Elétrico)}</div>
+              <div class="katex-display-math">E_p = k \cdot \dfrac{Q \cdot q}{d} = q \cdot V \quad \text{(Energia)}</div>
+              <div class="katex-display-math">\tau_{A \rightarrow B} = q \cdot (V_A - V_B) \quad \text{(Trabalho)}</div>
             </div>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+          <h3 class="font-bold text-orange-700 mb-3">Capacitores</h3>
+          <p class="text-gray-700 mb-3">Dispositivos que armazenam energia elétrica no campo elétrico. A capacitância mede a capacidade de armazenamento para uma dada tensão.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">C = \dfrac{Q}{V} \quad \text{(Capacitância)}</div>
+            <div class="katex-display-math">E_{pot} = \dfrac{C \cdot V^2}{2} = \dfrac{Q \cdot V}{2} \quad \text{(Energia Armazenada)}</div>
           </div>
         </div>
       </div>
@@ -747,42 +1021,58 @@
               <circle cx="20" cy="44" r="4" fill="#d97706"/>
             </svg>
           </div>
-          <h2 class="text-3xl font-bold text-orange-800">Eletrodinâmica</h2>
+          <h2 class="text-3xl font-bold text-orange-800">Eletrodinâmica (Circuitos e Corrente)</h2>
         </div>
         
-        <p class="text-gray-700 mb-6">A Eletrodinâmica estuda as cargas elétricas em movimento, ou seja, a corrente elétrica e seus efeitos.</p>
+        <p class="text-gray-700 mb-6">A Eletrodinâmica estuda as cargas elétricas em movimento, ou seja, a corrente elétrica, resistência, potência e a estruturação de circuitos elétricos.</p>
 
         <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
-          <h3 class="font-bold text-orange-700 mb-3">Corrente Elétrica e Lei de Ohm</h3>
-          <p class="text-gray-700">Corrente elétrica é o fluxo ordenado de cargas. Em um condutor ôhmico, a corrente é proporcional à diferença de potencial.</p>
+          <h3 class="font-bold text-orange-700 mb-3">Corrente Elétrica e Leis de Ohm</h3>
+          <p class="text-gray-700">Corrente elétrica é o fluxo ordenado de portadores de carga. A Primeira Lei de Ohm estabelece que em resistores ôhmicos a corrente é proporcional à diferença de potencial (tensão).</p>
           <div class="formula-block">
-            <div class="katex-display-math">I = \dfrac{\Delta Q}{\Delta t}</div>
-            <div class="katex-display-math">V = R \cdot I \quad \Longleftrightarrow \quad R = \dfrac{V}{I}</div>
+            <div class="katex-display-math">i = \dfrac{\Delta Q}{\Delta t} \quad \text{(Intensidade da Corrente)}</div>
+            <div class="katex-display-math">U = R \cdot i \quad \text{(1ª Lei de Ohm)}</div>
+            <div class="katex-display-math">R = \rho \cdot \dfrac{L}{A} \quad \text{(2ª Lei de Ohm - Resistividade)}</div>
           </div>
-          <div class="example-block">
-            <strong>Exemplo:</strong> Um resistor de 15 Ω é ligado a uma bateria de 9 V. Qual a corrente que passa por ele?<br>
-            I = V / R = 9 / 15 = <strong>0,6 A</strong>.
+          <div class="example-block mt-3">
+            <strong>Exemplo:</strong> Um resistor de 15 Ω é ligado a uma fonte de 9 V (U). Qual a corrente que passa por ele?<br>
+            i = U / R = 9 / 15 = <strong>0,6 A</strong>.
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Resistência Elétrica</h3>
+            <h3 class="font-bold text-orange-700 mb-3">Associação de Resistores</h3>
+            <p class="text-gray-700 mb-3">Formas de conectar resistores para obter uma resistência equivalente específica no circuito.</p>
             <div class="formula-block">
-              <div class="katex-display-math">R = \rho\,\dfrac{L}{A}</div>
-              <span class="text-sm"><span class="katex-math">\rho</span> = resistividade do material (Ω·m)</span>
+              <div class="katex-display-math">R_{eq} = R_1 + R_2 + ... + R_n \quad \text{(Série)}</div>
+              <div class="katex-display-math">\dfrac{1}{R_{eq}} = \dfrac{1}{R_1} + \dfrac{1}{R_2} + ... + \dfrac{1}{R_n} \quad \text{(Paralelo)}</div>
             </div>
+            <p class="text-sm text-gray-600 mt-2">Para dois resistores em paralelo: <span class="katex-math">R_{eq} = \dfrac{R_1 \cdot R_2}{R_1 + R_2}</span></p>
           </div>
+          
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Potência Elétrica</h3>
+            <h3 class="font-bold text-orange-700 mb-3">Potência e Efeito Joule</h3>
+            <p class="text-gray-700 mb-3">Transformação de energia elétrica em térmica (ou outros tipos) ao longo do tempo.</p>
             <div class="formula-block">
-              <div class="katex-display-math">P = V \cdot I = I^2 R = \dfrac{V^2}{R}</div>
-              <span class="text-sm">Unidade: watt (W). 1 kWh = 3,6 × 10⁶ J</span>
+              <div class="katex-display-math">P = U \cdot i = R \cdot i^2 = \dfrac{U^2}{R}</div>
+              <div class="katex-display-math">E_{el} = P \cdot \Delta t</div>
             </div>
             <div class="example-block mt-2">
-              <strong>Exemplo:</strong> Um chuveiro de 4.500 W ligado em 220 V consome quanta energia em 15 minutos?<br>
-              Energia = P × t = 4500 × (15/60) = <strong>1.125 Wh = 1,125 kWh</strong>.
+              <strong>Exemplo:</strong> Um chuveiro de 4.500 W consome quanta energia em 15 min?<br>
+              Energia = P × t = 4,5 kW × 0,25 h = <strong>1,125 kWh</strong>.
             </div>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-white">
+          <h3 class="font-bold text-orange-700 mb-3">Geradores, Receptores e Leis de Kirchhoff</h3>
+          <p class="text-gray-700 mb-3">Geradores fornecem energia ao circuito (força eletromotriz <span class="katex-math">\mathcal{E}</span>), receptores consomem (força contra-eletromotriz <span class="katex-math">\mathcal{E}'</span>). Para circuitos complexos, usamos as Leis de Kirchhoff (Lei dos Nós e Lei das Malhas).</p>
+          <div class="formula-block">
+            <div class="katex-display-math">U = \mathcal{E} - r \cdot i \quad \text{(Equação do Gerador)}</div>
+            <div class="katex-display-math">U = \mathcal{E}' + r' \cdot i \quad \text{(Equação do Receptor)}</div>
+            <div class="katex-display-math">\sum i_{\text{chegam}} = \sum i_{\text{saem}} \quad \text{(1ª Lei de Kirchhoff - Nós)}</div>
+            <div class="katex-display-math">\sum U = 0 \quad \text{(2ª Lei de Kirchhoff - Malhas)}</div>
           </div>
         </div>
       </div>
@@ -801,41 +1091,86 @@
               <circle cx="56" cy="32" r="3" fill="#b45309"/>
             </svg>
           </div>
-          <h2 class="text-3xl font-bold text-orange-800">Eletromagnetismo</h2>
+          <h2 class="text-3xl font-bold text-orange-800">Magnetismo e Eletromagnetismo</h2>
         </div>
         
-        <p class="text-gray-700 mb-6">O Eletromagnetismo unifica os fenômenos elétricos e magnéticos. Uma corrente elétrica produz campo magnético, e um campo magnético variável pode induzir corrente elétrica.</p>
+        <p class="text-gray-700 mb-6">O Eletromagnetismo unifica os fenômenos elétricos e magnéticos. Uma corrente elétrica produz campo magnético, e um campo magnético variável pode induzir corrente elétrica (eletromagnetismo dinâmico).</p>
+
+        <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+          <h3 class="font-bold text-orange-700 mb-3">Magnetismo e Ímãs</h3>
+          <p class="text-gray-700">Ímãs possuem dois polos (Norte e Sul). Polos opostos se atraem, polos iguais se repelem. É impossível separar os polos de um ímã (inseparabilidade dos polos magnéticos). A Terra atua como um gigantesco ímã, onde o polo norte geográfico está próximo ao polo sul magnético (e vice-versa).</p>
+        </div>
 
         <div class="space-y-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Campo Magnético de uma Corrente</h3>
-            <p class="text-gray-700">Uma corrente elétrica que passa por um condutor gera um campo magnético ao seu redor. A direção é dada pela regra da mão direita.</p>
+            <h3 class="font-bold text-orange-700 mb-3">Campo Magnético Gerado por Corrente</h3>
+            <p class="text-gray-700">Uma corrente elétrica que passa por um condutor gera um campo magnético ao seu redor. A direção das linhas de indução é dada pela regra da mão direita.</p>
             <div class="formula-block">
-              <div class="katex-display-math">B = \dfrac{\mu_0\, I}{2\pi\, r} \quad \text{(campo de fio reto infinito)}</div>
+              <div class="katex-display-math">B = \dfrac{\mu_0 \cdot i}{2\pi \cdot d} \quad \text{(Fio reto longo)}</div>
+              <div class="katex-display-math">B = \dfrac{\mu_0 \cdot N \cdot i}{2R} \quad \text{(Bobina circular plana)}</div>
               <span class="text-sm"><span class="katex-math">\mu_0</span> = 4π × 10⁻⁷ T·m/A (permeabilidade magnética do vácuo)</span>
             </div>
           </div>
 
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Força Magnética sobre Carga em Movimento</h3>
+            <h3 class="font-bold text-orange-700 mb-3">Força Magnética (Força de Lorentz)</h3>
+            <p class="text-gray-700 mb-3">Força exercida sobre uma carga em movimento ou fio portador de corrente dentro de um campo magnético.</p>
             <div class="formula-block">
-              <div class="katex-display-math">\vec{F} = q\,(\vec{v} \times \vec{B})</div>
-              <span class="text-sm">Módulo: <span class="katex-math">F = q\, v\, B \sin\theta</span></span>
+              <div class="katex-display-math">F_{mag} = |q| \cdot v \cdot B \cdot \sin\theta \quad \text{(Carga puntiforme)}</div>
+              <div class="katex-display-math">F_{mag} = B \cdot i \cdot L \cdot \sin\theta \quad \text{(Fio condutor)}</div>
             </div>
-            <div class="example-block">
-              <strong>Exemplo:</strong> Um elétron (q = 1,6 × 10⁻¹⁹ C) entra perpendicularmente em um campo magnético de 0,5 T com velocidade 2 × 10⁶ m/s. Qual a força?<br>
-              F = 1,6×10⁻¹⁹ × 2×10⁶ × 0,5 × sin(90°) = <strong>1,6 × 10⁻¹³ N</strong>.
+            <div class="example-block mt-3">
+              <strong>Exemplo:</strong> Um elétron (q = 1,6 × 10⁻¹⁹ C) entra perpendicularmente (<span class="katex-math">\theta = 90^\circ</span>) em um campo de 0,5 T a 2 × 10⁶ m/s. Qual a força?<br>
+              F = 1,6×10⁻¹⁹ × 2×10⁶ × 0,5 × 1 = <strong>1,6 × 10⁻¹³ N</strong>.
             </div>
           </div>
 
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
-            <h3 class="font-bold text-orange-700 mb-3">Indução Eletromagnética (Faraday)</h3>
-            <p class="text-gray-700">Uma variação do fluxo magnético através de uma espira induz uma força eletromotriz (fem) e, consequentemente, uma corrente se o circuito estiver fechado.</p>
+            <h3 class="font-bold text-orange-700 mb-3">Indução Eletromagnética (Lei de Faraday-Lenz) e Transformadores</h3>
+            <p class="text-gray-700">Uma variação do fluxo magnético através de uma espira induz uma força eletromotriz (fem) induzida. O Transformador é uma máquina estática baseada neste princípio, alterando tensões de correntes alternadas.</p>
             <div class="formula-block">
-              <div class="katex-display-math">\mathcal{E} = -\dfrac{d\Phi_B}{dt}</div>
-              <span class="text-sm"><span class="katex-math">\Phi_B</span> = fluxo magnético = <span class="katex-math">B \cdot A \cdot \cos\theta</span></span>
+              <div class="katex-display-math">\Phi = B \cdot A \cdot \cos\theta \quad \text{(Fluxo Magnético em Weber - Wb)}</div>
+              <div class="katex-display-math">\mathcal{E} = -\dfrac{\Delta \Phi}{\Delta t} \quad \text{(Força Eletromotriz Induzida)}</div>
+              <div class="katex-display-math">\dfrac{U_p}{U_s} = \dfrac{N_p}{N_s} = \dfrac{i_s}{i_p} \quad \text{(Transformador Ideal)}</div>
             </div>
-            <p class="mt-2 text-sm text-gray-600">Este princípio é a base de geradores, transformadores e motores elétricos.</p>
+            <p class="mt-2 text-sm text-gray-600">Este princípio é a base de geradores de energia usinas hidrelétricas e eólicas.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <template id="tpl-moderna">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <i class="fas fa-microscope text-orange-500 text-5xl"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Física Moderna</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">A Física Moderna revolucionou a compreensão do universo no início do século XX, com a Teoria da Relatividade de Einstein e a Mecânica Quântica, descrevendo fenômenos em velocidades próximas à da luz e em escalas subatômicas.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Relatividade Restrita</h3>
+            <p class="text-gray-700 mb-3">A velocidade da luz (<span class="katex-math">c</span>) no vácuo é a mesma para todos os observadores inerciais, não importando a velocidade da fonte. Isso resulta na dilatação do tempo e contração do espaço. A energia e a massa são equivalentes.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\Delta t = \dfrac{\Delta t_0}{\sqrt{1 - \dfrac{v^2}{c^2}}} = \gamma \cdot \Delta t_0 \quad \text{(Dilatação do Tempo)}</div>
+              <div class="katex-display-math">L = L_0 \sqrt{1 - \dfrac{v^2}{c^2}} = \dfrac{L_0}{\gamma} \quad \text{(Contração do Espaço)}</div>
+              <div class="katex-display-math">E = m \cdot c^2 \quad \text{(Equivalência Massa-Energia)}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">\gamma</span> (Fator de Lorentz) é sempre <span class="katex-math">\geq 1</span>. <span class="katex-math">c \approx 3 \times 10^8 \text{ m/s}</span>.</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Física Quântica</h3>
+            <p class="text-gray-700 mb-3">A energia da radiação eletromagnética é quantizada em pequenos pacotes (fótons). Partículas com massa também apresentam comportamento ondulatório (Dualidade onda-partícula de De Broglie).</p>
+            <div class="formula-block">
+              <div class="katex-display-math">E = h \cdot f \quad \text{(Energia do Fóton - Planck)}</div>
+              <div class="katex-display-math">\lambda = \dfrac{h}{p} = \dfrac{h}{m \cdot v} \quad \text{(Onda de De Broglie)}</div>
+              <div class="katex-display-math">E_c = h \cdot f - \Phi \quad \text{(Efeito Fotoelétrico)}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">h \approx 6,63 \times 10^{-34} \text{ J}\cdot\text{s}</span> (Constante de Planck), <span class="katex-math">\Phi</span> = Função trabalho do material.</p>
           </div>
         </div>
       </div>
