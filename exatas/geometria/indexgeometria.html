@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geometria: Referência Completa do Ensino Médio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #d97706; }
+      .transition-all { transition: all 0.3s ease; }
+      .formula-block {
+        font-family: "Courier New", monospace;
+        background-color: #fff7ed;
+        color: #78350f;
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 5px solid #f59e0b;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .example-block {
+        background-color: #fefce8;
+        border-left: 5px solid #eab308;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .physics-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .physics-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.1), 0 4px 6px -4px rgb(245 158 11 / 0.1);
+      }
+      .nav-link.active {
+        background-color: #fed7aa;
+        font-weight: 700;
+        color: #9a3412;
+      }
+      .katex { font-size: 1.05em; }
+      .katex-display-math { display: block; text-align: center; margin: 0.5rem 0; font-size: 1.1em; }
+      .formula-block .katex-display-math { font-size: 1.15em; }
+    </style>
+  </head>
+  <body class="bg-amber-50 font-sans">
+
+    <header class="bg-orange-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-shapes text-3xl mr-3"></i>
+            <h1 class="text-2xl font-bold">Geometria: Referência do Ensino Médio</h1>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+          <div class="relative w-full sm:w-72">
+            <input type="text" placeholder="Pesquisar"
+              class="px-4 py-2 rounded-full bg-orange-500 text-white placeholder-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full" />
+            <button class="absolute right-3 top-2 text-orange-200 hover:text-white">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-orange-200 rounded shadow-lg z-50 hidden text-gray-800"></div>
+          </div>
+          <a href="../../index.html" class="inline-flex items-center px-3 py-2 bg-white text-orange-600 rounded-full shadow-sm hover:bg-orange-100 transition-all shrink-0" title="Recarregar página">
+            <i class="fas fa-home mr-2"></i>
+            Início
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+        <div id="sidebar" class="w-72 shrink-0 bg-white rounded-r-lg md:rounded-lg shadow-md p-4 mr-0 md:mr-8 fixed md:sticky top-0 md:top-8 left-0 h-screen md:h-fit z-50 md:z-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto md:overflow-visible">
+          <div class="p-4 border-b border-orange-200 flex justify-between items-center md:block md:p-0 md:border-none">
+            <h1 class="text-2xl font-bold md:mb-4 text-orange-700">Sumário</h1>
+            <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-orange-600 text-2xl focus:outline-none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="space-y-1 mt-2">
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="planas" data-explanation="Cálculo de área e perímetro de figuras geométricas planas.">
+              <i class="fas fa-draw-polygon mr-3 w-5 text-center"></i>
+              <span>Área e Perímetro</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="angulos" data-explanation="Estudo de ângulos alternos internos e externos em retas paralelas.">
+              <i class="fas fa-less-than-equal mr-3 w-5 text-center"></i>
+              <span>Ângulos Alternos</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="congruencia" data-explanation="Casos de congruência de figuras, especialmente triângulos.">
+              <i class="fas fa-equals mr-3 w-5 text-center"></i>
+              <span>Congruência</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="semelhanca" data-explanation="Casos e razão de semelhança entre figuras geométricas.">
+              <i class="fas fa-compress-arrows-alt mr-3 w-5 text-center"></i>
+              <span>Semelhança</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="trig-retangulo" data-explanation="Seno, cosseno e tangente no triângulo retângulo.">
+              <i class="fas fa-ruler-combined mr-3 w-5 text-center"></i>
+              <span>Trig. no Triângulo Retângulo</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="circulo-trig" data-explanation="Estudo do ciclo trigonométrico, arcos e ângulos.">
+              <i class="fas fa-circle-notch mr-3 w-5 text-center"></i>
+              <span>Círculo Trigonométrico</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="funcoes-trig" data-explanation="Gráficos e propriedades das funções seno, cosseno e tangente.">
+              <i class="fas fa-wave-square mr-3 w-5 text-center"></i>
+              <span>Funções Trigonométricas</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="espacial" data-explanation="Geometria espacial de posição: pontos, retas e planos.">
+              <i class="fas fa-cube mr-3 w-5 text-center"></i>
+              <span>Geom. Espacial de Posição</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="solidos" data-explanation="Características dos sólidos, cálculos de volumes e áreas superficiais.">
+              <i class="fas fa-cubes mr-3 w-5 text-center"></i>
+              <span>Sólidos, Volumes e Áreas</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="analitica" data-explanation="Geometria Analítica: coordenadas, distâncias, retas e circunferência.">
+              <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
+              <span>Geometria Analítica</span>
+            </a>
+          </nav>
+        </div>
+
+        <div id="content" class="flex flex-col flex-1 min-w-0">
+          <div id="explanation" class="w-full"></div>
+        </div>
+      </div>
+    </main>
+
+    <template id="tpl-planas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-draw-polygon text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Área e Perímetro de Figuras Planas</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">A Geometria Plana estuda as figuras de duas dimensões. O <strong>perímetro</strong> é a medida do contorno da figura (soma dos lados), e a <strong>área</strong> é a medida da superfície interna.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Retângulo e Quadrado</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">A_{\text{retângulo}} = b \cdot h</div>
+              <div class="katex-display-math">A_{\text{quadrado}} = L^2</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Onde <span class="katex-math">b</span> = base, <span class="katex-math">h</span> = altura e <span class="katex-math">L</span> = lado.</p>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Triângulo</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">A = \dfrac{b \cdot h}{2}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Se for um triângulo equilátero, podemos usar: <span class="katex-math">A = \dfrac{L^2\sqrt{3}}{4}</span></p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Círculo</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">A = \pi \cdot R^2</div>
+              <div class="katex-display-math">C = 2\pi \cdot R</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">C</span> = comprimento (perímetro) e <span class="katex-math">R</span> = raio.</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Trapézio</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">A = \dfrac{(B + b) \cdot h}{2}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">B</span> = base maior, <span class="katex-math">b</span> = base menor, <span class="katex-math">h</span> = altura.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-angulos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-grip-lines text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Ângulos Alternos</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Quando duas retas paralelas são cortadas por uma reta transversal, são formados oito ângulos com propriedades específicas de congruência (mesma medida) e suplementaridade (soma = 180°).</p>
+
+        <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+          <h3 class="font-bold text-orange-700 mb-3">Tipos de Ângulos Formados</h3>
+          <ul class="text-gray-700 space-y-3">
+            <li><strong>Alternos Internos:</strong> Estão na região interna (entre as paralelas) e em lados opostos da transversal. <strong>São congruentes.</strong></li>
+            <li><strong>Alternos Externos:</strong> Estão na região externa (fora das paralelas) e em lados opostos da transversal. <strong>São congruentes.</strong></li>
+            <li><strong>Correspondentes:</strong> Estão do mesmo lado da transversal, um na região interna e outro na externa. <strong>São congruentes.</strong></li>
+            <li><strong>Colaterais (Internos/Externos):</strong> Estão do mesmo lado da transversal. <strong>São suplementares (somam 180°).</strong></li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-congruencia">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-equals text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Congruência de Figuras</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Duas figuras são <strong>congruentes</strong> quando possuem a mesma forma e o mesmo tamanho. Se sobrepostas, elas coincidem perfeitamente. Em triângulos, não precisamos verificar todos os lados e ângulos; bastam algumas condições (casos de congruência).</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700">LAL (Lado, Ângulo, Lado)</h3>
+            <p class="text-gray-700 text-sm">Dois lados congruentes e o ângulo formado por eles também congruente.</p>
+          </div>
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700">LLL (Lado, Lado, Lado)</h3>
+            <p class="text-gray-700 text-sm">Os três lados do triângulo têm as mesmas medidas correspondentes.</p>
+          </div>
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700">ALA (Ângulo, Lado, Ângulo)</h3>
+            <p class="text-gray-700 text-sm">Dois ângulos congruentes e o lado compreendido entre eles congruente.</p>
+          </div>
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700">LAAo (Lado, Ângulo, Ângulo oposto)</h3>
+            <p class="text-gray-700 text-sm">Um lado congruente, um ângulo adjacente congruente e o ângulo oposto ao lado congruente.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-semelhanca">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-compress-arrows-alt text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Semelhança de Figuras</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Figuras <strong>semelhantes</strong> têm a mesma forma, mas não necessariamente o mesmo tamanho. Os ângulos correspondentes são iguais e os lados correspondentes são proporcionais.</p>
+
+        <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+          <h3 class="font-bold text-orange-700 mb-3">Razão de Semelhança (k)</h3>
+          <p class="text-gray-700">É a constante que resulta da divisão de lados correspondentes.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">\dfrac{a'}{a} = \dfrac{b'}{b} = \dfrac{c'}{c} = k</div>
+          </div>
+          <p class="text-sm text-gray-700 mt-2"><strong>Nota:</strong> A razão entre as áreas é <span class="katex-math">k^2</span> e entre volumes é <span class="katex-math">k^3</span>.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-orange-700 mb-3">Casos de Semelhança em Triângulos</h3>
+        <ul class="text-gray-700 space-y-2 list-disc ml-5">
+          <li><strong>AA (Ângulo, Ângulo):</strong> Se dois triângulos têm dois ângulos correspondentes iguais, eles são semelhantes.</li>
+          <li><strong>LAL Proporcional:</strong> Dois lados proporcionais e o ângulo entre eles congruente.</li>
+          <li><strong>LLL Proporcional:</strong> Os três lados correspondentes são proporcionais.</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-trig-retangulo">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-ruler-combined text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Trigonometria no Triângulo Retângulo</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Estuda as relações entre as medidas dos lados e os ângulos de um triângulo retângulo (que possui um ângulo de 90°). Os lados são nomeados: Hipotenusa (maior lado), Cateto Oposto (ao ângulo de referência) e Cateto Adjacente.</p>
+
+        <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
+          <h3 class="font-bold text-orange-700 mb-3">Razões Trigonométricas Fundamentais (SOH-CAH-TOA)</h3>
+          <div class="formula-block">
+            <div class="katex-display-math">\sin(\theta) = \dfrac{\text{Cateto Oposto}}{\text{Hipotenusa}}</div>
+            <div class="katex-display-math">\cos(\theta) = \dfrac{\text{Cateto Adjacente}}{\text{Hipotenusa}}</div>
+            <div class="katex-display-math">\tan(\theta) = \dfrac{\text{Cateto Oposto}}{\text{Cateto Adjacente}}</div>
+          </div>
+        </div>
+
+        <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+          <h3 class="font-bold text-orange-700 mb-3">Teorema de Pitágoras</h3>
+          <div class="formula-block">
+            <div class="katex-display-math">a^2 = b^2 + c^2</div>
+          </div>
+          <p class="text-sm text-gray-700">Sendo <span class="katex-math">a</span> a hipotenusa e <span class="katex-math">b, c</span> os catetos.</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-circulo-trig">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-circle-notch text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Círculo Trigonométrico</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">O ciclo trigonométrico é uma circunferência de raio unitário (R = 1) centrada na origem do plano cartesiano. Ele permite estender o estudo do seno, cosseno e tangente para ângulos além de 90°.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Eixos</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li><strong>Eixo x (Horizontal):</strong> Representa o <strong>cosseno</strong> do ângulo.</li>
+              <li><strong>Eixo y (Vertical):</strong> Representa o <strong>seno</strong> do ângulo.</li>
+              <li><strong>Eixo paralelo a y:</strong> Tangente ao ciclo no ponto (1,0), representa a <strong>tangente</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Sinais nos Quadrantes</h3>
+            <table class="w-full text-center text-sm border-collapse">
+              <thead>
+                <tr class="border-b-2 border-orange-200">
+                  <th class="py-2">Quadrante</th>
+                  <th>Seno</th>
+                  <th>Cosseno</th>
+                  <th>Tangente</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-700">
+                <tr class="border-b border-orange-100"><td>1º (0° a 90°)</td><td>+</td><td>+</td><td>+</td></tr>
+                <tr class="border-b border-orange-100"><td>2º (90° a 180°)</td><td>+</td><td>-</td><td>-</td></tr>
+                <tr class="border-b border-orange-100"><td>3º (180° a 270°)</td><td>-</td><td>-</td><td>+</td></tr>
+                <tr><td>4º (270° a 360°)</td><td>-</td><td>+</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-funcoes-trig">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-wave-square text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Funções Trigonométricas</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">São funções periódicas cujos valores repetem-se em intervalos regulares de tempo ou espaço. A variável independente geralmente representa um arco (em radianos) ou ângulo.</p>
+
+        <div class="space-y-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-2">Função Seno: <span class="katex-math">f(x) = \sin(x)</span></h3>
+            <p class="text-gray-700">Domínio: Reais (<span class="katex-math">\mathbb{R}</span>). Imagem: [-1, 1]. Período: <span class="katex-math">2\pi</span>.</p>
+            <p class="text-gray-700 mt-2">O gráfico é a <strong>senoide</strong>, uma onda que cruza a origem (0,0).</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-2">Função Cosseno: <span class="katex-math">f(x) = \cos(x)</span></h3>
+            <p class="text-gray-700">Domínio: Reais (<span class="katex-math">\mathbb{R}</span>). Imagem: [-1, 1]. Período: <span class="katex-math">2\pi</span>.</p>
+            <p class="text-gray-700 mt-2">O gráfico é a <strong>cossenoide</strong>. No eixo y (x=0), o valor atinge seu pico (0,1).</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-2">Transformações</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">f(x) = a + b \cdot \sin(cx + d)</div>
+            </div>
+            <p class="text-sm text-gray-700 mt-2">Onde <span class="katex-math">a</span> translada verticalmente, <span class="katex-math">b</span> altera a amplitude, <span class="katex-math">c</span> altera o período (<span class="katex-math">P = \frac{2\pi}{|c|}</span>) e <span class="katex-math">d</span> translada horizontalmente.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-espacial">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-cube text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Geometria Espacial de Posição</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Baseia-se nos conceitos primitivos de <strong>Ponto, Reta e Plano</strong>, postulados no espaço tridimensional. Estuda as posições relativas entre esses elementos.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Posições entre Retas</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li><strong>Concorrentes:</strong> Têm um único ponto em comum.</li>
+              <li><strong>Paralelas:</strong> Estão no mesmo plano e não têm pontos em comum.</li>
+              <li><strong>Coincidentes:</strong> Todos os pontos em comum.</li>
+              <li><strong>Reversas:</strong> Não estão no mesmo plano e não se cruzam.</li>
+            </ul>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Posições entre Reta e Plano</h3>
+            <ul class="text-gray-700 space-y-2">
+              <li><strong>Contida:</strong> A reta está inteiramente no plano.</li>
+              <li><strong>Concorrente (ou secante):</strong> A reta fura o plano em um ponto.</li>
+              <li><strong>Paralela:</strong> A reta não possui pontos em comum com o plano.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-solidos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-cubes text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Sólidos, Volumes e Áreas Superficiais</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Sólidos geométricos são figuras tridimensionais. Eles são divididos principalmente entre Poliedros (compostos apenas por faces planas) e Corpos Redondos (compostos por pelo menos uma superfície curva).</p>
+
+        <div class="space-y-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Prismas e Cilindros</h3>
+            <p class="text-gray-700">Possuem duas bases congruentes e paralelas.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V = A_{\text{base}} \cdot h</div>
+              <div class="katex-display-math">A_{\text{total}} = 2 \cdot A_{\text{base}} + A_{\text{lateral}}</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Pirâmides e Cones</h3>
+            <p class="text-gray-700">Afinam para um vértice a partir de uma base.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V = \dfrac{A_{\text{base}} \cdot h}{3}</div>
+              <div class="katex-display-math">A_{\text{total}} = A_{\text{base}} + A_{\text{lateral}}</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Esfera</h3>
+            <p class="text-gray-700">Conjunto de pontos no espaço equidistantes de um centro.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V = \dfrac{4}{3}\pi \cdot R^3</div>
+              <div class="katex-display-math">A = 4\pi \cdot R^2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-analitica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-chart-line text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Geometria Analítica</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Une a Álgebra e a Geometria através do Plano Cartesiano (x, y), permitindo representar retas, curvas e pontos por meio de equações e coordenadas.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Ponto Médio e Distância</h3>
+            <p class="text-gray-700 mb-2">Para pontos <span class="katex-math">A(x_A, y_A)</span> e <span class="katex-math">B(x_B, y_B)</span>:</p>
+            <div class="formula-block">
+              <strong>Distância:</strong>
+              <div class="katex-display-math">d_{AB} = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}</div>
+              <br>
+              <strong>Ponto Médio:</strong>
+              <div class="katex-display-math">M = \left( \dfrac{x_A + x_B}{2}, \dfrac{y_A + y_B}{2} \right)</div>
+            </div>
+          </div>
+
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Estudo da Reta</h3>
+            <p class="text-gray-700 mb-2">A equação de uma reta pode ser expressa de diversas formas:</p>
+            <div class="formula-block">
+              <strong>Equação Reduzida:</strong>
+              <div class="katex-display-math">y = mx + n</div>
+              <span class="text-sm">onde <span class="katex-math">m</span> é o coeficiente angular e <span class="katex-math">n</span> o linear.</span>
+              <br><br>
+              <strong>Equação Geral:</strong>
+              <div class="katex-display-math">ax + by + c = 0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-white">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Circunferência</h3>
+          <p class="text-gray-700 mb-4">Lugar geométrico dos pontos do plano que têm a mesma distância (raio <span class="katex-math">R</span>) de um ponto fixo (centro <span class="katex-math">C(a,b)</span>).</p>
+          
+          <div class="formula-block">
+            <strong>Equação Reduzida:</strong>
+            <div class="katex-display-math">(x - a)^2 + (y - b)^2 = R^2</div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      function initializeTailwind() {
+        document.documentElement.style.setProperty('--accent-color', '#f59e0b');
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeTailwind();
+
+        const templates = {};
+        document.querySelectorAll("template").forEach((t) => {
+          templates[t.id.replace("tpl-", "")] = t.innerHTML;
+        });
+
+        const contentDiv = document.getElementById("explanation");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchResults = document.getElementById("search-results");
+
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+        function openSidebar() {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+        }
+
+        function closeSidebar() {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+
+        function renderAllMath(container) {
+          if (typeof katex === 'undefined') return;
+          container.querySelectorAll('.katex-math').forEach(el => {
+            if (el.dataset.rendered) return;
+            const mathContent = (el.textContent || el.innerText).trim();
+            try {
+              katex.render(mathContent, el, {
+                throwOnError: false,
+                displayMode: false,
+                strict: false
+              });
+              el.dataset.rendered = '1';
+            } catch (e) {
+              console.warn('KaTeX render error:', e);
+            }
+          });
+          container.querySelectorAll('.katex-display-math').forEach(el => {
+            if (el.dataset.rendered) return;
+            const mathContent = (el.textContent || el.innerText).trim();
+            try {
+              katex.render(mathContent, el, {
+                throwOnError: false,
+                displayMode: true,
+                strict: false
+              });
+              el.dataset.rendered = '1';
+            } catch (e) {
+              console.warn('KaTeX display render error:', e);
+            }
+          });
+        }
+
+        function loadSection(sectionId) {
+          if (templates[sectionId]) {
+            contentDiv.innerHTML = templates[sectionId];
+            
+            navLinks.forEach((link) => link.classList.remove("active", "bg-orange-100", "font-bold"));
+            
+            const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+            if (activeLink) {
+              activeLink.classList.add("active", "bg-orange-100", "font-bold");
+            }
+            
+            setTimeout(() => {
+              renderAllMath(contentDiv);
+            }, 50);
+            
+            localStorage.setItem("activeGeometrySection", sectionId);
+          } else {
+            contentDiv.innerHTML = `<div class="bg-white rounded-2xl shadow p-8"><p class="text-orange-600">Seção não encontrada. Por favor, selecione um tópico no sumário.</p></div>`;
+          }
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const section = link.dataset.section;
+            loadSection(section);
+            if (window.innerWidth < 768) {
+              closeSidebar();
+            }
+          });
+        });
+
+        searchInput.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          searchResults.innerHTML = "";
+          
+          if (query.length > 1) {
+            let found = false;
+            navLinks.forEach((link) => {
+              const text = link.textContent.toLowerCase();
+              const explanation = (link.dataset.explanation || "").toLowerCase();
+              if (text.includes(query) || explanation.includes(query)) {
+                found = true;
+                const div = document.createElement("div");
+                div.className = "p-3 hover:bg-orange-100 cursor-pointer text-gray-800 border-b border-orange-100 last:border-b-0 flex items-center";
+                div.innerHTML = `
+                  <i class="fas fa-search text-orange-400 mr-3"></i>
+                  <span>${link.textContent}</span>
+                `;
+                div.addEventListener("click", () => {
+                  loadSection(link.dataset.section);
+                  searchResults.classList.add("hidden");
+                  searchInput.value = "";
+                  if (window.innerWidth < 768) closeSidebar();
+                });
+                searchResults.appendChild(div);
+              }
+            });
+            
+            if (found) {
+              searchResults.classList.remove("hidden");
+            } else {
+              const noResult = document.createElement("div");
+              noResult.className = "p-3 text-gray-500 text-sm";
+              noResult.textContent = "Nenhum resultado encontrado para esta busca.";
+              searchResults.appendChild(noResult);
+              searchResults.classList.remove("hidden");
+            }
+          } else {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        const lastSection = localStorage.getItem("activeGeometrySection");
+        const sectionToLoad = lastSection && templates[lastSection] ? lastSection : "planas"; // Padrão
+        
+        loadSection(sectionToLoad);
+        
+        document.addEventListener("keydown", function(e) {
+          if (e.key === "/" && document.activeElement.tagName === "BODY") {
+            e.preventDefault();
+            searchInput.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
