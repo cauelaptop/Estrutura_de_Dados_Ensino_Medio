@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geometria: Referência Completa do Ensino Médio</title>
+    <title>Geometria e Combinatória: Referência Completa do Ensino Médio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
@@ -56,7 +56,7 @@
         <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
           <div class="flex items-center">
             <i class="fas fa-shapes text-3xl mr-3"></i>
-            <h1 class="text-2xl font-bold">Geometria: Referência do Ensino Médio</h1>
+            <h1 class="text-2xl font-bold">Geometria e Matemática: Ensino Médio</h1>
           </div>
           <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
             <i class="fas fa-bars"></i>
@@ -120,9 +120,9 @@
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
-              data-section="trig-retangulo" data-explanation="Seno, cosseno e tangente no triângulo retângulo.">
+              data-section="trig-retangulo" data-explanation="Seno, cosseno, tangente e leis gerais da trigonometria.">
               <i class="fas fa-ruler-combined mr-3 w-5 text-center"></i>
-              <span>Trig. no Triângulo Retângulo</span>
+              <span>Trig. no Triângulo e Leis</span>
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
@@ -144,7 +144,7 @@
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
-              data-section="solidos" data-explanation="Características dos sólidos, cálculos de volumes e áreas superficiais.">
+              data-section="solidos" data-explanation="Características dos sólidos, relação de Euler, volumes e áreas.">
               <i class="fas fa-cubes mr-3 w-5 text-center"></i>
               <span>Sólidos, Volumes e Áreas</span>
             </a>
@@ -153,6 +153,12 @@
               data-section="analitica" data-explanation="Geometria Analítica: coordenadas, distâncias, retas e circunferência.">
               <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
               <span>Geometria Analítica</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="combinatoria" data-explanation="Princípio Fundamental da Contagem, Permutação, Arranjo e Combinação.">
+              <i class="fas fa-calculator mr-3 w-5 text-center"></i>
+              <span>Análise Combinatória</span>
             </a>
           </nav>
         </div>
@@ -205,6 +211,24 @@
               <div class="katex-display-math">A = \dfrac{(B + b) \cdot h}{2}</div>
             </div>
             <p class="text-sm text-gray-600 mt-2"><span class="katex-math">B</span> = base maior, <span class="katex-math">b</span> = base menor, <span class="katex-math">h</span> = altura.</p>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Paralelogramo e Losango</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">A_{\text{paralelogramo}} = b \cdot h</div>
+              <div class="katex-display-math">A_{\text{losango}} = \dfrac{D \cdot d}{2}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">D</span> = diagonal maior e <span class="katex-math">d</span> = diagonal menor.</p>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <h3 class="font-bold text-orange-700 mb-3">Polígonos Regulares</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">S_i = (n - 2) \cdot 180^\circ</div>
+              <div class="katex-display-math">a_i = \dfrac{S_i}{n}</div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2"><span class="katex-math">S_i</span> = soma dos ângulos internos, <span class="katex-math">a_i</span> = ângulo interno, <span class="katex-math">n</span> = número de lados do polígono.</p>
           </div>
         </div>
       </div>
@@ -292,10 +316,10 @@
       <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
         <div class="flex items-center mb-6">
           <i class="fas fa-ruler-combined text-orange-600 text-4xl mr-4"></i>
-          <h2 class="text-3xl font-bold text-orange-800">Trigonometria no Triângulo Retângulo</h2>
+          <h2 class="text-3xl font-bold text-orange-800">Trigonometria e Leis Gerais</h2>
         </div>
         
-        <p class="text-gray-700 mb-6">Estuda as relações entre as medidas dos lados e os ângulos de um triângulo retângulo (que possui um ângulo de 90°). Os lados são nomeados: Hipotenusa (maior lado), Cateto Oposto (ao ângulo de referência) e Cateto Adjacente.</p>
+        <p class="text-gray-700 mb-6">Estuda as relações entre as medidas dos lados e os ângulos. No triângulo retângulo (que possui um ângulo de 90°), os lados são: Hipotenusa (maior lado), Cateto Oposto e Cateto Adjacente.</p>
 
         <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6">
           <h3 class="font-bold text-orange-700 mb-3">Razões Trigonométricas Fundamentais (SOH-CAH-TOA)</h3>
@@ -313,6 +337,30 @@
           </div>
           <p class="text-sm text-gray-700">Sendo <span class="katex-math">a</span> a hipotenusa e <span class="katex-math">b, c</span> os catetos.</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Lei dos Senos e Cossenos</h3>
+            <p class="text-gray-700 text-sm mb-2">Para triângulos <strong>quaisquer</strong> (não apenas retângulos):</p>
+            <div class="formula-block">
+              <strong>Lei dos Senos:</strong>
+              <div class="katex-display-math">\dfrac{a}{\sin \hat{A}} = \dfrac{b}{\sin \hat{B}} = \dfrac{c}{\sin \hat{C}} = 2R</div>
+              <br>
+              <strong>Lei dos Cossenos:</strong>
+              <div class="katex-display-math">a^2 = b^2 + c^2 - 2bc \cdot \cos \hat{A}</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Relação Fundamental</h3>
+            <p class="text-gray-700 text-sm mb-2">A identidade mais importante da trigonometria (derivada de Pitágoras no ciclo trigonométrico):</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\sin^2(\theta) + \cos^2(\theta) = 1</div>
+            </div>
+            <p class="text-gray-700 text-sm mt-3">Dela, deduzem-se outras identidades fundamentais, como <span class="katex-math">\tan^2(\theta) + 1 = \sec^2(\theta)</span>.</p>
+          </div>
+        </div>
+
       </div>
     </template>
 
@@ -434,6 +482,14 @@
 
         <div class="space-y-6">
           <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Poliedros e Relação de Euler</h3>
+            <p class="text-gray-700 text-sm">Para todos os poliedros convexos (como prismas e pirâmides), o número de Vértices (V), Arestas (A) e Faces (F) relaciona-se através da fórmula de Euler:</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V - A + F = 2</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
             <h3 class="font-bold text-orange-700 mb-3">Prismas e Cilindros</h3>
             <p class="text-gray-700">Possuem duas bases congruentes e paralelas.</p>
             <div class="formula-block">
@@ -448,6 +504,11 @@
             <div class="formula-block">
               <div class="katex-display-math">V = \dfrac{A_{\text{base}} \cdot h}{3}</div>
               <div class="katex-display-math">A_{\text{total}} = A_{\text{base}} + A_{\text{lateral}}</div>
+            </div>
+            <p class="text-gray-700 mt-4 text-sm font-bold border-t border-orange-200 pt-3">Volume de Troncos (Bases paralelas)</p>
+            <p class="text-gray-700 text-sm">Se cortarmos o topo de um cone ou pirâmide, a figura resultante é um tronco. Seu volume, relacionando a área da base maior <span class="katex-math">A_B</span>, a área da base menor <span class="katex-math">A_b</span> e a altura <span class="katex-math">h</span> é:</p>
+            <div class="formula-block">
+              <div class="katex-display-math">V_{\text{tronco}} = \dfrac{h}{3} \cdot \left(A_B + \sqrt{A_B \cdot A_b} + A_b\right)</div>
             </div>
           </div>
 
@@ -499,20 +560,94 @@
           </div>
         </div>
 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Distância Ponto-Reta e Alinhamento</h3>
+            <p class="text-gray-700 mb-2 text-sm">A distância de um ponto <span class="katex-math">P(x_0, y_0)</span> até a reta <span class="katex-math">r: ax+by+c=0</span> é:</p>
+            <div class="formula-block">
+              <div class="katex-display-math">d_{P,r} = \dfrac{|a x_0 + b y_0 + c|}{\sqrt{a^2 + b^2}}</div>
+            </div>
+            <p class="text-gray-700 mt-3 text-sm"><strong>Alinhamento:</strong> Três pontos A, B e C são colineares (estão na mesma reta) se, e somente se, o determinante formado por suas coordenadas for igual a zero (<span class="katex-math">D = 0</span>).</p>
+          </div>
+
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Posições Relativas entre Retas</h3>
+            <p class="text-gray-700 mb-2 text-sm">Ao analisarmos os coeficientes angulares de duas retas <span class="katex-math">r</span> e <span class="katex-math">s</span> (<span class="katex-math">m_r</span> e <span class="katex-math">m_s</span>):</p>
+            <ul class="text-gray-700 space-y-3 mt-3 ml-2 list-disc pl-4 text-sm">
+              <li><strong>Retas Paralelas:</strong> Possuem o mesmo grau de inclinação, ou seja, <span class="katex-math">m_r = m_s</span>.</li>
+              <li><strong>Retas Perpendiculares:</strong> Formam 90° entre si. A relação é dada pelo oposto do inverso: <span class="katex-math">m_r \cdot m_s = -1</span>.</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="mt-6 physics-card border border-orange-200 rounded-xl p-6 bg-white">
           <h3 class="text-xl font-bold text-orange-700 mb-4">Circunferência</h3>
-          <p class="text-gray-700 mb-4">Lugar geométrico dos pontos do plano que têm a mesma distância (raio <span class="katex-math">R</span>) de um ponto fixo (centro <span class="katex-math">C(a,b)</span>).</p>
+          <p class="text-gray-700 mb-4">Lugar geométrico dos pontos do plano que têm a mesma distância (raio <span class="katex-math">R</span>) de um ponto fixo (centro <span class="katex-math">C(x_c,y_c)</span>).</p>
           
           <div class="formula-block">
             <strong>Equação Reduzida:</strong>
-            <div class="katex-display-math">(x - a)^2 + (y - b)^2 = R^2</div>
+            <div class="katex-display-math">(x - x_c)^2 + (y - y_c)^2 = R^2</div>
           </div>
         </div>
       </div>
     </template>
 
-<footer class="mt-12 border-t border-orange-200 pt-8 text-center text-gray-600 text-sm">
-            <p>© 2026 Geometria: Referência Completa do Ensino Médio. Material educacional.</p>
+    <template id="tpl-combinatoria">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-calculator text-orange-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-orange-800">Análise Combinatória</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Ramo da matemática que estuda as técnicas e métodos para resolver problemas de contagem, agrupamentos e possibilidades, sem necessariamente listar todos os elementos.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Princípio Fundamental da Contagem (PFC)</h3>
+            <p class="text-gray-700 text-sm">Se um evento ocorre em etapas sucessivas e independentes, o número total de possibilidades é obtido pelo <strong>produto</strong> das possibilidades de cada etapa.</p>
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">n_{\text{total}} = p_1 \cdot p_2 \cdot p_3 \cdot \dots \cdot p_k</div>
+            </div>
+          </div>
+          
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Fatorial e Permutação Simples</h3>
+            <p class="text-gray-700 text-sm">O fatorial (<span class="katex-math">n!</span>) é a base da permutação (trocar elementos de lugar usando todos eles). É o produto de todos os inteiros positivos até <span class="katex-math">n</span>.</p>
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">n! = n \cdot (n-1) \cdot (n-2) \dots 1</div>
+              <div class="katex-display-math">P_n = n!</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Arranjo (A ordem IMPORTA)</h3>
+            <p class="text-gray-700 text-sm">Usado quando formamos grupos com <span class="katex-math">p</span> elementos a partir de um total <span class="katex-math">n</span>, em que <strong>trocar a ordem gera um resultado diferente</strong> (Ex: senhas, códigos, pódio esportivo).</p>
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">A_{n,p} = \dfrac{n!}{(n-p)!}</div>
+            </div>
+          </div>
+
+          <div class="physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+            <h3 class="font-bold text-orange-700 mb-3">Combinação (A ordem NÃO IMPORTA)</h3>
+            <p class="text-gray-700 text-sm">Usado para escolher <span class="katex-math">p</span> elementos a partir de um total <span class="katex-math">n</span>, onde <strong>a ordem escolhida não cria grupos novos</strong> (Ex: comissões, equipes, escolher frutas).</p>
+            <div class="formula-block mt-3">
+              <div class="katex-display-math">C_{n,p} = \dfrac{n!}{p!(n-p)!}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+          <h3 class="font-bold text-orange-700 mb-3">Permutação com Repetição</h3>
+          <p class="text-gray-700 text-sm">Quando entre os <span class="katex-math">n</span> elementos que serão permutados, existem elementos que se repetem <span class="katex-math">a, b, c...</span> vezes (Ex: anagramas da palavra BANANA).</p>
+          <div class="formula-block mt-3">
+            <div class="katex-display-math">P_n^{a,b,c\dots} = \dfrac{n!}{a! \cdot b! \cdot c! \dots}</div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+<footer class="mt-12 border-t border-orange-200 pt-8 text-center text-gray-600 text-sm pb-8">
+            <p>© 2026 Matemática e Geometria: Referência Completa do Ensino Médio. Material educacional.</p>
             <p class="mt-1">Todos os direitos reservados.</p>
             <p class="mt-2 font-semibold text-orange-700">Criado por David Delgado & Cauê Shishido</p>
             <div class="flex justify-center space-x-4 mt-4">
