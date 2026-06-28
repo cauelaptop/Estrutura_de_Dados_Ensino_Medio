@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matemática: Referência Completa do Ensino Médio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+      .transition-all { transition: all 0.3s ease; }
+      .formula-block {
+        font-family: "Courier New", monospace;
+        background-color: #eff6ff;
+        color: #1e3a8a;
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 5px solid #3b82f6;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .example-block {
+        background-color: #f0fdfa;
+        border-left: 5px solid #0d9488;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .math-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .math-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(59 130 246 / 0.1), 0 4px 6px -4px rgb(59 130 246 / 0.1);
+      }
+      .nav-link.active {
+        background-color: #dbeafe;
+        font-weight: 700;
+        color: #1d4ed8;
+      }
+      .katex { font-size: 1.05em; }
+      .katex-display-math { display: block; text-align: center; margin: 0.5rem 0; font-size: 1.1em; }
+      .formula-block .katex-display-math { font-size: 1.15em; }
+      
+      /* Tabela para Briot Ruffini */
+      .briot-table { border-collapse: collapse; margin: 1rem auto; text-align: center; font-family: "Courier New", monospace; font-size: 1.1em; }
+      .briot-table td { padding: 10px 15px; }
+      .briot-table .border-right { border-right: 2px solid #1e3a8a; }
+      .briot-table .border-bottom { border-bottom: 2px solid #1e3a8a; }
+      .briot-table .border-dashed { border-left: 2px dashed #94a3b8; }
+    </style>
+  </head>
+  <body class="bg-slate-50 font-sans">
+
+    <header class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-square-root-variable text-3xl mr-3"></i>
+            <h1 class="text-2xl font-bold">Matemática: Referência do Ensino Médio</h1>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+          <div class="relative w-full sm:w-72">
+            <input type="text" placeholder="Pesquisar"
+              class="px-4 py-2 rounded-full bg-blue-500 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 w-full" />
+            <button class="absolute right-3 top-2 text-blue-200 hover:text-white">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-blue-200 rounded shadow-lg z-50 hidden text-gray-800"></div>
+          </div>
+          <a href="../../index.html" class="inline-flex items-center px-3 py-2 bg-white text-orange-600 rounded-full shadow-sm hover:bg-orange-100 transition-all shrink-0" title="Recarregar página">
+            <i class="fas fa-home mr-2"></i>
+            Início
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+        <div id="sidebar" class="w-72 shrink-0 bg-white rounded-r-lg md:rounded-lg shadow-md p-4 mr-0 md:mr-8 fixed md:sticky top-0 md:top-8 left-0 h-screen md:h-fit z-50 md:z-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto md:overflow-visible">
+          <div class="p-4 border-b border-blue-200 flex justify-between items-center md:block md:p-0 md:border-none">
+            <h1 class="text-2xl font-bold md:mb-4 text-blue-700">Sumário</h1>
+            <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-blue-600 text-2xl focus:outline-none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="space-y-1 mt-2">
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="complexos" data-explanation="Números Complexos: Definição, Forma algébrica, geométrica e trigonométrica.">
+              <i class="fas fa-layer-group mr-3 w-5 text-center"></i>
+              <span>Números Complexos</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="probabilidade" data-explanation="Combinatória e Probabilidade: PFC, Permutação, Arranjo, Combinação e Eventos.">
+              <i class="fas fa-dice mr-3 w-5 text-center"></i>
+              <span>Probabilidade e Combinatória</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="matrizes" data-explanation="Matrizes: Operações e Determinantes.">
+              <i class="fas fa-th mr-3 w-5 text-center"></i>
+              <span>Matrizes e Determinantes</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="sistemas" data-explanation="Sistemas Lineares: Métodos de solução e interpretação gráfica.">
+              <i class="fas fa-stream mr-3 w-5 text-center"></i>
+              <span>Sistemas Lineares</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="progressoes" data-explanation="Progressões: Progressão Aritmética (PA) e Progressão Geométrica (PG).">
+              <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
+              <span>Progressões (PA e PG)</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="funcoes" data-explanation="Funções: Afim, Quadrática, Modular, Inversa e Composta.">
+              <i class="fas fa-project-diagram mr-3 w-5 text-center"></i>
+              <span>Estudo das Funções</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="exponenciais" data-explanation="Exponenciais e Logaritmos: Propriedades, Equações e Inequações.">
+              <i class="fas fa-arrow-trend-up mr-3 w-5 text-center"></i>
+              <span>Exponenciais e Logaritmos</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-blue-100 text-blue-700 font-medium transition-all"
+              data-section="polinomios" data-explanation="Polinômios: Operações, Relações de Girard e Briot Ruffini.">
+              <i class="fas fa-superscript mr-3 w-5 text-center"></i>
+              <span>Polinômios</span>
+            </a>
+
+          </nav>
+        </div>
+
+        <div id="content" class="flex flex-col flex-1 min-w-0">
+          <div id="explanation" class="w-full"></div>
+
+          <footer class="mt-12 border-t border-orange-200 pt-8 text-center text-gray-600 text-sm">
+            <p>© 2026 Matemática: Referência Completa do Ensino Médio. Material educacional.</p>
+            <p class="mt-1">Todos os direitos reservados.</p>
+            <p class="mt-2 font-semibold text-orange-700">Criado por David Delgado & Cauê Shishido</p>
+            <div class="flex justify-center space-x-4 mt-4">
+              <a href="https://github.com/" target="_blank" class="text-orange-600 hover:text-orange-800">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <template id="tpl-complexos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-layer-group text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Números Complexos</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6">Os números complexos surgiram da necessidade de resolver equações que envolvem raízes quadradas de números negativos, algo impossível no conjunto dos Reais.</p>
+
+        <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="font-bold text-blue-700 mb-3">Motivação e Definição</h3>
+          <p class="text-gray-700">A unidade imaginária <span class="katex-math">i</span> é definida de tal modo que o seu quadrado seja igual a -1.</p>
+          <div class="formula-block">
+            <div class="katex-display-math">i^2 = -1 \implies i = \sqrt{-1}</div>
+          </div>
+          <p class="text-gray-700 mt-2">Potências de <span class="katex-math">i</span> se repetem em ciclos de 4: <span class="katex-math">i^0 = 1</span>, <span class="katex-math">i^1 = i</span>, <span class="katex-math">i^2 = -1</span>, <span class="katex-math">i^3 = -i</span>.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Forma Algébrica</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">z = a + bi</div>
+            </div>
+            <p class="text-gray-700 text-sm">Onde <span class="katex-math">a</span> é a parte real (<span class="katex-math">Re(z)</span>) e <span class="katex-math">b</span> é a parte imaginária (<span class="katex-math">Im(z)</span>).</p>
+            <h4 class="font-semibold text-blue-600 mt-4">Operações Básicas:</h4>
+            <ul class="text-gray-700 text-sm space-y-2 mt-2">
+              <li><strong>Soma:</strong> <span class="katex-math">(a+bi) + (c+di) = (a+c) + (b+d)i</span></li>
+              <li><strong>Produto:</strong> Usar distributiva e trocar <span class="katex-math">i^2</span> por -1.</li>
+              <li><strong>Conjugado (<span class="katex-math">\bar{z}</span>):</strong> <span class="katex-math">\bar{z} = a - bi</span></li>
+              <li><strong>Divisão:</strong> Multiplicar numerador e denominador pelo conjugado do denominador.</li>
+            </ul>
+          </div>
+
+          <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Forma Geométrica</h3>
+            <p class="text-gray-700">Representados no <strong>Plano de Argand-Gauss</strong>, o eixo x é a parte Real e o eixo y é a Imaginária. O número <span class="katex-math">z = a + bi</span> corresponde ao ponto <span class="katex-math">(a, b)</span>.</p>
+            <div class="formula-block mt-3">
+              Módulo (distância à origem):
+              <div class="katex-display-math">|z| = \rho = \sqrt{a^2 + b^2}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-matrizes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-th text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Matrizes e Determinantes</h2>
+        </div>
+
+        <p class="text-gray-700 mb-6">Matriz é uma tabela de números dispostos em linhas (<span class="katex-math">m</span>) e colunas (<span class="katex-math">n</span>), representada por <span class="katex-math">A_{m \times n}</span>. Cada elemento é denotado por <span class="katex-math">a_{ij}</span>, onde <span class="katex-math">i</span> representa a linha e <span class="katex-math">j</span> a coluna.</p>
+
+        <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Tipos de Matrizes</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Quadrada</strong>
+              <p class="text-sm text-gray-700 mt-1">Possui o mesmo número de linhas e colunas (<span class="katex-math">m = n</span>). Nela definimos a <em>diagonal principal</em> (elementos onde <span class="katex-math">i = j</span>) e a <em>diagonal secundária</em>.</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Identidade (<span class="katex-math">I_n</span>)</strong>
+              <p class="text-sm text-gray-700 mt-1">Matriz quadrada onde todos os elementos da diagonal principal são iguais a 1 e os demais são iguais a 0. É o elemento neutro da multiplicação.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Nula</strong>
+              <p class="text-sm text-gray-700 mt-1">Todos os elementos são iguais a zero. É o elemento neutro da adição de matrizes.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Transposta (<span class="katex-math">A^t</span>)</strong>
+              <p class="text-sm text-gray-700 mt-1">Obtém-se trocando o que é linha pelo que é coluna. Se <span class="katex-math">A</span> é <span class="katex-math">m \times n</span>, então <span class="katex-math">A^t</span> será <span class="katex-math">n \times m</span>.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Simétrica e Antissimétrica</strong>
+              <p class="text-sm text-gray-700 mt-1"><strong>Simétrica:</strong> quando <span class="katex-math">A = A^t</span>.<br><strong>Antissimétrica:</strong> quando <span class="katex-math">A = -A^t</span> (a diagonal principal deve ser zero).</p>
+            </div>
+
+            <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
+              <strong class="text-blue-700">Matriz Inversa (<span class="katex-math">A^{-1}</span>)</strong>
+              <p class="text-sm text-gray-700 mt-1">Uma matriz quadrada que, quando multiplicada pela matriz original <span class="katex-math">A</span>, resulta na Matriz Identidade: <span class="katex-math">A \cdot A^{-1} = I_n</span>. Só existe se o determinante for diferente de zero.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="math-card bg-white border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Operações com Matrizes (Em Detalhes)</h3>
+          
+          <div class="mb-6">
+            <h4 class="font-bold text-blue-700 text-lg">1. Adição e Subtração</h4>
+            <p class="text-gray-700 mt-2 text-sm">Possível somente entre matrizes de mesma ordem. Soma-se ou subtrai-se os elementos correspondentes <span class="katex-math">a_{ij} \pm b_{ij}</span>.</p>
+            <ul class="text-sm text-gray-600 list-disc pl-5 mt-2">
+              <li><strong>Comutativa:</strong> <span class="katex-math">A + B = B + A</span></li>
+              <li><strong>Associativa:</strong> <span class="katex-math">(A + B) + C = A + (B + C)</span></li>
+            </ul>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="font-bold text-blue-700 text-lg">2. Multiplicação por um Escalar (Número Real)</h4>
+            <p class="text-gray-700 mt-2 text-sm">Multiplica-se cada elemento da matriz pelo número real <span class="katex-math">k</span>.</p>
+            <div class="formula-block py-2">
+              <div class="katex-display-math">k \cdot A = [k \cdot a_{ij}]</div>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h4 class="font-bold text-blue-700 text-lg">3. Multiplicação de Matrizes</h4>
+            <p class="text-gray-700 mt-2 text-sm">Condição estrita: Só é possível multiplicar <span class="katex-math">A</span> por <span class="katex-math">B</span> se o número de colunas da 1ª for igual ao número de linhas da 2ª (<span class="katex-math">A_{m \times p} \cdot B_{p \times n}</span>). A matriz resultante terá a ordem <span class="katex-math">C_{m \times n}</span>.</p>
+            
+            <div class="example-block mt-3">
+              <strong class="text-teal-800">Como multiplicar (Linha x Coluna):</strong>
+              <p class="text-sm mt-1">Para encontrar o elemento <span class="katex-math">c_{11}</span> da matriz produto, multiplique os elementos da 1ª linha da matriz A pelos elementos correspondentes da 1ª coluna da matriz B e some os resultados.</p>
+              <div class="katex-display-math">c_{ij} = (a_{i1} \cdot b_{1j}) + (a_{i2} \cdot b_{2j}) + ... + (a_{ip} \cdot b_{pj})</div>
+            </div>
+            
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mt-3">
+              <strong class="text-red-700">Atenção!</strong> A multiplicação de matrizes <strong>NÃO</strong> é comutativa no caso geral. Ou seja, <span class="katex-math">A \cdot B \neq B \cdot A</span> na maioria das vezes.
+            </div>
+          </div>
+        </div>
+
+        <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Determinantes</h3>
+          <p class="text-gray-700 mb-3">Um número real associado exclusivamente a <strong>matrizes quadradas</strong>.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <strong class="text-blue-800">Ordem 2:</strong>
+              <div class="katex-display-math">\det(A) = (a_{11} \cdot a_{22}) - (a_{12} \cdot a_{21})</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <strong class="text-blue-800">Ordem 3 (Regra de Sarrus):</strong>
+              <p class="text-sm text-gray-700 mt-2">Repete-se as duas primeiras colunas ao lado da matriz, soma-se o produto das diagonais principais e subtrai-se o produto das diagonais secundárias.</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mt-4 text-sm"><strong>Teorema de Laplace:</strong> Usado para matrizes de ordem maior que 3. Multiplica-se os elementos de uma fila pelos seus respectivos cofatores.</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-polinomios">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-superscript text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Polinômios</h2>
+        </div>
+
+        <p class="text-gray-700 mb-6 text-lg border-l-4 border-blue-500 pl-4">Expressão algébrica formada pela soma de monômios: <span class="katex-math">P(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</span></p>
+
+        <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Operações com Polinômios</h3>
+          
+          <div class="space-y-6">
+            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+              <h4 class="font-bold text-blue-700 text-lg mb-2">1. Adição e Subtração</h4>
+              <p class="text-gray-700 text-sm">Realiza-se a operação unindo (agrupando) os termos semelhantes, ou seja, termos que possuem a mesma variável elevada ao mesmo expoente.</p>
+              <div class="example-block">
+                <strong>Exemplo:</strong> <br>
+                <span class="katex-math">P(x) = 3x^2 + 5x - 2</span> e <span class="katex-math">Q(x) = x^2 - 3x + 4</span><br>
+                <span class="katex-math">P(x) + Q(x) = (3x^2 + x^2) + (5x - 3x) + (-2 + 4) = 4x^2 + 2x + 2</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+              <h4 class="font-bold text-blue-700 text-lg mb-2">2. Multiplicação</h4>
+              <p class="text-gray-700 text-sm">Aplica-se a propriedade distributiva, multiplicando todos os termos de um polinômio por todos os termos do outro polinômio, somando os expoentes das variáveis iguais.</p>
+              <div class="example-block">
+                <strong>Exemplo:</strong> <br>
+                <span class="katex-math">(2x + 1) \cdot (x^2 - 3) = 2x(x^2) + 2x(-3) + 1(x^2) + 1(-3)</span><br>
+                Resultado: <span class="katex-math">2x^3 - 6x + x^2 - 3</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+              <h4 class="font-bold text-blue-700 text-lg mb-2">3. Divisão</h4>
+              <p class="text-gray-700 text-sm mb-3">Existem múltiplos métodos para realizar a divisão de um polinômio <span class="katex-math">P(x)</span> por um <span class="katex-math">D(x)</span>, gerando um quociente <span class="katex-math">Q(x)</span> e um resto <span class="katex-math">R(x)</span>.</p>
+              
+              <strong class="text-teal-800">Método da Chave (Divisão Longa):</strong>
+              <ol class="list-decimal pl-5 text-sm text-gray-700 mt-2 space-y-1">
+                <li>Ordene os polinômios em ordem decrescente de graus.</li>
+                <li>Divida o primeiro termo do dividendo pelo primeiro termo do divisor.</li>
+                <li>Multiplique o resultado pelo divisor e subtraia do dividendo (trocando o sinal).</li>
+                <li>Repita o processo até que o grau do resto seja menor que o grau do divisor.</li>
+              </ol>
+
+              <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-500 rounded">
+                <strong class="text-blue-800">Teorema do Resto:</strong> O resto da divisão de um polinômio <span class="katex-math">P(x)</span> por um binômio do tipo <span class="katex-math">(x - a)</span> é exatamente igual ao valor numérico do polinômio para <span class="katex-math">x = a</span>, ou seja, <span class="katex-math">R = P(a)</span>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="math-card bg-white border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Dispositivo Prático de Briot-Ruffini</h3>
+          <p class="text-gray-700 text-sm mb-4">Um algoritmo rápido para dividir <span class="katex-math">P(x)</span> por um binômio do tipo <span class="katex-math">(x - a)</span>. É mais veloz que o Método da Chave, mas restrito a divisores de grau 1.</p>
+          
+          <div class="bg-gray-50 p-4 rounded border border-gray-200">
+            <strong class="text-gray-800 block mb-2">Passo a Passo:</strong>
+            <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-2 mb-4">
+              <li>Encontre a raiz do divisor igualando-o a zero: <span class="katex-math">x - a = 0 \implies x = a</span>. Coloque-a à esquerda do dispositivo.</li>
+              <li>Escreva os coeficientes de <span class="katex-math">P(x)</span> no topo, ordenados e completos (incluindo os zeros se faltar algum grau).</li>
+              <li>Desce o 1º coeficiente para a linha de baixo.</li>
+              <li>Multiplica esse coeficiente descido pela raiz <span class="katex-math">a</span> e soma com o próximo coeficiente do topo. Coloque o resultado na linha de baixo.</li>
+              <li>Repita o processo até o último coeficiente. O último número encontrado será o <strong>Resto</strong>, e os demais serão os coeficientes do polinômio Quociente (que terá um grau a menos que <span class="katex-math">P(x)</span>).</li>
+            </ol>
+
+            <strong class="text-blue-700 mt-4 block">Exemplo Visual: Divisão de <span class="katex-math">2x^3 - 5x^2 + 4x - 1</span> por <span class="katex-math">(x - 2)</span></strong>
+            <p class="text-xs text-gray-500 mb-2">Raiz do divisor = 2. Coeficientes de P(x) = 2, -5, 4, -1.</p>
+            <table class="briot-table bg-white shadow-sm">
+              <tr>
+                <td class="border-right border-bottom text-red-600 font-bold">2</td> <td class="border-bottom">2</td> <td class="border-bottom">-5</td> <td class="border-bottom">4</td> <td class="border-bottom border-dashed text-gray-400">-1</td> </tr>
+              <tr>
+                <td class="border-right text-gray-400 text-sm">↓</td>
+                <td class="text-blue-600 font-bold">2</td> <td class="text-blue-600 font-bold">-1</td> <td class="text-blue-600 font-bold">2</td> <td class="border-dashed text-purple-600 font-bold">3</td> </tr>
+            </table>
+            <p class="text-sm text-center text-gray-700 mt-2"><strong>Quociente:</strong> <span class="katex-math">Q(x) = 2x^2 - 1x + 2</span> | <strong>Resto:</strong> <span class="katex-math">R = 3</span></p>
+          </div>
+        </div>
+
+        <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Relações de Girard</h3>
+          <p class="text-gray-700 text-sm mb-4">Relacionam as raízes de uma equação algébrica com os seus coeficientes, sem precisar resolver a equação para encontrar as raízes individualmente.</p>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+              <strong class="text-blue-800 text-lg">Equação do 2º Grau</strong>
+              <div class="katex-display-math">ax^2+bx+c=0</div>
+              <p class="text-sm text-gray-600 mt-2">Sendo <span class="katex-math">x_1</span> e <span class="katex-math">x_2</span> as raízes:</p>
+              <ul class="mt-2 space-y-2 text-gray-700 bg-blue-50/50 p-3 rounded">
+                <li><strong>Soma:</strong> <span class="katex-math">x_1 + x_2 = -\frac{b}{a}</span></li>
+                <li><strong>Produto:</strong> <span class="katex-math">x_1 \cdot x_2 = \frac{c}{a}</span></li>
+              </ul>
+            </div>
+            
+            <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-100">
+              <strong class="text-blue-800 text-lg">Equação do 3º Grau</strong>
+              <div class="katex-display-math">ax^3+bx^2+cx+d=0</div>
+              <p class="text-sm text-gray-600 mt-2">Sendo <span class="katex-math">x_1, x_2, x_3</span> as raízes:</p>
+              <ul class="mt-2 space-y-2 text-gray-700 bg-blue-50/50 p-3 rounded">
+                <li><strong>Soma das raízes (S_1):</strong> <span class="katex-math">x_1+x_2+x_3 = -\frac{b}{a}</span></li>
+                <li><strong>Soma dos produtos 2 a 2 (S_2):</strong> <span class="katex-math">x_1x_2 + x_1x_3 + x_2x_3 = \frac{c}{a}</span></li>
+                <li><strong>Produto das raízes (S_3):</strong> <span class="katex-math">x_1x_2x_3 = -\frac{d}{a}</span></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded text-sm text-gray-800">
+            <strong>Dica de Ouro:</strong> Os sinais das relações de Girard sempre alternam, começando com negativo. A soma das raízes simples divide o segundo coeficiente pelo primeiro e muda o sinal. O produto das raízes sempre envolve o termo independente dividido pelo primeiro coeficiente, sendo o sinal dependente do grau da equação (positivo para grau par, negativo para grau ímpar).
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-exponenciais">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-arrow-trend-up text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Exponenciais e Logaritmos</h2>
+        </div>
+
+        <div class="grid grid-cols-1 mb-6">
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Função Exponencial</h3>
+            <div class="formula-block">
+              <div class="katex-display-math">f(x) = a^x \quad (a > 0 \text{ e } a \neq 1)</div>
+            </div>
+            <p class="text-gray-700 mt-2 text-sm">Crescente se <span class="katex-math">a > 1</span>. Decrescente se <span class="katex-math">0 < a < 1</span>. A assíntota horizontal é <span class="katex-math">y = 0</span>.</p>
+            
+            <div class="bg-white p-4 rounded mt-4 shadow-sm border border-gray-100">
+              <h4 class="font-semibold text-blue-600">Equações e Inequações Exponenciais</h4>
+              <p class="text-sm text-gray-700 mt-1">Busca-se igualar as bases: <span class="katex-math">a^{f(x)} = a^{g(x)} \implies f(x) = g(x)</span>.<br>
+              Nas inequações, se a base for menor que 1 (<span class="katex-math">0 < a < 1</span>), <strong>inverte-se</strong> o sinal da desigualdade dos expoentes ao "cortar" as bases.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+          <h3 class="text-2xl font-bold text-blue-800 mb-4 border-b border-blue-200 pb-2">Logaritmos e Função Logarítmica</h3>
+          <p class="text-gray-700 text-sm mb-4">O logaritmo é a operação inversa da exponencial. A função logarítmica <span class="katex-math">f(x) = \log_b(x)</span> é a inversa da função exponencial <span class="katex-math">g(x) = b^x</span>.</p>
+          
+          <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-500 mb-6">
+            <strong class="text-blue-800 text-lg">Definição Base</strong>
+            <div class="katex-display-math">\log_b a = x \iff b^x = a</div>
+            <div class="text-sm text-gray-700 mt-2">
+              <strong>Nomenclatura e Condições de Existência:</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li><span class="katex-math">a</span> = Logaritmando. Deve ser real e positivo (<span class="katex-math">a > 0</span>).</li>
+                <li><span class="katex-math">b</span> = Base. Deve ser real, positiva e diferente de 1 (<span class="katex-math">b > 0</span> e <span class="katex-math">b \neq 1</span>).</li>
+                <li><span class="katex-math">x</span> = Logaritmo. Pode ser qualquer número real.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-gray-50 p-4 rounded shadow-sm border border-gray-100">
+              <h4 class="font-bold text-blue-700 mb-2">Comportamento do Gráfico</h4>
+              <p class="text-sm text-gray-700 mb-2">O gráfico da função <span class="katex-math">f(x) = \log_b(x)</span> passa pelo ponto <span class="katex-math">(1, 0)</span>, pois <span class="katex-math">\log_b(1) = 0</span>. Ele apresenta uma assíntota vertical em <span class="katex-math">x = 0</span> (eixo y).</p>
+              <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
+                <li><strong>Função Crescente:</strong> Quando a base <span class="katex-math">b > 1</span>. Conforme o valor de <span class="katex-math">x</span> aumenta, o logaritmo também aumenta.</li>
+                <li><strong>Função Decrescente:</strong> Quando a base <span class="katex-math">0 < b < 1</span>. Conforme <span class="katex-math">x</span> aumenta, o logaritmo diminui, tendendo ao infinito negativo.</li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded shadow-sm border border-gray-100">
+              <h4 class="font-bold text-blue-700 mb-2">Propriedades Operatórias Importantes</h4>
+              <ul class="text-sm text-gray-700 space-y-3">
+                <li><strong>Produto:</strong> <span class="katex-math">\log_b (x \cdot y) = \log_b x + \log_b y</span></li>
+                <li><strong>Quociente:</strong> <span class="katex-math">\log_b (x / y) = \log_b x - \log_b y</span></li>
+                <li><strong>Potência (Regra do Tombo):</strong> <span class="katex-math">\log_b (x^k) = k \cdot \log_b x</span></li>
+                <li><strong>Mudança de Base:</strong> <span class="katex-math">\log_b a = \frac{\log_c a}{\log_c b}</span> (útil para calcular em calculadoras que só tem base 10).</li>
+                <li><strong>Inverso da Base:</strong> <span class="katex-math">\log_b a = \frac{1}{\log_a b}</span></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="example-block">
+            <strong class="text-teal-800">Resolução de Equações Logarítmicas:</strong>
+            <p class="text-sm mt-1 mb-2">Para resolver, o objetivo é deixar um logaritmo de mesma base de cada lado da igualdade para "cortá-los", ou aplicar a definição diretamente. Nunca se esqueça de testar as raízes encontradas nas Condições de Existência!</p>
+            <span class="text-sm block">Exemplo: <span class="katex-math">\log_2(x-3) = 3</span></span>
+            <span class="text-sm block">Aplicando a definição: <span class="katex-math">2^3 = x - 3 \implies 8 = x - 3 \implies x = 11</span>. Como <span class="katex-math">11 - 3 = 8 > 0</span>, a solução é válida.</span>
+          </div>
+
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-probabilidade">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-dice text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Probabilidade e Análise Combinatória</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Análise Combinatória</h3>
+            <p class="text-gray-700 text-sm mb-2"><strong>PFC (Princípio Fundamental da Contagem):</strong> Se um evento ocorre em etapas independentes, multiplica-se o número de opções de cada etapa.</p>
+            <div class="space-y-4">
+              <div>
+                <strong class="text-blue-800">Permutação Simples:</strong> Ordem importa, usa-se todos os elementos.
+                <div class="formula-block py-1 px-2 mt-1"><span class="katex-display-math">P_n = n!</span></div>
+              </div>
+              <div>
+                <strong class="text-blue-800">Arranjo Simples:</strong> Ordem importa, usa-se parte dos elementos.
+                <div class="formula-block py-1 px-2 mt-1"><span class="katex-display-math">A_{n,p} = \frac{n!}{(n-p)!}</span></div>
+              </div>
+              <div>
+                <strong class="text-blue-800">Combinação Simples:</strong> A ordem NÃO importa.
+                <div class="formula-block py-1 px-2 mt-1"><span class="katex-display-math">C_{n,p} = \frac{n!}{p!(n-p)!}</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Conceitos de Probabilidade</h3>
+            <ul class="text-gray-700 space-y-3">
+              <li><strong>Espaço Amostral (<span class="katex-math">\Omega</span>):</strong> Conjunto de todos os resultados possíveis.</li>
+              <li><strong>Evento (<span class="katex-math">E</span>):</strong> Qualquer subconjunto do espaço amostral.</li>
+              <li><strong>Espaços Equiprováveis:</strong> Todos os eventos elementares têm a mesma chance de ocorrer.</li>
+            </ul>
+            <div class="formula-block mt-4">
+              Definição Clássica (Laplace):
+              <div class="katex-display-math">P(E) = \frac{n(E)}{n(\Omega)} = \frac{\text{casos favoráveis}}{\text{casos possíveis}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-sistemas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-stream text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Sistemas Lineares</h2>
+        </div>
+        <p class="text-gray-700 mb-6">Conjunto de equações do primeiro grau com duas ou mais incógnitas.</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Classificação e Interpretação Gráfica</h3>
+            <ul class="text-gray-700 space-y-3">
+              <li><strong>SPD (Possível e Determinado):</strong> Solução única. Gráfico: retas concorrentes. (<span class="katex-math">\det \neq 0</span>)</li>
+              <li><strong>SPI (Possível e Indeterminado):</strong> Infinitas soluções. Gráfico: retas coincidentes. (<span class="katex-math">\det = 0</span> e determinantes secundários nulos).</li>
+              <li><strong>SI (Impossível):</strong> Nenhuma solução. Gráfico: retas paralelas distintas. (<span class="katex-math">\det = 0</span> e algum determinante secundário não nulo).</li>
+            </ul>
+          </div>
+          <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-3">Métodos de Solução</h3>
+            <div class="space-y-4">
+              <div>
+                <strong class="text-blue-800 block">Regra de Cramer:</strong>
+                <span class="text-sm text-gray-700">Calcula-se a solução através da divisão de determinantes:</span>
+                <div class="katex-display-math">x = \frac{D_x}{D}, \quad y = \frac{D_y}{D}, \quad z = \frac{D_z}{D}</div>
+              </div>
+              <div>
+                <strong class="text-blue-800 block">Escalonamento:</strong>
+                <span class="text-sm text-gray-700">Transforma-se o sistema num sistema equivalente em forma de "escada" usando operações elementares entre as linhas, facilitando encontrar os valores de baixo para cima.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-progressoes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-chart-line text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Progressões</h2>
+        </div>
+        <p class="text-gray-700 mb-6">Sequências numéricas que seguem um padrão lógico matemático constante.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Progressão Aritmética (PA)</h3>
+            <p class="text-gray-700 text-sm mb-4">Sequência em que a diferença (razão <span class="katex-math">r</span>) entre um termo e seu antecessor é constante. Ex: (2, 5, 8, 11...).</p>
+            <div class="formula-block text-sm">
+              <strong>Termo Geral:</strong>
+              <div class="katex-display-math">a_n = a_1 + (n - 1)r</div>
+              <strong>Soma dos 'n' primeiros termos:</strong>
+              <div class="katex-display-math">S_n = \frac{(a_1 + a_n) \cdot n}{2}</div>
+            </div>
+            <div class="example-block text-sm">
+              <strong>Propriedade:</strong> O termo central é a média aritmética dos equidistantes.
+            </div>
+          </div>
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-blue-700 mb-3">Progressão Geométrica (PG)</h3>
+            <p class="text-gray-700 text-sm mb-4">Sequência em que o quociente (razão <span class="katex-math">q</span>) entre um termo e seu antecessor é constante. Ex: (3, 6, 12, 24...).</p>
+            <div class="formula-block text-sm">
+              <strong>Termo Geral:</strong>
+              <div class="katex-display-math">a_n = a_1 \cdot q^{n - 1}</div>
+              <strong>Soma Finita:</strong>
+              <div class="katex-display-math">S_n = a_1 \cdot \frac{q^n - 1}{q - 1}</div>
+              <strong>Soma Infinita (se -1 < q < 1):</strong>
+              <div class="katex-display-math">S_\infty = \frac{a_1}{1 - q}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-funcoes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <i class="fas fa-project-diagram text-blue-600 text-4xl mr-4"></i>
+          <h2 class="text-3xl font-bold text-blue-800">Estudo das Funções</h2>
+        </div>
+        <div class="math-card bg-white border border-blue-200 rounded-xl p-6 mb-6">
+          <h3 class="font-bold text-blue-700 mb-3">Conceitos Básicos</h3>
+          <p class="text-gray-700">Uma relação entre dois conjuntos A e B onde <strong>cada</strong> elemento de A associa-se a um <strong>único</strong> elemento de B.</p>
+          <ul class="text-gray-700 mt-2 list-disc pl-5">
+            <li><strong>Domínio (D):</strong> Conjunto de partida (valores de x permitidos).</li>
+            <li><strong>Contradomínio (CD):</strong> Conjunto de chegada.</li>
+            <li><strong>Imagem (Im):</strong> Subconjunto do contradomínio contendo os valores efetivamente assumidos por <span class="katex-math">f(x)</span>.</li>
+          </ul>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-2">Função Afim (1º Grau)</h3>
+            <div class="katex-display-math">f(x) = ax + b</div>
+            <p class="text-gray-700 text-sm mt-2">Gráfico: Reta. <span class="katex-math">a</span> é o coeficiente angular (inclinação), <span class="katex-math">b</span> é o linear (corte em y). A raiz (corte no eixo x) é <span class="katex-math">x = -b/a</span>.</p>
+          </div>
+          <div class="math-card bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h3 class="font-bold text-blue-700 mb-2">Função Quadrática (2º Grau)</h3>
+            <div class="katex-display-math">f(x) = ax^2 + bx + c</div>
+            <p class="text-gray-700 text-sm mt-2">Gráfico: Parábola. Concavidade para cima se <span class="katex-math">a > 0</span>, para baixo se <span class="katex-math">a < 0</span>. <br>
+            <strong>Vértice:</strong> <span class="katex-math">x_v = \frac{-b}{2a}</span> e <span class="katex-math">y_v = \frac{-\Delta}{4a}</span>.</p>
+          </div>
+        </div>
+        <div class="math-card bg-white border border-blue-200 rounded-xl p-6">
+          <h3 class="font-bold text-blue-700 mb-4">Tipos Especiais de Funções</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <strong class="text-blue-800">Função Modular:</strong>
+              <p class="text-sm text-gray-700 mt-1">Transforma valores negativos em positivos. Gráfico rebatido no eixo x. <span class="katex-math">f(x) = |x|</span></p>
+            </div>
+            <div>
+              <strong class="text-blue-800">Função Composta:</strong>
+              <p class="text-sm text-gray-700 mt-1">Aplicação de uma função dentro de outra. Ex: <span class="katex-math">f(g(x))</span> ou <span class="katex-math">(f \circ g)(x)</span>.</p>
+            </div>
+            <div>
+              <strong class="text-blue-800">Função Inversa:</strong>
+              <p class="text-sm text-gray-700 mt-1">Reverte a função original. <span class="katex-math">f^{-1}(x)</span>. Gráfico simétrico em relação à bissetriz <span class="katex-math">y = x</span>. Exige que <span class="katex-math">f</span> seja bijetora.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      // SCRIPT INALTERADO MANTENDO A FUNCIONALIDADE ORIGINAL
+      function initializeTailwind() {
+        document.documentElement.style.setProperty('--accent-color', '#3b82f6');
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeTailwind();
+
+        const templates = {};
+        document.querySelectorAll("template").forEach((t) => {
+          templates[t.id.replace("tpl-", "")] = t.innerHTML;
+        });
+
+        const contentDiv = document.getElementById("explanation");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchResults = document.getElementById("search-results");
+
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+        function openSidebar() {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+        }
+
+        function closeSidebar() {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+
+        function renderAllMath(container) {
+          if (typeof katex === 'undefined') return;
+          container.querySelectorAll('.katex-math').forEach(el => {
+            if (el.dataset.rendered) return;
+            const mathContent = (el.textContent || el.innerText).trim();
+            try {
+              katex.render(mathContent, el, {
+                throwOnError: false,
+                displayMode: false,
+                strict: false
+              });
+              el.dataset.rendered = '1';
+            } catch (e) {
+              console.warn('KaTeX render error:', e);
+            }
+          });
+          container.querySelectorAll('.katex-display-math').forEach(el => {
+            if (el.dataset.rendered) return;
+            const mathContent = (el.textContent || el.innerText).trim();
+            try {
+              katex.render(mathContent, el, {
+                throwOnError: false,
+                displayMode: true,
+                strict: false
+              });
+              el.dataset.rendered = '1';
+            } catch (e) {
+              console.warn('KaTeX display render error:', e);
+            }
+          });
+        }
+
+        function loadSection(sectionId) {
+          if (templates[sectionId]) {
+            contentDiv.innerHTML = templates[sectionId];
+            
+            navLinks.forEach((link) => link.classList.remove("active", "bg-blue-100", "font-bold"));
+            
+            const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+            if (activeLink) {
+              activeLink.classList.add("active", "bg-blue-100", "font-bold");
+            }
+            
+            setTimeout(() => {
+              renderAllMath(contentDiv);
+            }, 50);
+            
+            localStorage.setItem("activeMathSection", sectionId);
+          } else {
+            contentDiv.innerHTML = `<div class="bg-white rounded-2xl shadow p-8"><p class="text-blue-600">Seção não encontrada. Por favor, selecione um tópico no sumário.</p></div>`;
+          }
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const section = link.dataset.section;
+            loadSection(section);
+            if (window.innerWidth < 768) {
+              closeSidebar();
+            }
+          });
+        });
+
+        searchInput.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          searchResults.innerHTML = "";
+          
+          if (query.length > 1) {
+            let found = false;
+            navLinks.forEach((link) => {
+              const text = link.textContent.toLowerCase();
+              const explanation = (link.dataset.explanation || "").toLowerCase();
+              if (text.includes(query) || explanation.includes(query)) {
+                found = true;
+                const div = document.createElement("div");
+                div.className = "p-3 hover:bg-blue-100 cursor-pointer text-gray-800 border-b border-blue-100 last:border-b-0 flex items-center";
+                div.innerHTML = `
+                  <i class="fas fa-search text-blue-400 mr-3"></i>
+                  <span>${link.textContent}</span>
+                `;
+                div.addEventListener("click", () => {
+                  loadSection(link.dataset.section);
+                  searchResults.classList.add("hidden");
+                  searchInput.value = "";
+                  if (window.innerWidth < 768) closeSidebar();
+                });
+                searchResults.appendChild(div);
+              }
+            });
+            
+            if (found) {
+              searchResults.classList.remove("hidden");
+            } else {
+              const noResult = document.createElement("div");
+              noResult.className = "p-3 text-gray-500 text-sm";
+              noResult.textContent = "Nenhum resultado encontrado para esta busca.";
+              searchResults.appendChild(noResult);
+              searchResults.classList.remove("hidden");
+            }
+          } else {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        const lastSection = localStorage.getItem("activeMathSection");
+        const sectionToLoad = lastSection && templates[lastSection] ? lastSection : "complexos";
+        
+        loadSection(sectionToLoad);
+        
+        document.addEventListener("keydown", function(e) {
+          if (e.key === "/" && document.activeElement.tagName === "BODY") {
+            e.preventDefault();
+            searchInput.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
