@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matemática Financeira e Estatística: Referência Completa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #059669; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #047857; }
+      .transition-all { transition: all 0.3s ease; }
+      .formula-block {
+        font-family: "Courier New", monospace;
+        background-color: #ecfdf5;
+        color: #065f46;
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 5px solid #10b981;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .example-block {
+        background-color: #f0fdf4;
+        border-left: 5px solid #22c55e;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .content-section { display: none; }
+      .content-section.active { display: block; }
+      .finance-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .finance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.1), 0 4px 6px -4px rgb(16 185 129 / 0.1);
+      }
+      .nav-link.active {
+        background-color: #a7f3d0;
+        font-weight: 700;
+        color: #065f46;
+      }
+      .katex { font-size: 1.05em; }
+      .katex-display-math { display: block; text-align: center; margin: 0.5rem 0; font-size: 1.1em; }
+      .formula-block .katex-display-math { font-size: 1.15em; }
+    </style>
+  </head>
+  <body class="bg-emerald-50 font-sans">
+
+    <header class="bg-emerald-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-calculator text-3xl mr-3"></i>
+            <h1 class="text-2xl font-bold">Matemática Financeira & Estatística</h1>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+          <div class="relative w-full sm:w-72">
+            <input type="text" placeholder="Pesquisar termo (Ex: Juros, Média, SAC...)"
+              class="px-4 py-2 rounded-full bg-emerald-500 text-white placeholder-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-300 w-full" />
+            <button class="absolute right-3 top-2 text-emerald-200 hover:text-white" title="Pesquisar">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-emerald-200 rounded shadow-lg z-50 hidden text-gray-800 max-h-60 overflow-y-auto"></div>
+          </div>
+          <a href="../../index.html" class="inline-flex items-center px-3 py-2 bg-white text-emerald-600 rounded-full shadow-sm hover:bg-emerald-100 transition-all shrink-0" title="Voltar ao início">
+            <i class="fas fa-home mr-2"></i>
+            Início
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+        <div id="sidebar" class="w-72 shrink-0 bg-white rounded-r-lg md:rounded-lg shadow-md p-4 mr-0 md:mr-8 fixed md:sticky top-0 md:top-8 left-0 h-screen md:h-fit z-50 md:z-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto md:overflow-visible">
+          <div class="p-4 border-b border-emerald-200 flex justify-between items-center md:block md:p-0 md:border-none">
+            <h1 class="text-2xl font-bold md:mb-4 text-emerald-700">Sumário</h1>
+            <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-emerald-600 text-2xl focus:outline-none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="space-y-1 mt-2">
+
+            <a href="#introducao" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="introducao" data-explanation="Visão geral e introdução aos fundamentos da matemática financeira e da análise estatística descritiva.">
+              <i class="fas fa-book mr-3 w-5 text-center"></i>
+              <span>Introdução</span>
+            </a>
+
+            <div class="pt-2 pb-1 px-3 text-xs font-semibold text-emerald-500 uppercase tracking-wider">Matemática Financeira</div>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="porcentagem" data-explanation="Porcentagem, taxas centesimais, aumentos e descontos comerciais, fatores de multiplicação.">
+              <i class="fas fa-percent mr-3 w-5 text-center"></i>
+              <span>Porcentagem</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="juros" data-explanation="Regimes de capitalização simples e composta. Fórmulas de juros, montante, capital e tempo.">
+              <i class="fas fa-coins mr-3 w-5 text-center"></i>
+              <span>Juros Simples e Compostos</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="taxas" data-explanation="Taxas acumuladas de aumentos, descontos ou inflação. Diferença entre taxa nominal e taxa real.">
+              <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
+              <span>Taxas Acumuladas</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="amortizacao" data-explanation="Sistemas de amortização de dívidas. Conceitos e planilhas dos modelos SAC e PRICE (Tabela Price).">
+              <i class="fas fa-table mr-3 w-5 text-center"></i>
+              <span>Sistemas SAC e PRICE</span>
+            </a>
+
+            <div class="pt-4 pb-1 px-3 text-xs font-semibold text-emerald-500 uppercase tracking-wider">Estatística</div>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="metodo-estatistico" data-explanation="As fases do método estatístico: planejamento, coleta, crítica, apuração, exposição e análise.">
+              <i class="fas fa-list-ol mr-3 w-5 text-center"></i>
+              <span>Método Estatístico</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="variaveis" data-explanation="Classificação de variáveis estatísticas em qualitativas (nominais/ordinais) e quantitativas (discretas/contínuas).">
+              <i class="fas fa-sliders-h mr-3 w-5 text-center"></i>
+              <span>Variável Estatística</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="graficos-tabelas" data-explanation="Tabelas de frequências absolutas, relativas e acumuladas. Gráficos de barras, pizza, linhas e histogramas.">
+              <i class="fas fa-chart-pie mr-3 w-5 text-center"></i>
+              <span>Gráficos e Tabelas</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="medidas-posicao" data-explanation="Cálculo e aplicações das medidas de tendência central: Média Aritmética (Simples/Ponderada), Mediana e Moda.">
+              <i class="fas fa-crosshairs mr-3 w-5 text-center"></i>
+              <span>Medidas de Posição</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center px-3 py-2.5 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+              data-section="medidas-dispersao" data-explanation="Avaliação de variabilidade dos dados: Amplitude, Variância populacional/amostral, Desvio Padrão e Coeficiente de Variação.">
+              <i class="fas fa-arrows-alt-h mr-3 w-5 text-center"></i>
+              <span>Medidas de Dispersão</span>
+            </a>
+
+            <div class="mt-6 pt-4 border-t border-emerald-200">
+              <h3 class="font-bold mb-2 px-3 text-emerald-700">Recursos Úteis</h3>
+              <ul class="space-y-1 text-sm">
+                <li>
+                  <a href="#" class="nav-link flex items-center px-3 py-1.5 text-emerald-600 hover:bg-emerald-100 rounded" data-section="recursos" data-explanation="Links recomendados, simuladores e ferramentas estatísticas de apoio.">
+                    <i class="fas fa-book-open mr-2 text-xs"></i>Leitura e Simuladores
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div id="content" class="flex flex-col flex-1 min-w-0">
+          <div id="explanation" class="w-full"></div>
+
+          <footer class="mt-12 border-t border-emerald-200 pt-8 text-center text-gray-600 text-sm">
+            <p>© 2026 Referência de Matemática Financeira e Estatística. Material Educacional de Apoio.</p>
+            <p class="mt-1">Todos os direitos reservados.</p>
+            <p class="mt-2 font-semibold text-emerald-700">Plataforma Interativa</p>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <template id="tpl-introducao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="28" fill="#d1fae5" stroke="#10b981" stroke-width="3"/>
+              <path d="M20 44V24M32 44V34M44 44V20" stroke="#065f46" stroke-width="4" stroke-linecap="round"/>
+              <path d="M16 44H48" stroke="#047857" stroke-width="2"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-emerald-800">Matemática Financeira & Estatística</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-4 text-lg">Bem-vindo à central de referência matemática corporativa e analítica. O domínio destas duas frentes fundamentais capacita estudantes e profissionais a decodificar dados complexos e planejar a alocação de recursos financeiros sob a ótica do tempo.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="finance-card bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+            <h3 class="font-bold text-emerald-700 mb-3 flex items-center"><i class="fas fa-hand-holding-usd mr-2"></i> Matemática Financeira</h3>
+            <p class="text-gray-700">Foca no estudo do valor do dinheiro ao longo do tempo. Atua diretamente na análise de viabilidade de investimentos, planejamento de empréstimos, controle inflacionário e amortização de fluxos de caixa.</p>
+          </div>
+          
+          <div class="finance-card bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+            <h3 class="font-bold text-emerald-700 mb-3 flex items-center"><i class="fas fa-chart-bar mr-2"></i> Estatística Descritiva</h3>
+            <p class="text-gray-700">Dedica-se à coleta, organização, síntese e interpretação visual de conjuntos de dados. Fornece ferramentas matemáticas robustas para transformar dados brutos em inteligência para tomada de decisões estratégicas.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-porcentagem">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-percent mr-3"></i> Porcentagem</h2>
+        <p class="text-gray-700 mb-6">A porcentagem é uma razão cujo denominador é igual a 100 ($x\% = \frac{x}{100}$). Ela pode ser expressa sob a forma percentual, fracionária ou decimal (Ex: $25\% = \frac{25}{100} = 0,25$).</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-3">Fatores de Multiplicação</h3>
+            <p class="text-gray-700 mb-4">Para simplificar cálculos e encadear variações na matemática financeira, utiliza-se a base $1$ somada ou subtraída da taxa centesimal ($i$).</p>
+            <div class="formula-block">
+              <div><strong>Fator de Aumento:</strong> $$F = 1 + i$$</div>
+              <div class="mt-4"><strong>Fator de Desconto:</strong> $$F = 1 - i$$</div>
+            </div>
+          </div>
+
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-3">Variação Percentual Relativa</h3>
+            <p class="text-gray-700 mb-4">Mede a flutuação relativa entre um valor final ($V_f$) e um valor inicial ($V_i$).</p>
+            <div class="formula-block">
+              $$\Delta\% = \left(\dfrac{V_f - V_i}{V_i}\right) \times 100\%$$
+            </div>
+          </div>
+        </div>
+
+        <div class="example-block mt-6">
+          <strong>Exemplo Prático:</strong> Um produto de R$ 200,00 sofreu um aumento de $15\%$ e, no mês seguinte, um desconto de $10\%$. Qual o preço final?
+          <br><br>
+          • Fator de aumento ($15\%$): $1 + 0,15 = 1,15$
+          <br>
+          • Fator de desconto ($10\%$): $1 - 0,10 = 0,90$
+          <br>
+          • Cálculo direto: $\text{Valor Final} = 200 \times 1,15 \times 0,90 = \mathbf{R\$\,207,00}$
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-juros">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-coins mr-3"></i> Juros Simples e Compostos</h2>
+        <p class="text-gray-700 mb-6">Os juros representam o custo do dinheiro emprestado ou o rendimento de um capital investido por determinado período de tempo.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-2">Juros Simples (Capitalização Linear)</h3>
+            <p class="text-gray-700 mb-3 text-sm">O percentual incide exclusivamente sobre o Capital Inicial ($C$) em todos os períodos. O crescimento é uma Progressão Aritmética (PA).</p>
+            <div class="formula-block">
+              $$J = C \cdot i \cdot t$$
+              $$M = C + J = C(1 + i \cdot t)$$
+            </div>
+            <div class="text-xs text-gray-600 mt-2">Onde: $J = \text{Juros}$, $C = \text{Capital}$, $i = \text{Taxa (decimal)}$, $t = \text{Tempo}$, $M = \text{Montante Final}$.</div>
+          </div>
+
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-2">Juros Compostos (Capitalização Exponencial)</h3>
+            <p class="text-gray-700 mb-3 text-sm">A taxa incide sobre o saldo acumulado do período anterior ("juros sobre juros"). O crescimento se comporta como uma Progressão Geométrica (PG).</p>
+            <div class="formula-block">
+              $$M = C(1 + i)^t$$
+              $$J = M - C = C[(1 + i)^t - 1]$$
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="example-block">
+            <strong>Exemplo de Juros Simples:</strong> R$ 1.000,00 aplicados a $2\%$ a.m. por 3 meses.
+            <br>$$J = 1000 \cdot 0,02 \cdot 3 = R\$\,60$$
+            <br>$$M = 1000 + 60 = \mathbf{R\$\,1.060,00}$$
+          </div>
+          <div class="example-block">
+            <strong>Exemplo de Juros Compostos:</strong> R$ 1.000,00 aplicados a $2\%$ a.m. por 3 meses.
+            <br>$$M = 1000 \cdot (1 + 0,02)^3 = 1000 \cdot 1,061208$$
+            <br>$$M = \mathbf{R\$\,1.061,21}$$
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-taxas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-chart-line mr-3"></i> Taxas Acumuladas</h2>
+        
+        <div class="space-y-6">
+          <div class="finance-card border-l-4 border-emerald-500 bg-emerald-50 p-6 rounded-r-xl">
+            <h3 class="font-bold text-xl text-emerald-700 mb-2">Composição de Taxas (Inflação ou Aumentos Sucessivos)</h3>
+            <p class="text-gray-700 mb-3">Taxas acumuladas não são calculadas por soma aritmética simples, mas sim pelo produto de seus fatores multiplicativos.</p>
+            <div class="formula-block">
+              $$1 + i_{\text{acumulada}} = (1 + i_1) \cdot (1 + i_2) \cdot \dots \cdot (1 + i_n)$$
+            </div>
+          </div>
+
+          <div class="finance-card border-l-4 border-emerald-500 bg-emerald-50 p-6 rounded-r-xl">
+            <h3 class="font-bold text-xl text-emerald-700 mb-2">Taxa Nominal vs. Taxa Real (Equação de Fisher)</h3>
+            <p class="text-gray-700 mb-3">A <strong>taxa nominal</strong> é o rendimento aparente em um contrato. A <strong>taxa real</strong> corrige esse rendimento expurgando os efeitos da inflação do período, medindo o ganho real de poder de compra.</p>
+            <div class="formula-block">
+              $$(1 + i_{\text{nominal}}) = (1 + i_{\text{real}}) \cdot (1 + I_{\text{inflação}})$$
+              <div class="mt-3 text-center text-sm font-semibold text-emerald-800">Isolando a Taxa Real:</div>
+              $$i_{\text{real}} = \dfrac{1 + i_{\text{nominal}}}{1 + I_{\text{inflação}}} - 1$$
+            </div>
+          </div>
+        </div>
+
+        <div class="example-block mt-6">
+          <strong>Exemplo Resolvido:</strong> Um fundo rendeu $12\%$ em um ano (taxa nominal). No mesmo ano, a inflação medida pelo IPCA foi de $5\%$. Qual foi a taxa real auferida?
+          <br>$$i_{\text{real}} = \dfrac{1 + 0,12}{1 + 0,05} - 1 = \dfrac{1,12}{1,05} - 1 \approx 1,0667 - 1 = \mathbf{6,67\%}$$
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-amortizacao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-table mr-3"></i> Sistemas de Amortização: SAC e PRICE</h2>
+        <p class="text-gray-700 mb-4">Amortizar consiste em extinguir gradualmente uma dívida por meio de pagamentos periódicos. Em qualquer sistema, a Prestação ($P$) é a soma do abatimento real da dívida (Amortização $A$) e dos Juros do período ($J$):</p>
+        <div class="formula-block text-center font-bold text-lg">$$P_t = A_t + J_t$$</div>
+        <p class="text-xs text-gray-600 mb-6">*Os juros de cada período são calculados multiplicando a taxa ($i$) pelo saldo devedor remanescente do período imediatamente anterior ($SD_{t-1}$).</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h4 class="font-bold text-xl text-emerald-700 mb-3">SAC (Sistema de Amortização Constante)</h4>
+            <p class="text-gray-700 mb-3 text-sm">A cota de abatimento é idêntica em todas as parcelas. Como o saldo devedor decresce linearmente, os juros e as prestações são **decrescentes** a cada mês.</p>
+            <div class="formula-block">
+              $$A = \dfrac{SD_0}{n}$$
+              $$J_t = SD_{t-1} \cdot i$$
+            </div>
+          </div>
+
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h4 class="font-bold text-xl text-emerald-700 mb-3">PRICE (Sistema Francês)</h4>
+            <p class="text-gray-700 mb-3 text-sm">As prestações são rigorosamente **fixas e iguais** ao longo de todo o contrato. A amortização interna começa pequena e cresce exponencialmente à medida que os juros caem.</p>
+            <div class="formula-block">
+              $$P = SD_0 \cdot \left[ \dfrac{i(1 + i)^n}{(1 + i)^n - 1} \right]$$
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 border border-emerald-200 rounded-xl p-5 bg-white shadow-sm overflow-x-auto">
+          <h4 class="font-bold text-emerald-800 mb-3">Comparativo Dinâmico de Evolução (Dívida de R$ 10.000 a 10% a.m em 2 parcelas)</h4>
+          <table class="w-full text-left text-sm text-gray-700">
+            <thead>
+              <tr class="bg-emerald-100 text-emerald-900 border-b border-emerald-200">
+                <th class="p-2">Modelo</th>
+                <th class="p-2">Mês</th>
+                <th class="p-2">Saldo Devedor Inicial</th>
+                <th class="p-2">Prestação ($P$)</th>
+                <th class="p-2">Juros ($J$)</th>
+                <th class="p-2">Amortização ($A$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-100">
+                <td class="p-2 font-semibold text-emerald-700" rowspan="2">SAC</td>
+                <td class="p-2">1</td>
+                <td class="p-2">R$ 10.000,00</td>
+                <td class="p-2">R$ 6.000,00</td>
+                <td class="p-2">R$ 1.000,00</td>
+                <td class="p-2 font-medium">R$ 5.000,00</td>
+              </tr>
+              <tr class="border-b border-emerald-200 bg-gray-50">
+                <td class="p-2">2</td>
+                <td class="p-2">R$ 5.000,00</td>
+                <td class="p-2 text-emerald-600 font-medium">R$ 5.500,00</td>
+                <td class="p-2">R$ 500,00</td>
+                <td class="p-2 font-medium">R$ 5.000,00</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="p-2 font-semibold text-blue-700" rowspan="2">PRICE</td>
+                <td class="p-2">1</td>
+                <td class="p-2">R$ 10.000,00</td>
+                <td class="p-2 text-blue-600 font-medium">R$ 5.761,90</td>
+                <td class="p-2">R$ 1.000,00</td>
+                <td class="p-2">R$ 4.761,90</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="p-2">2</td>
+                <td class="p-2">R$ 5.238,10</td>
+                <td class="p-2 text-blue-600 font-medium">R$ 5.761,90</td>
+                <td class="p-2">R$ 523,81</td>
+                <td class="p-2">R$ 5.238,09</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-metodo-estatistico">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-list-ol mr-3"></i> Etapas do Método Estatístico</h2>
+        <p class="text-gray-700 mb-6">O método estatístico é um roteiro científico estruturado e sequencial para a resolução de problemas baseados em amostragem de dados ambientais ou mercadológicos.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 1</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Planejamento</h4>
+            <p class="text-gray-600 text-sm">Definição clara do problema a ser estudado, delimitação da população e escolha do método de coleta.</p>
+          </div>
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 2</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Coleta de Dados</h4>
+            <p class="text-gray-600 text-sm">Obtenção dos registros. Pode ser direta (pesquisa de campo primária) ou indireta (bancos de dados secundários).</p>
+          </div>
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 3</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Crítica dos Dados</h4>
+            <p class="text-gray-600 text-sm">Triagem minuciosa dos dados coletados em busca de erros de digitação, inconsistências ou omissões.</p>
+          </div>
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100 mt-2">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 4</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Apuração (Tabulação)</h4>
+            <p class="text-gray-600 text-sm">Contagem, codificação e processamento computacional dos dados brutos organizados.</p>
+          </div>
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100 mt-2">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 5</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Exposição</h4>
+            <p class="text-gray-600 text-sm">Construção de tabelas de frequências estruturadas e gráficos adequados para visualização direta.</p>
+          </div>
+          <div class="finance-card bg-emerald-50 p-4 rounded-xl border border-emerald-100 mt-2">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Fase 6</span>
+            <h4 class="font-bold text-emerald-800 text-lg mb-1">Análise e Conclusão</h4>
+            <p class="text-gray-600 text-sm">Cálculo de medidas resumos descritivas e inferência estatística para tomada definitiva de decisões.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-variaveis">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-sliders-h mr-3"></i> Variável Estatística</h2>
+        <p class="text-gray-700 mb-6">Uma variável estatística é a característica ou o atributo mensurável observado nos elementos pertencentes a uma população ou amostra em estudo.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="finance-card border border-emerald-200 bg-emerald-50 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-emerald-800 mb-3 flex items-center"><i class="fas fa-font mr-2 text-emerald-600"></i> Variáveis Qualitativas (Categoria)</h3>
+            <p class="text-gray-600 text-sm mb-4">Representam atributos, qualidades ou rótulos não numéricos.</p>
+            <ul class="space-y-3">
+              <li class="bg-white p-3 rounded shadow-sm border-l-4 border-emerald-500">
+                <strong>Nominais:</strong> Não envolvem qualquer ordenação intrínseca ou hierarquia.
+                <br><span class="text-emerald-600 text-xs font-medium">Ex: Estado civil, cor dos olhos, gênero, profissão.</span>
+              </li>
+              <li class="bg-white p-3 rounded shadow-sm border-l-4 border-emerald-500">
+                <strong>Ordinais:</strong> Possuem uma escala de ordenação natural ou hierarquia lógica.
+                <br><span class="text-emerald-600 text-xs font-medium">Ex: Nível de escolaridade, cargo corporativo, classe social (A, B, C).</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="finance-card border border-emerald-200 bg-emerald-50 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-emerald-800 mb-3 flex items-center"><i class="fas fa-hashtag mr-2 text-emerald-600"></i> Variáveis Quantitativas (Número)</h3>
+            <p class="text-gray-600 text-sm mb-4">Representam características numéricas de contagem ou medição contínua.</p>
+            <ul class="space-y-3">
+              <li class="bg-white p-3 rounded shadow-sm border-l-4 border-emerald-500">
+                <strong>Discretas:</strong> Valores provenientes de contagens exatas. Assumem apenas inteiros isolados.
+                <br><span class="text-emerald-600 text-xs font-medium">Ex: Número de filhos, quantidade de produtos em estoque, acessos a um site.</span>
+              </li>
+              <li class="bg-white p-3 rounded shadow-sm border-l-4 border-emerald-500">
+                <strong>Contínuas:</strong> Valores provenientes de medições. Podem assumir qualquer número real em um intervalo.
+                <br><span class="text-emerald-600 text-xs font-medium">Ex: Salário recebido, altura, peso corpóreo, taxa de juros do mercado.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-graficos-tabelas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-chart-pie mr-3"></i> Gráficos e Tabelas</h2>
+        <p class="text-gray-700 mb-4">A organização dos dados brutos é exposta por tabelas de distribuição de frequências que alimentam os gráficos visuais indicados para cada variável.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-emerald-50 border border-emerald-100 p-3 rounded text-center">
+            <span class="font-bold text-emerald-800 block text-lg">Frequência Absoluta ($f_i$)</span>
+            <span class="text-xs text-gray-600">Número real de ocorrências de um valor específico.</span>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-100 p-3 rounded text-center">
+            <span class="font-bold text-emerald-800 block text-lg">Frequência Relativa ($f_r$)</span>
+            <span class="text-xs text-gray-600">Porcentagem do dado em relação ao todo ($f_r = \frac{f_i}{\sum f_i}$).</span>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-100 p-3 rounded text-center">
+            <span class="font-bold text-emerald-800 block text-lg">Frequência Acumulada ($F_i$)</span>
+            <span class="text-xs text-gray-600">Soma acumulada de todas as frequências absolutas até o ponto atual.</span>
+          </div>
+        </div>
+
+        <div class="bg-white border border-emerald-200 rounded-xl p-6">
+          <h3 class="font-bold text-emerald-800 text-lg mb-3">Diretrizes de Escolha de Gráficos</h3>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li><strong>Gráfico de Barras / Colunas:</strong> Recomendado para comparar categorias discretas ou qualitativas nominais.</li>
+            <li><strong>Gráfico de Setores (Pizza):</strong> Indicado para demonstrar partes estruturais de um todo com poucas categorias.</li>
+            <li><strong>Gráfico de Linhas:</strong> Perfeito para ilustrar séries históricas e tendências de mercado ao longo do tempo.</li>
+            <li><strong>Histograma:</strong> Gráfico de blocos colados indicado exclusivamente para representar distribuições de variáveis quantitativas contínuas divididas em intervalos de classe.</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-medidas-posicao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-crosshairs mr-3"></i> Medidas de Posição (Tendência Central)</h2>
+        <p class="text-gray-700 mb-6">São valores numéricos calculados para sintetizar um conjunto inteiro de dados em um único ponto central representativo.</p>
+
+        <div class="space-y-6">
+          <div class="finance-card bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+            <h3 class="font-bold text-emerald-800 text-lg mb-2">1. Média Aritmética (Simples e Ponderada)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="formula-block">
+                <span class="text-xs font-bold text-emerald-700 block text-center uppercase">Média Simples ($\bar{x}$)</span>
+                $$\bar{x} = \dfrac{\sum_{i=1}^n x_i}{n}$$
+              </div>
+              <div class="formula-block">
+                <span class="text-xs font-bold text-emerald-700 block text-center uppercase">Média Ponderada ($\bar{x}_p$)</span>
+                $$\bar{x}_p = \dfrac{\sum_{i=1}^n x_i \cdot w_i}{\sum_{i=1}^n w_i}$$
+              </div>
+            </div>
+            <span class="text-xs text-gray-500 block mt-2">*Onde $w_i$ representa os pesos ou frequências de atribuição de cada valor $x_i$.</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="finance-card bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+              <h3 class="font-bold text-emerald-800 text-lg mb-2">2. Mediana ($Md$)</h3>
+              <p class="text-gray-600 text-sm mb-3">É o valor central que divide a amostra ordenada em dois grupos exatamente iguais ($50\%$ inferiores e $50\%$ superiores).</p>
+              <div class="bg-white p-3 rounded text-xs text-gray-700 border-l-4 border-emerald-500">
+                • <strong>Se $n$ for ímpar:</strong> A mediana é a posição exata de indexador $\frac{n+1}{2}$.
+                <br>• <strong>Se $n$ for par:</strong> A mediana é a média aritmética simples dos dois termos centrais intermediários.
+              </div>
+            </div>
+
+            <div class="finance-card bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+              <h3 class="font-bold text-emerald-800 text-lg mb-2">3. Moda ($Mo$)</h3>
+              <p class="text-gray-600 text-sm mb-3">Corresponde ao valor de elemento ou classe que apresenta a **maior frequência absoluta** de repetição dentro do conjunto de dados brutos.</p>
+              <div class="bg-white p-3 rounded text-xs text-gray-700 border-l-4 border-emerald-500">
+                Um conjunto pode ser classificado como: 
+                <br>• <em>Amodal</em> (sem repetições), <em>Unimodal</em> (uma moda), <em>Bimodal</em> (duas modas) ou <em>Multimodal</em>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="example-block mt-6">
+          <strong>Exemplo Prático Rápido:</strong> Notas de satisfação colhidas: $[5,\, 7,\, 7,\, 8,\, 13]$.
+          <br>• <strong>Média:</strong> $\frac{5 + 7 + 7 + 8 + 13}{5} = \mathbf{8,0}$
+          <br>• <strong>Mediana:</strong> Conjunto ordenado de 5 elementos. O elemento central é o terceiro: $\mathbf{7}$
+          <br>• <strong>Moda:</strong> O valor que mais se repete é o $\mathbf{7}$ (frequência = 2).
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-medidas-dispersao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-arrows-alt-h mr-3"></i> Medidas de Dispersão</h2>
+        <p class="text-gray-700 mb-6">As medidas de dispersão ou variabilidade medem o grau de afastamento dos elementos individuais em relação à média central, determinando a consistência e homogeneidade da amostra.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-3">Variância ($s^2$ ou $\sigma^2$)</h3>
+            <p class="text-gray-700 text-sm mb-3">Média aritmética do quadrado dos desvios individuais em relação à média global.</p>
+            <div class="formula-block">
+              <div class="text-center text-xs font-semibold uppercase text-emerald-800">Fórmula Amostral ($s^2$):</div>
+              $$s^2 = \dfrac{\sum_{i=1}^n (x_i - \bar{x})^2}{n - 1}$$
+              <div class="text-center text-xs font-semibold uppercase mt-4 text-emerald-800">Fórmula Populacional ($\sigma^2$):</div>
+              $$\sigma^2 = \dfrac{\sum_{i=1}^N (x_i - \mu)^2}{N}$$
+            </div>
+          </div>
+
+          <div class="finance-card border border-emerald-200 rounded-xl p-6 bg-emerald-50">
+            <h3 class="text-xl font-bold text-emerald-700 mb-3">Desvio Padrão ($s$) e Coeficiente de Variação</h3>
+            <p class="text-gray-700 text-sm mb-3">O <strong>Desvio Padrão</strong> traz a medida de volta para a mesma dimensão linear original do dado bruto (retirando o quadrado da variância).</p>
+            <div class="formula-block">
+              $$s = \sqrt{s^2}$$
+            </div>
+            <p class="text-gray-700 text-sm mt-3 mb-2">O <strong>Coeficiente de Variação ($CV$)</strong> é a medida de dispersão relativa expressa em percentual:</p>
+            <div class="formula-block">
+              $$CV = \left( \dfrac{s}{\bar{x}} \right) \times 100\%$$
+            </div>
+            <div class="text-xs text-gray-600 mt-2">📊 $CV \leq 15\% \to$ Amostra Homogênea (Baixa dispersão)
+            <br>📊 $CV \geq 30\% \to$ Amostra Heterogênea (Alta volatilidade)</div>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-gray-700">
+          <strong>Nota sobre Amplitude Total:</strong> A medida mais rudimentar de dispersão é a **Amplitude ($R$)**, calculada subtraindo o menor elemento do maior: $$R = x_{\text{máximo}} - x_{\text{mínimo}}$$
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-recursos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-emerald-800 mb-4 flex items-center"><i class="fas fa-book-open mr-3"></i> Recursos de Apoio Tecnológico</h2>
+        <p class="text-gray-700 mb-6">A operacionalização moderna destas ferramentas matemáticas apoia-se em planilhas digitais e algoritmos automatizados.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <i class="fas fa-file-excel text-3xl text-emerald-600 mb-3"></i>
+            <h4 class="font-bold text-gray-800">Planilhas Computacionais</h4>
+            <p class="text-xs text-gray-600 mt-1">Uso de funções nativas como `=VF()`, `=PGTO()`, `=DESVPAD.A()` e `=VAR.A()` no Excel ou Google Sheets para agilização analítica.</p>
+          </div>
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <i class="fas fa-calculator text-3xl text-blue-600 mb-3"></i>
+            <h4 class="font-bold text-gray-800">Calculadoras HP 12C</h4>
+            <p class="text-xs text-gray-600 mt-1">Uso de registradores financeiros com lógica RPN (`n`, `i`, `PV`, `PMT`, `FV`) para modelagem instantânea de empréstimos.</p>
+          </div>
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+            <i class="fab fa-python text-3xl text-indigo-600 mb-3"></i>
+            <h4 class="font-bold text-gray-800">Linguagens R e Python</h4>
+            <p class="text-xs text-gray-600 mt-1">Bibliotecas dedicadas (`pandas`, `numpy`, `scipy.stats`) para automatização e mineração de dados estatísticos complexos.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const explanationDiv = document.getElementById("explanation");
+        const searchInput = document.querySelector("input[type='text']");
+        const searchResults = document.getElementById("search-results");
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+
+        // Compilação dos templates em cache dinâmico de memória
+        const templates = {};
+        document.querySelectorAll("template").forEach((tpl) => {
+          const sectionId = tpl.id.replace("tpl-", "");
+          templates[sectionId] = tpl.innerHTML;
+        });
+
+        // Mecanismo centralizado de chaveamento de abas
+        function loadSection(sectionId) {
+          if (!templates[sectionId]) return;
+          
+          explanationDiv.innerHTML = templates[sectionId];
+          
+          navLinks.forEach((link) => {
+            if (link.getAttribute("data-section") === sectionId) {
+              link.classList.add("active");
+            } else {
+              link.classList.remove("active");
+            }
+          });
+
+          // Disparo do renderizador assíncrono KaTeX Math
+          if (window.renderMathInElement) {
+            renderMathInElement(explanationDiv, {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+              ],
+              throwOnError: false
+            });
+          }
+
+          localStorage.setItem("activeFinanceSection", sectionId);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Eventos do Sumário
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const sectionId = link.getAttribute("data-section");
+            if (sectionId) {
+              loadSection(sectionId);
+              if (window.innerWidth < 768) closeSidebar();
+            }
+          });
+        });
+
+        // Controle Responsivo Mobile Lateral
+        function openSidebar() {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.remove("hidden");
+        }
+
+        function closeSidebar() {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+
+        // Algoritmo de Busca Indexada nos Atributos
+        searchInput.addEventListener("input", () => {
+          const query = searchInput.value.toLowerCase().trim();
+          searchResults.innerHTML = "";
+          
+          if (query.length < 2) {
+            searchResults.classList.add("hidden");
+            return;
+          }
+
+          let found = false;
+          navLinks.forEach((link) => {
+            const title = link.querySelector("span")?.textContent || "";
+            const explanation = link.getAttribute("data-explanation") || "";
+            const sectionId = link.getAttribute("data-section");
+
+            if (sectionId && (title.toLowerCase().includes(query) || explanation.toLowerCase().includes(query))) {
+              found = true;
+              const div = document.createElement("div");
+              div.className = "p-3 hover:bg-emerald-100 cursor-pointer border-b border-gray-100 last:border-none text-sm transition-all";
+              div.innerHTML = `<div class="font-bold text-emerald-800">${title}</div><div class="text-xs text-gray-500">${explanation}</div>`;
+              
+              div.addEventListener("click", () => {
+                loadSection(sectionId);
+                searchInput.value = "";
+                searchResults.classList.add("hidden");
+                if (window.innerWidth < 768) closeSidebar();
+              });
+              searchResults.appendChild(div);
+            }
+          });
+
+          if (found) {
+            searchResults.classList.remove("hidden");
+          } else {
+            const noResult = document.createElement("div");
+            noResult.className = "p-3 text-gray-400 text-xs text-center";
+            noResult.textContent = "Nenhum tópico correspondente encontrado.";
+            searchResults.appendChild(noResult);
+            searchResults.classList.remove("hidden");
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        // Inicialização por Estado Prévio ou aba padrão Introdução
+        const lastSection = localStorage.getItem("activeFinanceSection");
+        const sectionToLoad = lastSection && templates[lastSection] ? lastSection : "introducao";
+        loadSection(sectionToLoad);
+
+        // Atalho de Teclado "/" para focar pesquisa
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "/" && document.activeElement.tagName === "BODY") {
+            e.preventDefault();
+            searchInput.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
