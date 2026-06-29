@@ -132,6 +132,12 @@
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="gravitacao" data-explanation="Gravitação: Lei da Gravitação Universal e Leis de Kepler com explicações e fórmulas.">
+              <i class="fas fa-globe-americas mr-3 w-5 text-center"></i>
+              <span>Gravitação</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
               data-section="hidrostatica" data-explanation="Hidrostática: fluidos em repouso. Pressão, princípio de Pascal e Arquimedes.">
               <i class="fas fa-tint mr-3 w-5 text-center"></i>
               <span>Hidrostática</span>
@@ -231,6 +237,8 @@
           <h2 class="text-3xl font-bold text-orange-800">Introdução à Física no Ensino Médio</h2>
         </div>
         
+
+        
         <p class="text-gray-700 mb-4 text-lg">A Física é a ciência que estuda os fenômenos naturais do universo, desde o movimento dos corpos até as interações elétricas e magnéticas. No Ensino Médio, ela é fundamental para desenvolver o raciocínio lógico, a capacidade de resolver problemas e compreender o mundo ao nosso redor.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -256,6 +264,95 @@
             Em notação científica: <strong>1,496 × 10⁸ km</strong>.<br>
             Se a medição tem 4 algarismos significativos, escrevemos 1,496 × 10⁸ km.
           </div>
+        </div>
+      </div>
+    </template>
+
+<template id="tpl-gravitacao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="24" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+              <circle cx="32" cy="32" r="8" fill="#f59e0b"/>
+              <circle cx="18" cy="24" r="3" fill="#d97706"/>
+              <circle cx="46" cy="40" r="3" fill="#d97706"/>
+              <path d="M20 20 L44 44" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+              <path d="M44 20 L20 44" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Gravitação</h2>
+        </div>
+
+        <p class="text-gray-700 mb-6 text-lg">A gravitação é a interação física que atrai corpos com massa. Ela explica desde a queda de um objeto na Terra até o movimento dos planetas ao redor do Sol e das luas ao redor dos planetas. A teoria da gravitação foi organizada de forma matemática por Isaac Newton e, mais tarde, aprofundada por Albert Einstein.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Lei da Gravitação Universal</h3>
+            <p class="text-gray-700 mb-4">A Lei da Gravitação Universal afirma que toda partícula do universo atrai toda outra partícula com uma força diretamente proporcional ao produto das massas e inversamente proporcional ao quadrado da distância entre elas.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">F = G \dfrac{m_1 m_2}{r^2}</div>
+              <p class="mt-2 text-sm text-gray-700">Onde:</p>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>F</strong> é a força gravitacional;</li>
+                <li><strong>G</strong> é a constante gravitacional universal;</li>
+                <li><strong>m₁</strong> e <strong>m₂</strong> são as massas dos corpos;</li>
+                <li><strong>r</strong> é a distância entre os centros dos corpos.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">Campo Gravitacional e aceleração da gravidade</h3>
+            <p class="text-gray-700 mb-4">O campo gravitacional é a região ao redor de um corpo massivo em que ele exerce força gravitacional sobre outros corpos. Próximo à superfície de um planeta, a aceleração da gravidade pode ser aproximada como constante.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">g = G \dfrac{M}{r^2}</div>
+              <div class="katex-display-math">P = m g</div>
+              <p class="mt-2 text-sm text-gray-700">Essas relações mostram que a força peso depende da massa do corpo e da aceleração da gravidade local.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white border border-orange-200 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">As Leis de Kepler</h3>
+          <p class="text-gray-700 mb-5">Johannes Kepler descreveu, a partir de observações astronômicas, as leis que regem o movimento dos planetas ao redor do Sol. Elas são fundamentais para entender órbitas, períodos e distâncias planetárias.</p>
+
+          <div class="space-y-5">
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">1ª Lei de Kepler: Lei das Órbitas</h4>
+              <p class="text-gray-700">Os planetas descrevem órbitas elípticas em torno do Sol, que ocupa um dos focos da elipse.</p>
+              <p class="mt-2 text-sm text-orange-600">Essa lei mostra que a trajetória dos planetas não é circular, mas elíptica.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">2ª Lei de Kepler: Lei das Áreas</h4>
+              <p class="text-gray-700">A linha que une um planeta ao Sol varre áreas iguais em intervalos de tempo iguais.</p>
+              <div class="formula-block">
+                <div class="katex-display-math">\dfrac{\Delta A}{\Delta t} = \text{constante}</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600">Isso significa que o planeta se move mais rapidamente quando está mais perto do Sol e mais devagar quando está mais longe.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">3ª Lei de Kepler: Lei dos Períodos</h4>
+              <p class="text-gray-700">O quadrado do período orbital de um planeta é proporcional ao cubo do semi-eixo maior da sua órbita.</p>
+              <div class="formula-block">
+                <div class="katex-display-math">T^2 \propto a^3</div>
+                <div class="katex-display-math">T^2 = \dfrac{4\pi^2}{GM}a^3</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600">Essa lei permite relacionar o tempo de revolução de um planeta com o tamanho da sua órbita.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 border border-orange-200 rounded-xl p-6 bg-amber-50">
+          <h3 class="text-xl font-bold text-orange-700 mb-3">Resumo rápido</h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>A gravitação é a força responsável pela atração entre corpos com massa.</li>
+            <li>A Lei da Gravitação Universal descreve essa força em termos de massas e distância.</li>
+            <li>As Leis de Kepler descrevem o movimento dos planetas em torno do Sol.</li>
+            <li>A primeira lei fala sobre órbitas elípticas, a segunda sobre variação de velocidade e a terceira sobre a relação entre período e distância.</li>
+          </ul>
         </div>
       </div>
     </template>
@@ -925,6 +1022,8 @@
         </div>
       </div>
     </template>
+
+    
 
     <template id="tpl-recursos">
       <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
