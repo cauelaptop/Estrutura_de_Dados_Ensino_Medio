@@ -113,7 +113,7 @@
               <span>Introdução à Física</span>
             </a>
 
-            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+                        <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
               data-section="cinematica" data-explanation="Cinemática: estudo do movimento sem considerar suas causas. MRU, MRUV, queda livre e lançamento.">
               <i class="fas fa-running mr-3 w-5 text-center"></i>
               <span>Cinemática</span>
@@ -153,6 +153,12 @@
               data-section="termologia" data-explanation="Termologia: calor, temperatura, dilatação e gases ideais.">
               <i class="fas fa-thermometer-half mr-3 w-5 text-center"></i>
               <span>Termologia</span>
+            </a>
+
+            <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
+              data-section="termodinamica" data-explanation="Termodinâmica: leis, energia, trabalho, calor e entropia.">
+              <i class="fas fa-fire-alt mr-3 w-5 text-center"></i>
+              <span>Termodinâmica</span>
             </a>
 
             <a href="#" class="nav-link flex items-center block px-3 py-2.5 rounded hover:bg-orange-100 text-orange-700 font-medium transition-all"
@@ -689,6 +695,137 @@
       </div>
     </template>
 
+    <template id="tpl-termodinamica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <div class="flex items-center mb-6">
+          <div class="mr-4">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="16" y="12" width="32" height="36" rx="4" fill="#fed7aa" stroke="#f59e0b" stroke-width="2"/>
+              <path d="M24 28 L40 28" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+              <path d="M24 38 L40 38" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="32" cy="48" r="5" fill="#f59e0b"/>
+              <path d="M32 12 L28 6 M32 12 L36 6" stroke="#b45309" stroke-width="2"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-orange-800">Termodinâmica</h2>
+        </div>
+        
+        <p class="text-gray-700 mb-6 text-lg">A Termodinâmica é o ramo da Física que estuda as transformações da energia térmica e trabalho, relacionando os conceitos de calor, energia interna e entropia. Baseia-se em leis fundamentais que regem todos os processos naturais.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">1ª Lei da Termodinâmica (Conservação de Energia)</h3>
+            <p class="text-gray-700 mb-4">A primeira lei da termodinâmica é uma consequência da lei da conservação da energia. Ela afirma que a variação da energia interna de um sistema é igual ao calor recebido menos o trabalho realizado pelo sistema.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\Delta U = Q - W</div>
+              <p class="mt-2 text-sm text-gray-700">Onde:</p>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>ΔU</strong> é a variação da energia interna;</li>
+                <li><strong>Q</strong> é o calor absorvido pelo sistema;</li>
+                <li><strong>W</strong> é o trabalho realizado pelo sistema;</li>
+              </ul>
+            </div>
+            <div class="example-block mt-3">
+              <strong>Exemplo:</strong> Um gás em um cilindro absorve 500 J de calor e realiza 300 J de trabalho. Qual a variação de energia interna?<br>
+              ΔU = Q - W = 500 - 300 = <strong>200 J</strong> (aumento de energia interna).
+            </div>
+          </div>
+
+          <div class="physics-card border border-orange-200 rounded-xl p-6 bg-orange-50">
+            <h3 class="text-xl font-bold text-orange-700 mb-3">2ª Lei da Termodinâmica (Entropia)</h3>
+            <p class="text-gray-700 mb-4">A segunda lei estabelece que em todo processo termodinâmico, a entropia de um sistema isolado nunca diminui. A entropia mede o grau de desordem ou irreversibilidade de um processo.</p>
+            <div class="formula-block">
+              <div class="katex-display-math">\Delta S = \dfrac{Q}{T} \quad \text{(para processo reversível)}</div>
+              <div class="katex-display-math">\Delta S_{\text{universo}} > 0 \quad \text{(processo irreversível)}</div>
+            </div>
+            <p class="mt-2 text-sm text-gray-600">Todo processo natural é irreversível e aumenta a entropia total do universo.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white border border-orange-200 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Processos Termodinâmicos</h3>
+          <p class="text-gray-700 mb-5">Os processos termodinâmicos descrevem como um gás muda suas propriedades (P, V, T). Existem vários tipos de processos idealizados:</p>
+
+          <div class="space-y-4">
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">Processo Isotérmico (T = constante)</h4>
+              <p class="text-gray-700">A temperatura permanece constante. Para um gás ideal, ocorre no diagrama P-V uma hipérbole (PV = constante).</p>
+              <div class="formula-block">
+                <div class="katex-display-math">PV = \text{constante} \quad \Rightarrow \quad P_1V_1 = P_2V_2</div>
+                <div class="katex-display-math">W = Q = nRT\ln\left(\dfrac{V_f}{V_i}\right)</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600">Exemplo: Expansão ou compressão de um gás a temperatura constante em contato com um termostato.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">Processo Isobárico (P = constante)</h4>
+              <p class="text-gray-700">A pressão permanece constante. No diagrama P-V é uma linha horizontal. O trabalho realizado é W = P(V_f - V_i).</p>
+              <div class="formula-block">
+                <div class="katex-display-math">W = P\,\Delta V = P(V_f - V_i)</div>
+                <div class="katex-display-math">Q = n\,C_p\,\Delta T</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600">Exemplo: Aquecimento de água em panela aberta à pressão atmosférica.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">Processo Isocórico (V = constante)</h4>
+              <p class="text-gray-700">O volume permanece constante. No diagrama P-V é uma linha vertical. Como não há variação de volume, W = 0.</p>
+              <div class="formula-block">
+                <div class="katex-display-math">W = 0 \quad \Rightarrow \quad \Delta U = Q</div>
+                <div class="katex-display-math">Q = n\,C_v\,\Delta T</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600">Exemplo: Aquecimento de um gás em um recipiente rígido e fechado.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-orange-50">
+              <h4 class="font-bold text-orange-700 mb-2">Processo Adiabático (Q = 0)</h4>
+              <p class="text-gray-700">Não há troca de calor entre o sistema e o meio (isolamento térmico perfeito). Toda variação de energia interna resulta em trabalho.</p>
+              <div class="formula-block">
+                <div class="katex-display-math">PV^\gamma = \text{constante}</div>
+                <div class="katex-display-math">W = -\Delta U = -nC_v\Delta T</div>
+              </div>
+              <p class="mt-2 text-sm text-orange-600"><span class="katex-math">\gamma</span> = razão entre capacidades térmicas (C_p/C_v). Exemplo: Expansão rápida de um gás sem troca de calor.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 physics-card bg-orange-50 border border-orange-200 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-orange-700 mb-4">Ciclos Termodinâmicos</h3>
+          <p class="text-gray-700 mb-4">Um ciclo termodinâmico é uma sequência de processos que retorna o sistema ao estado inicial. Os ciclos são fundamentais para entender máquinas térmicas, como motores de combustão interna e geladeiras.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border border-orange-100 rounded-lg p-4 bg-white">
+              <h4 class="font-bold text-orange-700 mb-2">Ciclo de Carnot</h4>
+              <p class="text-sm text-gray-700">O ciclo mais eficiente possível, composto por dois processos isotérmicos e dois adiabáticos. Define o rendimento máximo de qualquer máquina térmica.</p>
+              <div class="formula-block text-xs">
+                <div class="katex-display-math">\eta_{\text{Carnot}} = 1 - \dfrac{T_f}{T_q}</div>
+              </div>
+              <p class="text-xs text-orange-600 mt-1">T_q = temperatura quente, T_f = temperatura fria.</p>
+            </div>
+
+            <div class="border border-orange-100 rounded-lg p-4 bg-white">
+              <h4 class="font-bold text-orange-700 mb-2">Máquinas Térmicas</h4>
+              <p class="text-sm text-gray-700">Dispositivos que convertem calor em trabalho. O rendimento indica qual fração do calor absorvido é convertida em trabalho útil.</p>
+              <div class="formula-block text-xs">
+                <div class="katex-display-math">\eta = \dfrac{W}{Q_q} = \dfrac{Q_q - Q_f}{Q_q}</div>
+              </div>
+              <p class="text-xs text-orange-600 mt-1">Q_q = calor absorvido, Q_f = calor cedido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 border border-orange-200 rounded-xl p-6 bg-amber-50">
+          <h3 class="text-xl font-bold text-orange-700 mb-3">Resumo das Leis da Termodinâmica</h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li><strong>0ª Lei:</strong> Se A está em equilíbrio térmico com B, e B com C, então A está em equilíbrio com C (define temperatura).</li>
+            <li><strong>1ª Lei:</strong> A energia não é criada nem destruída, apenas transformada (ΔU = Q - W).</li>
+            <li><strong>2ª Lei:</strong> A entropia de um sistema isolado sempre aumenta ou permanece constante em processos naturais.</li>
+            <li><strong>3ª Lei:</strong> É impossível atingir o zero absoluto de temperatura (0 K) em um número finito de processos.</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
     <template id="tpl-optica">
       <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
         <div class="flex items-center mb-6">
@@ -1022,8 +1159,6 @@
         </div>
       </div>
     </template>
-
-    
 
     <template id="tpl-recursos">
       <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
