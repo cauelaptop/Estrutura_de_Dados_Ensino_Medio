@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Química: Referência Completa do Ensino Médio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
+      .transition-all { transition: all 0.3s ease; }
+      .formula-block {
+        font-family: "Courier New", monospace;
+        background-color: #f0fdfa;
+        color: #134e4a;
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 5px solid #0d9488;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .example-block {
+        background-color: #ecfdf5;
+        border-left: 5px solid #10b981;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .chem-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .chem-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(13 148 136 / 0.1), 0 4px 6px -4px rgb(13 148 136 / 0.1);
+      }
+      .nav-link.active {
+        background-color: #ccfbf1;
+        font-weight: 700;
+        color: #0f766e;
+      }
+      .katex { font-size: 1.05em; }
+      .katex-display { margin: 0.5rem 0; }
+    </style>
+  </head>
+  <body class="bg-emerald-50 font-sans">
+
+    <header class="bg-teal-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-flask text-3xl mr-3"></i>
+            <h1 class="text-2xl font-bold">Química: Referência do Ensino Médio</h1>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+          <div class="relative w-full sm:w-72">
+            <input type="text" placeholder="Pesquisar"
+              class="px-4 py-2 rounded-full bg-teal-500 text-white placeholder-teal-200 focus:outline-none focus:ring-2 focus:ring-teal-300 w-full" />
+            <button class="absolute right-3 top-2 text-teal-200 hover:text-white">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-teal-200 rounded shadow-lg z-50 hidden text-gray-800"></div>
+          </div>
+          <a href="#" class="inline-flex items-center px-3 py-2 bg-white text-teal-600 rounded-full shadow-sm hover:bg-teal-100 transition-all shrink-0" title="Recarregar página">
+            <i class="fas fa-home mr-2"></i>
+            Início
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+        <div id="sidebar" class="w-72 shrink-0 bg-white rounded-r-lg md:rounded-lg shadow-md p-4 mr-0 md:mr-8 fixed md:sticky top-0 md:top-8 left-0 h-screen md:h-fit z-50 md:z-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto md:overflow-visible">
+          <div class="p-4 border-b border-teal-200 flex justify-between items-center md:block md:p-0 md:border-none">
+            <h1 class="text-2xl font-bold md:mb-4 text-teal-700">Sumário</h1>
+            <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-teal-600 text-2xl focus:outline-none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="space-y-1 mt-2 text-sm">
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Química Geral</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="introducao" data-explanation="Introdução ao estudo da matéria e suas transformações.">Introdução à Química</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="propriedades" data-explanation="Massa, volume, densidade e características da matéria.">Propriedades da matéria</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="estados-fisicos" data-explanation="Sólido, líquido, gasoso e suas mudanças de estado.">Estados físicos</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="substancias-misturas" data-explanation="Substâncias simples/compostas e misturas homogêneas/heterogêneas.">Substâncias e misturas</a>
+            
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Atomística</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="estrutura-atomica" data-explanation="Modelos atômicos, prótons, nêutrons e elétrons.">Estrutura atômica</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="distribuicao-eletronica" data-explanation="Diagrama de Linus Pauling e níveis de energia.">Distribuição eletrônica</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="tabela-periodica" data-explanation="Organização dos elementos e propriedades periódicas.">Classificação periódica</a>
+            
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Ligações e Moléculas</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="ligacoes" data-explanation="Ligações Iônica, Covalente e Metálica. Regra do octeto.">Ligações químicas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="geometria" data-explanation="Arranjo espacial dos átomos nas moléculas (TRPEV).">Geometria molecular</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="polaridade" data-explanation="Distribuição de cargas e momento dipolar.">Polaridade de moléculas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="forcas-intermoleculares" data-explanation="Dipolo-dipolo, ligações de hidrogênio e dispersão de London.">Forças intermoleculares</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="inorganica" data-explanation="Ácidos, bases, sais e óxidos (Funções Inorgânicas).">Substâncias inorgânicas</a>
+            
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Reações e Estequiometria</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="reacoes" data-explanation="Tipos de reações: síntese, análise, simples e dupla troca.">Reações químicas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="balanceamento" data-explanation="Conservação das massas e método das tentativas.">Balanceamento</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="estequiometria" data-explanation="Cálculo de massas, volumes e mols nas reações.">Cálculos estequiométricos</a>
+            
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Físico-Química</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="solucoes" data-explanation="Soluto, solvente e coeficiente de solubilidade.">Soluções</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="concentracao" data-explanation="Concentração comum, molaridade e título.">Concentração de soluções</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="diluicao" data-explanation="Adição de solvente e mistura de soluções com ou sem reação.">Diluição e mistura</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="coligativas" data-explanation="Tonoscopia, ebulioscopia, crioscopia e osmose.">Propriedades coligativas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="termoquimica" data-explanation="Calor nas reações químicas, entalpia e Lei de Hess.">Termoquímica</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="cinetica" data-explanation="Velocidade das reações químicas e catalisadores.">Cinética química</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="equilibrio" data-explanation="Reações reversíveis, Kc, Kp e Princípio de Le Chatelier.">Equilíbrio químico</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="eletroquimica" data-explanation="Oxirredução, Pilhas (Galvânicas) e Eletrólise.">Eletroquímica</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="radioatividade" data-explanation="Decaimento alfa, beta, gama e tempo de meia-vida.">Radioatividade</a>
+
+            <h3 class="font-bold text-teal-800 mt-4 mb-2 px-3 border-b border-teal-100">Química Orgânica</h3>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="organica" data-explanation="Estudo do carbono e postulados de Kekulé.">Introdução à Orgânica</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="cadeias" data-explanation="Classificação das estruturas de carbono.">Cadeias carbônicas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="hidrocarbonetos" data-explanation="Alcanos, alcenos, alcinos e aromáticos. Nomenclatura.">Hidrocarbonetos</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="oxigenadas" data-explanation="Álcool, fenol, éter, aldeído, cetona, ácido e éster.">Funções oxigenadas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="nitrogenadas" data-explanation="Aminas, amidas, nitrilas e nitrocompostos.">Funções nitrogenadas</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="isomeria" data-explanation="Isomeria plana, espacial geométrica e óptica.">Isomeria</a>
+            <a href="#" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-teal-50 text-teal-700 font-medium transition-all" data-section="polimeros" data-explanation="Macromoléculas, polímeros de adição e condensação.">Polímeros</a>
+
+          </nav>
+        </div>
+
+        <div id="content" class="flex flex-col flex-1 min-w-0">
+          <div id="explanation" class="w-full"></div>
+
+          <footer class="mt-12 border-t border-teal-200 pt-8 text-center text-gray-600 text-sm">
+            <p>© 2026 Química: Referência Completa do Ensino Médio.</p>
+            <p class="mt-1">Todos os direitos reservados.</p>
+          </footer>
+        </div>
+      </div>
+    </main>
+
+    <template id="tpl-introducao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-microscope mr-3 text-teal-600"></i>Introdução à Química</h2>
+        <p class="text-gray-700 mb-4">A Química é a ciência que estuda a natureza da matéria, suas propriedades, sua constituição, as transformações que ela sofre e a energia envolvida nesses processos.</p>
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <h3 class="font-bold text-teal-700 mb-2">Conceitos Fundamentais</h3>
+          <ul class="list-disc pl-5 text-gray-700 space-y-1">
+            <li><strong>Matéria:</strong> Tudo que tem massa e ocupa lugar no espaço (volume). Ex: Água, ar, madeira.</li>
+            <li><strong>Corpo:</strong> Porção limitada da matéria. Ex: Um pedaço de madeira, uma barra de ouro.</li>
+            <li><strong>Objeto:</strong> Corpo produzido pelo ser humano com finalidade útil. Ex: Uma cadeira de madeira, uma aliança.</li>
+            <li><strong>Energia:</strong> Capacidade de realizar trabalho ou transferir calor. Na química, analisamos como a energia é absorvida ou liberada nas reações.</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-propriedades">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-weight-hanging mr-3 text-teal-600"></i>Propriedades da Matéria</h2>
+        <p class="text-gray-700 mb-4">As propriedades da matéria se dividem em gerais (comuns a qualquer tipo de matéria) e específicas (que permitem identificar a substância).</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Propriedades Gerais</h3>
+            <p class="text-gray-700 text-sm">Não servem para diferenciar substâncias. Exemplos incluem:</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700 mt-2">
+              <li><strong>Massa:</strong> Quantidade de matéria.</li>
+              <li><strong>Volume:</strong> Espaço ocupado.</li>
+              <li><strong>Inércia:</strong> Tendência de manter o estado de repouso ou movimento.</li>
+              <li><strong>Impenetrabilidade:</strong> Dois corpos não ocupam o mesmo espaço simultaneamente.</li>
+            </ul>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Propriedades Específicas</h3>
+            <p class="text-gray-700 text-sm">Permitem a identificação e caracterização. Exemplos:</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700 mt-2">
+              <li><strong>Ponto de Fusão (PF) e Ebulição (PE):</strong> Temperaturas exatas onde ocorrem mudanças de estado.</li>
+              <li><strong>Densidade (d):</strong> Relação entre massa e volume.</li>
+            </ul>
+            <div class="formula-block mt-3 text-center">$$ d = \frac{m}{v} $$</div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-estados-fisicos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-tint mr-3 text-teal-600"></i>Estados Físicos da Matéria</h2>
+        <p class="text-gray-700 mb-4">Na natureza, a matéria ocorre fundamentalmente em três estados de agregação, que dependem da organização de suas partículas (átomos, moléculas ou íons).</p>
+                <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 my-4">
+          <ul class="list-disc pl-5 text-gray-700 space-y-2">
+            <li><strong>Sólido:</strong> Forma e volume constantes. Partículas muito unidas (alta força de coesão).</li>
+            <li><strong>Líquido:</strong> Forma variável (toma a forma do recipiente) e volume constante. As partículas deslizam umas sobre as outras.</li>
+            <li><strong>Gasoso:</strong> Forma e volume variáveis (ocupa todo o espaço disponível). Partículas muito afastadas (baixa força de coesão e alta liberdade).</li>
+          </ul>
+        </div>
+        <h3 class="font-bold text-teal-700 mt-6 mb-2">Mudanças de Estado</h3>
+        <p class="text-gray-700 text-sm mb-4">
+          <strong>Fusão:</strong> Sólido → Líquido<br>
+          <strong>Vaporização:</strong> Líquido → Gasoso (pode ser Evaporação, Ebulição ou Calefação)<br>
+          <strong>Condensação / Liquefação:</strong> Gasoso → Líquido<br>
+          <strong>Solidificação:</strong> Líquido → Sólido<br>
+          <strong>Sublimação:</strong> Sólido ↔ Gasoso (diretamente)
+        </p>
+      </div>
+    </template>
+
+    <template id="tpl-substancias-misturas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-blender mr-3 text-teal-600"></i>Substâncias e Misturas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Substâncias Puras</h3>
+            <p class="text-gray-700 text-sm mb-2">Possuem propriedades fixas e constantes (PF, PE, densidade). Podem ser:</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700">
+              <li><strong>Simples:</strong> Formadas por átomos de um único elemento químico. Ex: O₂, H₂, Fe.</li>
+              <li><strong>Compostas:</strong> Formadas por átomos de dois ou mais elementos. Ex: H₂O, NaCl, CO₂.</li>
+            </ul>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Misturas</h3>
+            <p class="text-gray-700 text-sm mb-2">União de duas ou mais substâncias sem que ocorra reação entre elas. Podem ser:</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700">
+              <li><strong>Homogêneas (Soluções):</strong> Apresentam uma única fase (aspecto visual uniforme). Ex: Água + sal dissolvido, ar atmosférico.</li>
+              <li><strong>Heterogêneas:</strong> Apresentam duas ou mais fases. Ex: Água + óleo, granito.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-estrutura-atomica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-atom mr-3 text-teal-600"></i>Estrutura Atômica</h2>
+        <p class="text-gray-700 mb-4">O átomo é a unidade fundamental da matéria. Segundo o modelo atual (baseado em Rutherford-Bohr e na quântica), ele é dividido em duas regiões principais:</p>
+                <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <ul class="list-disc pl-5 text-gray-700 space-y-2">
+            <li><strong>Núcleo:</strong> Região central, muito pequena e densa. Contém os <strong>prótons</strong> (carga positiva) e os <strong>nêutrons</strong> (sem carga).</li>
+            <li><strong>Eletrosfera:</strong> Região periférica, imensa em relação ao núcleo, onde orbitam os <strong>elétrons</strong> (carga negativa, massa desprezível).</li>
+          </ul>
+        </div>
+        <div class="formula-block text-center">
+          $$ Z = p $$
+          $$ A = p + n $$
+        </div>
+        <p class="text-gray-700 text-sm mt-2">Onde <strong>Z</strong> é o Número Atômico (identidade do elemento) e <strong>A</strong> é o Número de Massa. Átomos com mesmo Z e diferente A são <strong>isótopos</strong>.</p>
+      </div>
+    </template>
+
+    <template id="tpl-distribuicao-eletronica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-project-diagram mr-3 text-teal-600"></i>Distribuição Eletrônica</h2>
+        <p class="text-gray-700 mb-4">Os elétrons distribuem-se na eletrosfera em <strong>níveis de energia</strong> (K, L, M, N, O, P, Q) e <strong>subníveis</strong> (s, p, d, f).</p>
+        <p class="text-gray-700 mb-4">Para organizar esses elétrons por ordem crescente de energia, utilizamos o <strong>Diagrama de Linus Pauling</strong>, seguindo as diagonais.</p>
+        <div class="example-block">
+          <h3 class="font-bold text-teal-700 mb-2">Capacidade Máxima dos Subníveis:</h3>
+          <p class="text-gray-700">s: 2 e⁻ | p: 6 e⁻ | d: 10 e⁻ | f: 14 e⁻</p>
+          <hr class="my-2 border-teal-300">
+          <strong>Exemplo:</strong> Sódio (Na), Z = 11.<br>
+          Distribuição: $$ 1s^2 \ 2s^2 \ 2p^6 \ 3s^1 $$
+          A camada de valência (nível mais externo) é a camada M (nível 3) com 1 elétron.
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-tabela-periodica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-table mr-3 text-teal-600"></i>Classificação Periódica</h2>
+        <p class="text-gray-700 mb-4">A Tabela Periódica moderna organiza os elementos químicos em ordem crescente de <strong>Número Atômico (Z)</strong>.</p>
+                <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <ul class="list-disc pl-5 text-gray-700 space-y-2">
+            <li><strong>Períodos (1 a 7):</strong> Linhas horizontais. Indicam a quantidade de camadas eletrônicas (níveis) que o átomo possui.</li>
+            <li><strong>Grupos ou Famílias (1 a 18):</strong> Colunas verticais. Elementos do mesmo grupo possuem propriedades químicas semelhantes e o mesmo número de elétrons na camada de valência (para elementos representativos).</li>
+          </ul>
+        </div>
+        <h3 class="font-bold text-teal-700 mb-2">Propriedades Periódicas Principais</h3>
+        <p class="text-gray-700 text-sm">
+          <strong>Raio Atômico:</strong> Aumenta para baixo e para a esquerda.<br>
+          <strong>Eletronegatividade:</strong> Tendência de atrair elétrons (F é o maior). Aumenta para cima e para a direita (excluindo gases nobres).<br>
+          <strong>Energia de Ionização:</strong> Energia para remover um elétron. Aumenta para cima e para a direita.
+        </p>
+      </div>
+    </template>
+
+    <template id="tpl-ligacoes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-link mr-3 text-teal-600"></i>Ligações Químicas</h2>
+        <p class="text-gray-700 mb-4">Átomos se ligam para atingir estabilidade eletrônica, geralmente completando 8 elétrons na camada de valência (<strong>Regra do Octeto</strong>), assemelhando-se aos gases nobres.</p>
+        
+        <div class="space-y-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">1. Ligação Iônica</h3>
+            <p class="text-sm text-gray-700 mt-1">Ocorre por <strong>transferência</strong> de elétrons de um Metal (tende a perder, forma cátion) para um Ametal (tende a ganhar, forma ânion). Ex: NaCl.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">2. Ligação Covalente</h3>
+            <p class="text-sm text-gray-700 mt-1">Ocorre por <strong>compartilhamento</strong> de pares de elétrons entre Ametais ou Ametal + Hidrogênio. Ex: H₂O, CO₂.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">3. Ligação Metálica</h3>
+            <p class="text-sm text-gray-700 mt-1">Ocorre entre átomos de metais. Forma um arranjo onde cátions metálicos estão mergulhados num "mar de elétrons" livres, o que explica sua alta condutividade.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-geometria">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-shapes mr-3 text-teal-600"></i>Geometria Molecular</h2>
+        <p class="text-gray-700 mb-4">Determinada pela Teoria da Repulsão dos Pares Eletrônicos da Camada de Valência (TRPEV). Pares de elétrons (ligantes ou não) ao redor do átomo central se repelem, assumindo o máximo afastamento possível no espaço.</p>
+                <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+            <li><strong>Linear:</strong> Ângulo de 180°. Ex: CO₂, BeH₂, ou moléculas diatômicas (HCl, O₂).</li>
+            <li><strong>Angular:</strong> Átomo central com pares de elétrons livres que "empurram" as ligações. Ex: H₂O (ângulo ~104,5°).</li>
+            <li><strong>Trigonal Plana:</strong> 3 átomos ligados ao central, sem elétrons livres. Ex: BF₃.</li>
+            <li><strong>Piramidal:</strong> 3 átomos ligados ao central, COM par de elétrons livre. Ex: NH₃.</li>
+            <li><strong>Tetraédrica:</strong> 4 átomos ligados ao central. Ex: CH₄ (ângulo ~109,5°).</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-polaridade">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-magnet mr-3 text-teal-600"></i>Polaridade de Moléculas</h2>
+        <p class="text-gray-700 mb-4">A polaridade depende da diferença de eletronegatividade entre os átomos e da <strong>geometria molecular</strong> (vetor momento dipolar resultante - $\vec{\mu}$).</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Moléculas Apolares</h3>
+            <p class="text-gray-700 text-sm">O momento dipolar resultante é ZERO ($\vec{\mu} = 0$). As forças se anulam devido à simetria.</p>
+            <p class="text-gray-700 text-sm mt-2"><strong>Exemplos:</strong> H₂, O₂, CO₂ (linear simétrica), CH₄ (tetraédrica simétrica).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 mb-2">Moléculas Polares</h3>
+            <p class="text-gray-700 text-sm">O momento dipolar resultante é DIFERENTE de ZERO ($\vec{\mu} \neq 0$). Forma-se um polo positivo e um negativo.</p>
+            <p class="text-gray-700 text-sm mt-2"><strong>Exemplos:</strong> HCl, H₂O (angular asimétrica), NH₃.</p>
+          </div>
+        </div>
+        <p class="text-sm text-teal-700 font-bold mt-4 text-center">Regra de Ouro: Semelhante dissolve semelhante (Polar dissolve Polar, Apolar dissolve Apolar).</p>
+      </div>
+    </template>
+
+    <template id="tpl-forcas-intermoleculares">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-handshake mr-3 text-teal-600"></i>Forças Intermoleculares</h2>
+        <p class="text-gray-700 mb-4">São as atrações que mantêm as moléculas unidas nos estados sólido e líquido. Afetam diretamente o Ponto de Ebulição e Fusão das substâncias.</p>
+        <ul class="space-y-4">
+          <li class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">1. Dipolo Induzido (Forças de London)</h3>
+            <p class="text-sm text-gray-700 mt-1">Acontece em <strong>moléculas apolares</strong>. É a interação mais fraca. A nuvem eletrônica sofre leve deformação momentânea. Ex: CH₄, CO₂, N₂.</p>
+          </li>
+          <li class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">2. Dipolo-Dipolo (ou Dipolo Permanente)</h3>
+            <p class="text-sm text-gray-700 mt-1">Acontece em <strong>moléculas polares</strong> (exceto as que formam ponte de H). O polo positivo de uma atrai o negativo de outra. Ex: HCl, H₂S.</p>
+          </li>
+          <li class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">3. Ligação de Hidrogênio</h3>
+            <p class="text-sm text-gray-700 mt-1">Acontece em <strong>moléculas polares</strong> onde o <strong>H</strong> está ligado diretamente aos átomos muito eletronegativos: <strong>F, O ou N</strong>. É a interação intermolecular mais forte. Ex: H₂O, HF, NH₃.</p>
+          </li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-inorganica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-vial mr-3 text-teal-600"></i>Substâncias Inorgânicas</h2>
+        <p class="text-gray-700 mb-4">Segundo Arrhenius, classificamos os compostos inorgânicos em quatro funções principais com base em seu comportamento em solução aquosa:</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Ácidos</h3>
+            <p class="text-sm text-gray-700 mt-1">Em água, sofrem ionização, liberando exclusivamente o cátion $H^+$.<br>Ex: $HCl \rightarrow H^+ + Cl^-$</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Bases</h3>
+            <p class="text-sm text-gray-700 mt-1">Em água, sofrem dissociação, liberando exclusivamente o ânion hidroxila ($OH^-$).<br>Ex: $NaOH \rightarrow Na^+ + OH^-$</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Sais</h3>
+            <p class="text-sm text-gray-700 mt-1">Compostos iônicos resultantes da reação (neutralização) entre um ácido e uma base. Apresentam pelo menos um cátion $\neq H^+$ e um ânion $\neq OH^-$. Ex: $NaCl, CaCO_3$.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Óxidos</h3>
+            <p class="text-sm text-gray-700 mt-1">Compostos binários (2 elementos) onde o Oxigênio é o mais eletronegativo. Ex: $CO_2, Fe_2O_3, CaO$.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-reacoes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-random mr-3 text-teal-600"></i>Reações Químicas</h2>
+        <p class="text-gray-700 mb-4">Transformações em que reagentes viram produtos (rompimento e formação de novas ligações). São classificadas em:</p>
+        <ul class="list-disc pl-5 text-gray-700 space-y-3">
+          <li><strong>Síntese (ou Adição):</strong> Duas ou mais substâncias se unem formando um único produto.<br> <span class="font-mono text-teal-700 bg-teal-50 px-2 rounded">A + B → AB</span> (Ex: $C + O_2 \rightarrow CO_2$)</li>
+          <li><strong>Análise (ou Decomposição):</strong> Um único reagente se divide em duas ou mais substâncias menores.<br> <span class="font-mono text-teal-700 bg-teal-50 px-2 rounded">AB → A + B</span> (Ex: $2H_2O \rightarrow 2H_2 + O_2$)</li>
+          <li><strong>Simples Troca (ou Deslocamento):</strong> Uma substância simples reage com uma composta, deslocando um de seus elementos.<br> <span class="font-mono text-teal-700 bg-teal-50 px-2 rounded">A + BC → AC + B</span> (Ex: $Zn + 2HCl \rightarrow ZnCl_2 + H_2$)</li>
+          <li><strong>Dupla Troca:</strong> Duas substâncias compostas trocam componentes entre si.<br> <span class="font-mono text-teal-700 bg-teal-50 px-2 rounded">AB + CD → AD + CB</span> (Ex: $NaCl + AgNO_3 \rightarrow AgCl + NaNO_3$)</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-balanceamento">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-balance-scale mr-3 text-teal-600"></i>Balanceamento de Equações</h2>
+        <p class="text-gray-700 mb-4">Baseado na <strong>Lei de Lavoisier</strong> (Conservação das Massas): "Na natureza, nada se cria, nada se perde, tudo se transforma". A quantidade de átomos de cada elemento deve ser igual nos reagentes e produtos.</p>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <h3 class="font-bold text-teal-700 mb-2">Método das Tentativas (Regra do MACHO)</h3>
+          <p class="text-sm text-gray-700 mb-2">Para facilitar, balanceamos os elementos na seguinte ordem preferencial:</p>
+          <ol class="list-decimal pl-5 text-sm font-bold text-teal-800">
+            <li><strong>M</strong>etal</li>
+            <li><strong>A</strong>metal</li>
+            <li><strong>C</strong>arbono</li>
+            <li><strong>H</strong>idrogênio</li>
+            <li><strong>O</strong>xigênio</li>
+          </ol>
+        </div>
+        <div class="example-block">
+          <strong>Exemplo de Balanceamento:</strong> Combustão do propano.<br>
+          Equação não balanceada: $C_3H_8 + O_2 \rightarrow CO_2 + H_2O$<br>
+          1) Carbono: Colocar 3 no $CO_2$<br>
+          2) Hidrogênio: Colocar 4 no $H_2O$ (4x2 = 8)<br>
+          3) Oxigênio: 3x2 (no $CO_2$) + 4x1 (no $H_2O$) = 10 O's. Colocar 5 no $O_2$.<br>
+          <strong>Equação balanceada:</strong> $$1 \ C_3H_8 + 5 \ O_2 \rightarrow 3 \ CO_2 + 4 \ H_2O$$
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-estequiometria">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-calculator mr-3 text-teal-600"></i>Cálculos Estequiométricos</h2>
+        <p class="text-gray-700 mb-4">A estequiometria calcula as quantidades (massa, volume, mols, moléculas) de reagentes e produtos numa reação. O ponto de partida é sempre a <strong>equação química balanceada</strong>.</p>
+        
+        <div class="formula-block text-center">
+          <strong>O Conceito de Mol:</strong><br>
+          $$ 1 \text{ mol} = 6,022 \times 10^{23} \text{ partículas} $$<br>
+          $$ 1 \text{ mol} = \text{Massa Molar (g)} $$<br>
+          $$ 1 \text{ mol de gás nas CNTP} = 22,4 \text{ L} $$
+        </div>
+
+        <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 mt-4">
+          <h3 class="font-bold text-teal-700 mb-2">Passo a passo para cálculos:</h3>
+          <ol class="list-decimal pl-5 text-sm text-gray-700 space-y-1">
+            <li>Escrever a equação química da reação.</li>
+            <li>Balancear a equação corretamente.</li>
+            <li>Identificar as proporções em mols (os coeficientes estequiométricos).</li>
+            <li>Converter os mols para a grandeza solicitada no problema (massa, volume, etc.).</li>
+            <li>Montar uma Regra de Três Simples para achar o resultado.</li>
+          </ol>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-solucoes">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-water mr-3 text-teal-600"></i>Soluções</h2>
+        <p class="text-gray-700 mb-4">Soluções são misturas homogêneas (uma única fase) compostas de duas partes principais:</p>
+        <ul class="list-disc pl-5 text-gray-700 mb-4">
+          <li><strong>Soluto:</strong> Substância que é dissolvida (ex: sal, açúcar). Menor quantidade.</li>
+          <li><strong>Solvente:</strong> Substância que dissolve o soluto (ex: água). Maior quantidade. A água é o <em>solvente universal</em>.</li>
+        </ul>
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+          <h3 class="font-bold text-teal-700 mb-2">Coeficiente de Solubilidade (CS)</h3>
+          <p class="text-sm text-gray-700 mb-2">Quantidade máxima de soluto que pode ser dissolvida numa quantidade padrão de solvente a uma dada temperatura. Classificação das soluções:</p>
+          <ul class="list-disc pl-5 text-sm text-gray-700">
+            <li><strong>Insaturada:</strong> Contém menos soluto que o CS.</li>
+            <li><strong>Saturada:</strong> Contém exatamente a quantidade máxima permitida pelo CS (pode ou não ter corpo de fundo se houver excesso).</li>
+            <li><strong>Supersaturada:</strong> Contém mais soluto dissolvido que o CS permite (estado muito instável, obtido por aquecimento e resfriamento lento).</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-concentracao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-percent mr-3 text-teal-600"></i>Concentração de Soluções</h2>
+        <p class="text-gray-700 mb-4">A concentração indica a relação entre a quantidade de soluto e a quantidade de solvente ou de solução. As principais fórmulas são:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">Concentração Comum (C)</h3>
+            <p class="text-xs text-gray-600 mb-2">Relação massa do soluto por volume da solução (g/L).</p>
+            $$ C = \frac{m_1}{V} $$
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">Molaridade (M ou $\mathfrak{M}$)</h3>
+            <p class="text-xs text-gray-600 mb-2">Número de mols do soluto por volume (mol/L). $m_1$ = massa do soluto, $MM_1$ = massa molar.</p>
+            $$ M = \frac{n_1}{V} = \frac{m_1}{MM_1 \cdot V} $$
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">Título em Massa (T)</h3>
+            <p class="text-xs text-gray-600 mb-2">Fração em massa (porcentagem %). Adimensional.</p>
+            $$ T = \frac{m_1}{m_1 + m_2} $$
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4">
+            <h3 class="font-bold text-teal-700">Densidade da Solução (d)</h3>
+            <p class="text-xs text-gray-600 mb-2">Massa da solução inteira pelo volume (g/mL).</p>
+            $$ d = \frac{m_{total}}{V} = \frac{m_1 + m_2}{V} $$
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-diluicao">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-fill-drip mr-3 text-teal-600"></i>Diluição e Mistura de Soluções</h2>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <h3 class="font-bold text-teal-700 mb-2">Diluição</h3>
+          <p class="text-gray-700 text-sm mb-3">Diluir significa acrescentar mais solvente a uma solução, mantendo constante a massa (ou mols) do soluto. Com isso, o volume aumenta e a concentração diminui.</p>
+          <div class="formula-block text-center text-lg">
+            $$ C_1 \cdot V_1 = C_2 \cdot V_2 $$
+            $$ M_1 \cdot V_1 = M_2 \cdot V_2 $$
+          </div>
+        </div>
+
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+          <h3 class="font-bold text-teal-700 mb-2">Mistura de Soluções com Mesmo Soluto</h3>
+          <p class="text-gray-700 text-sm mb-3">Quando juntamos duas soluções de concentrações diferentes do mesmo soluto, a concentração final será um valor intermediário.</p>
+          <div class="formula-block text-center text-lg">
+            $$ C_F \cdot V_F = C_1 \cdot V_1 + C_2 \cdot V_2 $$
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-coligativas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-snowflake mr-3 text-teal-600"></i>Propriedades Coligativas</h2>
+        <p class="text-gray-700 mb-4">Propriedades que dependem exclusivamente do <strong>número de partículas (mols) de soluto dissolvido</strong>, e não de sua natureza (seja açúcar, sal, etc.). A adição de um soluto não-volátil a um solvente puro causa quatro efeitos principais:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Tonoscopia</h3>
+            <p class="text-sm text-gray-700">Abaixa a pressão de vapor do solvente (o líquido demora mais a evaporar espontaneamente).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Ebulioscopia</h3>
+            <p class="text-sm text-gray-700">Eleva a temperatura de ebulição do solvente (ferve a uma temperatura maior, ex: água com sal ferver > 100°C).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Crioscopia</h3>
+            <p class="text-sm text-gray-700">Abaixa a temperatura de fusão/congelamento (congela mais difícil, ex: sal nas estradas de gelo).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Osmoscopia</h3>
+            <p class="text-sm text-gray-700">Aumento da Pressão Osmótica (o solvente flui do meio menos concentrado para o mais concentrado através de uma membrana semipermeável).</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-termoquimica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-fire-alt mr-3 text-teal-600"></i>Termoquímica</h2>
+        <p class="text-gray-700 mb-4">Estuda as trocas de calor que acompanham as reações químicas. A quantidade de calor envolvida sob pressão constante é chamada de <strong>Entalpia (H)</strong>. Só conseguimos medir sua variação ($\Delta H$).</p>
+        
+        <div class="formula-block text-center">$$ \Delta H = H_{\text{produtos}} - H_{\text{reagentes}} $$</div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 text-lg mb-2">Reações Exotérmicas</h3>
+            <p class="text-sm text-gray-700">Liberam calor para o meio externo. Sensação de aquecimento.<br><strong>$\Delta H < 0$ (Negativo)</strong>.<br>Ex: Combustões.</p>
+          </div>
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 text-lg mb-2">Reações Endotérmicas</h3>
+            <p class="text-sm text-gray-700">Absorvem calor do meio externo para acontecer. Sensação de resfriamento.<br><strong>$\Delta H > 0$ (Positivo)</strong>.<br>Ex: Fotossíntese, derretimento de gelo.</p>
+          </div>
+        </div>
+
+        <div class="example-block">
+          <h3 class="font-bold text-teal-800">Lei de Hess</h3>
+          <p class="text-sm text-gray-700">A variação da entalpia num processo químico depende apenas do estado inicial e do estado final, não importando o número de etapas. Podemos somar, inverter ou multiplicar as equações (e os $\Delta H$) para achar o $\Delta H$ global.</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-cinetica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-tachometer-alt mr-3 text-teal-600"></i>Cinética Química</h2>
+        <p class="text-gray-700 mb-4">Estuda a velocidade das reações químicas e os fatores que as influenciam. Para que uma reação ocorra, devem haver choques efetivos (orientação favorável e energia mínima chamada <strong>Energia de Ativação</strong>).</p>
+        
+        <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 mb-4 shadow-sm">
+          <h3 class="font-bold text-teal-700 mb-3">Fatores que aceleram as reações:</h3>
+          <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+            <li><strong>Temperatura:</strong> Maior agitação térmica aumenta a quantidade e a energia dos choques.</li>
+            <li><strong>Concentração:</strong> Mais partículas em um espaço resulta em maior probabilidade de colisões.</li>
+            <li><strong>Superfície de Contato:</strong> Sólidos em pó reagem mais rápido que em bloco (mais área para choques).</li>
+            <li><strong>Catalisador:</strong> Substância que acelera a reação proporcionando um "caminho alternativo" com <em>menor Energia de Ativação</em>, sem ser consumido no final.</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-equilibrio">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-arrows-alt-h mr-3 text-teal-600"></i>Equilíbrio Químico</h2>
+        <p class="text-gray-700 mb-4">Ocorre em reações reversíveis ($A + B \rightleftharpoons C + D$) quando a velocidade da reação direta se iguala à velocidade da reação inversa. Nesse ponto, as concentrações de reagentes e produtos permanecem <strong>constantes</strong> (não necessariamente iguais).</p>
+        
+        <div class="formula-block text-center text-lg mb-4">
+          $$ K_c = \frac{[Produtos]^p}{[Reagentes]^r} $$
+        </div>
+        <p class="text-xs text-gray-500 mb-4 text-center">*Sólidos puros e líquidos solventes não participam da expressão do $K_c$.</p>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+          <h3 class="font-bold text-teal-700 mb-2">Princípio de Le Chatelier</h3>
+          <p class="text-sm text-gray-700">Quando um sistema em equilíbrio sofre uma perturbação (tensão externa), o equilíbrio se desloca no sentido que tende a anular essa perturbação.</p>
+          <ul class="list-disc pl-5 text-sm text-gray-700 mt-2 space-y-1">
+            <li><strong>Aumento da Concentração:</strong> Desloca para o lado oposto ao do aumento.</li>
+            <li><strong>Aumento da Pressão:</strong> Desloca para o lado de menor volume (menor quantidade de mols gasosos).</li>
+            <li><strong>Aumento da Temperatura:</strong> Desloca no sentido endotérmico (absorve o calor extra).</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-eletroquimica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-battery-full mr-3 text-teal-600"></i>Eletroquímica</h2>
+        <p class="text-gray-700 mb-4">Estuda a relação entre energia química (reações de oxirredução) e energia elétrica.</p>
+                
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 text-lg mb-2">Pilhas (Célula Galvânica)</h3>
+            <p class="text-sm text-gray-700 mb-2">Reação <strong>espontânea</strong> que gera corrente elétrica ($\Delta E > 0$).</p>
+            <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <li><strong>Ânodo (-):</strong> Eletrodo onde ocorre a <em>Oxidação</em> (perda de e⁻, corrói).</li>
+              <li><strong>Cátodo (+):</strong> Eletrodo onde ocorre a <em>Redução</em> (ganho de e⁻, deposita massa).</li>
+              <li class="font-bold mt-2 text-teal-600 text-center text-xs border border-teal-200 p-1 rounded bg-teal-50">CRAO: Cátodo Reduz, Ânodo Oxida</li>
+            </ul>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+            <h3 class="font-bold text-teal-700 text-lg mb-2">Eletrólise</h3>
+            <p class="text-sm text-gray-700 mb-2">Reação <strong>não espontânea</strong> forçada por uma corrente elétrica externa ($\Delta E < 0$).</p>
+            <p class="text-sm text-gray-700">Utilizada industrialmente para obter substâncias puras (sódio, cloro gasoso, alumínio) ou para banhar metais (galvanoplastia/cromagem).</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-radioatividade">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-radiation mr-3 text-teal-600"></i>Radioatividade</h2>
+        <p class="text-gray-700 mb-4">Fenômeno no qual núcleos instáveis emitem partículas e/ou ondas eletromagnéticas para se tornarem mais estáveis.</p>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <h3 class="font-bold text-teal-700 mb-2">Tipos de Radiação</h3>
+          <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+            <li><strong>Partícula Alfa ($\alpha$):</strong> Natureza corpuscular (2 prótons e 2 nêutrons). Carga +2, massa 4. Baixo poder de penetração, alto poder de ionização.</li>
+            <li><strong>Partícula Beta ($\beta$):</strong> Natureza corpuscular (elétron emitido pelo núcleo após a quebra de um nêutron). Carga -1, massa quase zero. Penetração média.</li>
+            <li><strong>Radiação Gama ($\gamma$):</strong> Onda eletromagnética (não possui massa nem carga). Altíssimo poder de penetração.</li>
+          </ul>
+        </div>
+        <div class="example-block">
+          <h3 class="font-bold text-teal-800">Meia-Vida ou Período de Semidesintegração ($t_{1/2}$)</h3>
+          <p class="text-sm text-gray-700">É o tempo necessário para que metade da massa (ou número de átomos) de uma amostra radioativa se desintegre.</p>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-organica">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-leaf mr-3 text-teal-600"></i>Química Orgânica</h2>
+        <p class="text-gray-700 mb-4">É o ramo da química dedicado ao estudo dos compostos de <strong>carbono</strong>. Mais de 90% das substâncias conhecidas são orgânicas (DNA, proteínas, plásticos, combustíveis).</p>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+          <h3 class="font-bold text-teal-700 mb-3">Postulados de Kekulé</h3>
+          <ul class="list-disc pl-5 text-gray-700 space-y-2">
+            <li><strong>O carbono é tetravalente:</strong> Faz sempre quatro ligações covalentes para estabilizar o octeto.</li>
+            <li><strong>As 4 ligações são equivalentes:</strong> Não importa a posição (em cima, lados, embaixo), num metano ($CH_4$), todas as ligações $C-H$ são idênticas.</li>
+            <li><strong>Encadeamento:</strong> Os átomos de carbono conseguem se ligar entre si, formando cadeias curtas, longas, ramificadas ou fechadas (anéis).</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-cadeias">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-project-diagram mr-3 text-teal-600"></i>Cadeias Carbônicas</h2>
+        <p class="text-gray-700 mb-4">Devido à capacidade de encadeamento, o carbono forma inúmeras cadeias, que podem ser classificadas de acordo com 4 critérios:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">1. Fechamento</h3>
+            <p class="text-sm text-gray-700"><strong>Aberta (Acíclica):</strong> Possui extremidades livres.<br><strong>Fechada (Cíclica):</strong> Forma anel/ciclo.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">2. Disposição dos átomos</h3>
+            <p class="text-sm text-gray-700"><strong>Normal (Reta):</strong> Possui apenas carbonos primários e secundários.<br><strong>Ramificada:</strong> Possui no mínimo um carbono terciário ou quaternário.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">3. Tipo de Ligação</h3>
+            <p class="text-sm text-gray-700"><strong>Saturada:</strong> Apenas ligações simples entre carbonos.<br><strong>Insaturada:</strong> Pelo menos uma ligação dupla ou tripla entre carbonos.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">4. Heteroátomo</h3>
+            <p class="text-sm text-gray-700"><strong>Homogênea:</strong> Só átomos de C na cadeia principal.<br><strong>Heterogênea:</strong> Um átomo diferente (O, N, S) ENTRE dois carbonos.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-hidrocarbonetos">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-gas-pump mr-3 text-teal-600"></i>Hidrocarbonetos</h2>
+        <p class="text-gray-700 mb-4">Compostos orgânicos formados exclusivamente por Carbono (C) e Hidrogênio (H). São apolares, insolúveis em água, e grandes fontes de energia (petróleo, gás natural).</p>
+        
+        <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5 mb-4">
+          <h3 class="font-bold text-teal-700 mb-3">Principais Grupos:</h3>
+          <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
+            <li><strong>Alcanos:</strong> Cadeia aberta, só ligações simples. Sufixo: <strong>-ano</strong>. Ex: Etano ($C_2H_6$).</li>
+            <li><strong>Alcenos:</strong> Cadeia aberta, uma ligação dupla. Sufixo: <strong>-eno</strong>. Ex: Eteno ($C_2H_4$).</li>
+            <li><strong>Alcinos:</strong> Cadeia aberta, uma ligação tripla. Sufixo: <strong>-ino</strong>. Ex: Etino ($C_2H_2$).</li>
+            <li><strong>Aromáticos:</strong> Cadeia fechada contendo o anel benzênico (6 carbonos, ressonância). Ex: Benzeno.</li>
+          </ul>
+        </div>
+
+        <div class="example-block">
+          <h3 class="font-bold text-teal-800 mb-2">Nomenclatura IUPAC Base</h3>
+          <p class="text-sm font-mono text-teal-900 mb-2 bg-teal-50 px-2 py-1 inline-block rounded border border-teal-200">PREFIXO (Qtd C) + INFIXO (Ligação) + SUFIXO (Função)</p>
+          <ul class="text-sm text-gray-700 mt-2">
+            <li><strong>Prefixo (C):</strong> 1=Met, 2=Et, 3=Prop, 4=But, 5=Pent, 6=Hex...</li>
+            <li><strong>Infixo (Lig):</strong> Simples=an, Dupla=en, Tripla=in.</li>
+            <li><strong>Sufixo (HC):</strong> Sempre <strong>-o</strong>. Ex: Met+an+o = Metano.</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-oxigenadas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-cubes mr-3 text-teal-600"></i>Funções Oxigenadas</h2>
+        <p class="text-gray-700 mb-4">Compostos orgânicos que possuem Oxigênio (O) em sua estrutura. Estudar o <strong>grupo funcional</strong> é a chave para identificá-los.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Álcool (-ol)</h3>
+            <p class="text-sm text-gray-700">Hidroxila (-OH) ligada a um carbono saturado (só lig simples).<br>Ex: Etanol ($H_3C-CH_2-OH$)</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Fenol</h3>
+            <p class="text-sm text-gray-700">Hidroxila (-OH) ligada <strong>diretamente</strong> a um anel aromático.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Éter</h3>
+            <p class="text-sm text-gray-700">Oxigênio atuando como heteroátomo entre dois carbonos ($C-O-C$).<br>Ex: Éter etílico.</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Ácido Carboxílico (-óico)</h3>
+            <p class="text-sm text-gray-700">Carbonila (C=O) + Hidroxila (-OH) na extremidade (Grupo Carboxila: -COOH).<br>Ex: Ácido acético (vinagre).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Aldeído (-al)</h3>
+            <p class="text-sm text-gray-700">Carbonila ($C=O$) na extremidade da cadeia (ligada a um H).<br>Ex: Metanal (formol).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-bold text-teal-700">Cetona (-ona)</h3>
+            <p class="text-sm text-gray-700">Carbonila ($C=O$) <strong>entre dois carbonos</strong>.<br>Ex: Propanona (acetona).</p>
+          </div>
+          <div class="chem-card bg-white border border-teal-200 rounded-xl p-4 shadow-sm md:col-span-2">
+            <h3 class="font-bold text-teal-700">Éster (-oato de -ila)</h3>
+            <p class="text-sm text-gray-700">Derivado do ácido carboxílico, o H do -COOH é trocado por cadeia carbônica ($R-COO-R'$). Essências e aromas.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-nitrogenadas">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-dna mr-3 text-teal-600"></i>Funções Nitrogenadas</h2>
+        <p class="text-gray-700 mb-4">Compostos orgânicos que possuem Nitrogênio (N) na estrutura. Muito presentes em proteínas, DNA e bases nitrogenadas.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Amina</h3>
+            <p class="text-sm text-gray-700">Derivados da amônia ($NH_3$), onde os hidrogênios são substituídos por cadeias carbônicas. Possuem caráter <strong>básico</strong>.<br>Ex: Metilamina ($CH_3-NH_2$).</p>
+          </div>
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Amida</h3>
+            <p class="text-sm text-gray-700">Nitrogênio ligado <strong>diretamente a uma carbonila</strong> ($C=O$). Estão nas ligações peptídicas das proteínas.<br>Ex: Etanamida ($CH_3-CO-NH_2$).</p>
+          </div>
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Nitrila</h3>
+            <p class="text-sm text-gray-700">Compostos caracterizados pela presença do grupo cianeto ($-C \equiv N$).</p>
+          </div>
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Nitrocomposto</h3>
+            <p class="text-sm text-gray-700">Possuem o grupo nitro ($-NO_2$) ligado à cadeia carbônica. Muito comuns em explosivos (ex: TNT).</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-isomeria">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-mirror mr-3 text-teal-600"></i>Isomeria</h2>
+        <p class="text-gray-700 mb-4">Fenômeno no qual dois ou mais compostos possuem a <strong>mesma fórmula molecular</strong> (mesmo número e tipo de átomos), mas <strong>fórmulas estruturais diferentes</strong> e propriedades distintas.</p>
+        
+        <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 mb-4 shadow-sm">
+          <h3 class="font-bold text-teal-700 mb-2">1. Isomeria Plana</h3>
+          <p class="text-sm text-gray-700 mb-2">A diferença estrutural pode ser percebida pela fórmula estrutural plana no papel.</p>
+          <ul class="list-disc pl-5 text-sm text-gray-700">
+            <li><strong>De Cadeia:</strong> Mesma função, cadeias diferentes (ex: butano e isobutano).</li>
+            <li><strong>De Posição:</strong> Mesma cadeia, posição diferente da dupla/tripla/ramificação/grupo funcional (ex: but-1-eno e but-2-eno).</li>
+            <li><strong>De Função:</strong> Funções orgânicas diferentes (ex: etanol e éter dimetílico).</li>
+            <li><strong>Metameria:</strong> Posição diferente do heteroátomo.</li>
+            <li><strong>Tautomeria:</strong> Isomeria dinâmica (equilíbrio enol $\rightleftharpoons$ aldeído/cetona).</li>
+          </ul>
+        </div>
+
+        <div class="chem-card bg-white border border-teal-200 rounded-xl p-5 shadow-sm">
+          <h3 class="font-bold text-teal-700 mb-2">2. Isomeria Espacial (Estereoisomeria)</h3>
+          <p class="text-sm text-gray-700 mb-2">A diferença só é notada observando o arranjo tridimensional.</p>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mt-2">
+            <li><strong>Geométrica (Cis-Trans / E-Z):</strong> Ocorre em compostos com dupla ligação e carbonos ligantes diferentes entre si, ou cadeias cíclicas (Bayer). Ex: Cis-but-2-eno (radicais no mesmo plano) e Trans-but-2-eno (planos opostos).</li>
+            <li><strong>Óptica:</strong> Ocorre quando há o <strong>carbono quiral ou assimétrico</strong> (ligado a 4 ligantes diferentes). As moléculas são assimétricas e formam enantiômeros que desviam a luz polarizada (dextrogiro e levogiro).</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-polimeros">
+      <div class="bg-white rounded-2xl shadow-md p-8 mb-6">
+        <h2 class="text-3xl font-bold text-teal-800 mb-4"><i class="fas fa-recycle mr-3 text-teal-600"></i>Polímeros</h2>
+        <p class="text-gray-700 mb-4">Polímeros são macromoléculas formadas pela repetição contínua de moléculas pequenas chamadas <strong>monômeros</strong>.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Polímeros de Adição</h3>
+            <p class="text-sm text-gray-700">Formados pela sucessiva união de monômeros iguais, onde ocorre a <strong>quebra da ligação pi (dupla)</strong> entre carbonos, não gerando subprodutos.<br><br><strong>Exemplos:</strong> Polietileno (PE), PVC (policloreto de vinila), Teflon (PTFE), Polipropileno (PP).</p>
+          </div>
+          <div class="chem-card bg-teal-50 border border-teal-200 rounded-xl p-5">
+            <h3 class="font-bold text-teal-700 mb-2">Polímeros de Condensação</h3>
+            <p class="text-sm text-gray-700">Formados pela união de monômeros (geralmente dois diferentes), havendo <strong>eliminação de uma molécula menor</strong> (frequentemente água) em cada ligação formada.<br><br><strong>Exemplos:</strong> PET (poliéster), Nylon (poliamida), Kevlar, Baquelite.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const templates = {};
+        document.querySelectorAll('template').forEach(tpl => {
+           const id = tpl.id.replace('tpl-', '');
+           templates[id] = tpl.innerHTML;
+        });
+
+        const contentDiv = document.getElementById("explanation");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchResults = document.getElementById("search-results");
+
+        function renderMath() {
+          renderMathInElement(contentDiv, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+          });
+        }
+
+        function loadSection(sectionId) {
+          if (templates[sectionId]) {
+            contentDiv.innerHTML = templates[sectionId];
+            renderMath();
+            
+            navLinks.forEach(link => {
+              if (link.dataset.section === sectionId) {
+                link.classList.add("active");
+              } else {
+                link.classList.remove("active");
+              }
+            });
+            
+            localStorage.setItem("activeChemistrySection", sectionId);
+            window.scrollTo(0, 0);
+          }
+        }
+
+        navLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const section = link.dataset.section;
+            if (section) {
+              loadSection(section);
+              if (window.innerWidth < 768) closeSidebar();
+            }
+          });
+        });
+
+        function openSidebar() {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.remove("hidden");
+        }
+
+        function closeSidebar() {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+        }
+
+        if(mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
+        if(closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+        if(sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+
+        if(searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase();
+            searchResults.innerHTML = "";
+            
+            if (query.length > 2) {
+              let found = false;
+              navLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                const explanation = link.dataset.explanation ? link.dataset.explanation.toLowerCase() : "";
+                
+                if (text.includes(query) || explanation.includes(query)) {
+                  found = true;
+                  const div = document.createElement("div");
+                  div.className = "p-3 hover:bg-teal-50 cursor-pointer border-b border-teal-100 last:border-b-0";
+                  div.innerHTML = `<div class="font-bold text-teal-700">${link.textContent.trim()}</div><div class="text-xs text-gray-500">${link.dataset.explanation || ""}</div>`;
+                  div.addEventListener("click", () => {
+                    loadSection(link.dataset.section);
+                    searchInput.value = "";
+                    searchResults.classList.add("hidden");
+                    if (window.innerWidth < 768) closeSidebar();
+                  });
+                  searchResults.appendChild(div);
+                }
+              });
+              
+              if (found) {
+                searchResults.classList.remove("hidden");
+              } else {
+                searchResults.innerHTML = '<div class="p-3 text-gray-500 text-sm">Nenhum resultado encontrado.</div>';
+                searchResults.classList.remove("hidden");
+              }
+            } else {
+              searchResults.classList.add("hidden");
+            }
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          if (searchInput && searchResults && !searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        const lastSection = localStorage.getItem("activeChemistrySection");
+        const sectionToLoad = lastSection && templates[lastSection] ? lastSection : "introducao";
+        loadSection(sectionToLoad);
+      });
+    </script>
+  </body>
+</html>
