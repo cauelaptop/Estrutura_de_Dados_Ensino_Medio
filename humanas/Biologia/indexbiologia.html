@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biologia: Guia Completo do Ensino Médio (BNCC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #555; }
+      .transition-all { transition: all 0.3s ease; }
+      .code-block {
+        font-family: "Courier New", monospace;
+        background-color: #2d2d2d;
+        color: #f8f8f2;
+        border-radius: 6px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+      .keyword  { color: #569cd6; }
+      .type     { color: #4ec9b0; }
+      .string   { color: #ce9178; }
+      .comment  { color: #6a9955; font-style: italic; }
+      .function { color: #dcdcaa; }
+      .builtin  { color: #c586c0; }
+      .pp       { color: #c586c0; } 
+      .number   { color: #b5cea8; }
+      .dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+      .dropdown-content.open { max-height: 500px; }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+
+    <header class="bg-emerald-700 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+          <div class="flex items-center">
+            <i class="fas fa-dna text-3xl mr-3"></i>
+            <h1 class="text-2xl font-bold">Biologia: Ensino Médio </h1>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none" title="Abrir sumário">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full md:w-auto">
+          <div class="relative w-full sm:w-64">
+            <input type="text" placeholder="Pesquisar"
+              class="px-4 py-2 rounded-full bg-emerald-600 text-white placeholder-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 w-full" />
+            <button class="absolute right-3 top-2 text-emerald-300 hover:text-white">
+              <i class="fas fa-search"></i>
+            </button>
+            <div id="search-results"
+              class="absolute left-0 mt-2 w-full bg-white border border-gray-300 rounded shadow-lg z-50 hidden text-gray-800"></div>
+          </div>
+          <a href="../../index.html" class="inline-flex items-center px-3 py-2 bg-white text-emerald-700 rounded-full shadow-sm hover:bg-emerald-100 transition-all shrink-0" title="Voltar ao menu principal">
+            <i class="fas fa-home mr-2"></i>
+            Voltar
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="flex flex-1 container mx-auto px-4 py-8">
+
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity"></div>
+
+        <div id="sidebar" class="w-80 shrink-0 bg-white rounded-r-lg md:rounded-lg shadow-md p-4 mr-0 md:mr-8 fixed md:sticky top-0 md:top-8 left-0 h-screen md:h-fit z-50 md:z-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto md:overflow-visible">
+          <div class="p-4 border-b border-gray-200 flex justify-between items-center md:block md:p-0 md:border-none">
+            <h1 class="text-2xl font-bold md:mb-4 text-emerald-700">Sumário</h1>
+            <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-emerald-700 text-2xl focus:outline-none">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="text-sm">
+
+            <!-- Introdução -->
+            <div class="mb-3 mt-2">
+              <a href="#introducao" class="nav-link flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="introducao" data-explanation="Introdução à Biologia do Ensino Médio segundo a BNCC.">
+                <i class="fas fa-play mr-2 ml-2"></i>
+                <span>Introdução à Biologia</span>
+              </a>
+            </div>
+
+            <!-- Citologia -->
+            <div class="mb-2 relative">
+              <a href="#citologia" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="citologia" data-explanation="Estudo da célula e suas estruturas.">
+                <i class="fas fa-microscope mr-2"></i>
+                <span class="flex items-center">1. Citologia</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-citologia" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="celula" data-explanation="Célula procariótica e eucariótica">Célula: Procariótica x Eucariótica</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="organelas" data-explanation="Organelas celulares e suas funções">Organelas Celulares</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="membrana" data-explanation="Membrana plasmática e transporte">Membrana Plasmática e Transporte</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="divisao-celular" data-explanation="Mitose e Meiose">Divisão Celular (Mitose e Meiose)</a>
+              </div>
+            </div>
+
+            <!-- Genética -->
+            <div class="mb-2 relative">
+              <a href="#genetica" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="genetica" data-explanation="Hereditariedade, DNA e genética.">
+                <i class="fas fa-dna mr-2"></i>
+                <span class="flex items-center">2. Genética</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-genetica" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="mendel" data-explanation="Leis de Mendel">Leis de Mendel</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="dna-rna" data-explanation="Estrutura do DNA e RNA">DNA, RNA e Transcrição</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="sintese-proteica" data-explanation="Síntese de proteínas">Síntese Proteica</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="biotecnologia" data-explanation="Engenharia genética e biotecnologia">Biotecnologia e OGM</a>
+              </div>
+            </div>
+
+            <!-- Evolução -->
+            <div class="mb-2 relative">
+              <a href="#evolucao" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="evolucao" data-explanation="Teorias evolutivas e evidências.">
+                <i class="fas fa-sync-alt mr-2"></i>
+                <span class="flex items-center">3. Evolução</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-evolucao" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="teorias" data-explanation="Lamarck, Darwin e Neodarwinismo">Teorias Evolutivas</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="evidencias" data-explanation="Evidências da evolução">Evidências da Evolução</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="selecao-natural" data-explanation="Seleção natural e adaptação">Seleção Natural</a>
+              </div>
+            </div>
+
+            <!-- Ecologia -->
+            <div class="mb-2 relative">
+              <a href="#ecologia" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="ecologia" data-explanation="Ecossistemas, ciclos e impactos ambientais.">
+                <i class="fas fa-leaf mr-2"></i>
+                <span class="flex items-center">4. Ecologia</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-ecologia" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="ecossistema" data-explanation="Componentes de um ecossistema">Ecossistemas</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="cadeias" data-explanation="Cadeias e teias alimentares">Cadeias e Teias Alimentares</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="ciclos" data-explanation="Ciclos biogeoquímicos">Ciclos Biogeoquímicos</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="impactos" data-explanation="Impactos ambientais e sustentabilidade">Impactos Ambientais</a>
+              </div>
+            </div>
+
+            <!-- Fisiologia Humana -->
+            <div class="mb-2 relative">
+              <a href="#fisiologia" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="fisiologia" data-explanation="Sistemas do corpo humano.">
+                <i class="fas fa-heartbeat mr-2"></i>
+                <span class="flex items-center">5. Fisiologia Humana</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-fisiologia" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="digestorio" data-explanation="Sistema digestório">Sistema Digestório</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="respiratorio" data-explanation="Sistema respiratório">Sistema Respiratório</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="circulatorio" data-explanation="Sistema circulatório">Sistema Circulatório</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="excretor" data-explanation="Sistema excretor">Sistema Excretor</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="nervoso" data-explanation="Sistema nervoso">Sistema Nervoso</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="endocrino" data-explanation="Sistema endócrino">Sistema Endócrino</a>
+              </div>
+            </div>
+
+            <!-- Botânica -->
+            <div class="mb-2 relative">
+              <a href="#botanica" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="botanica" data-explanation="Estudo das plantas.">
+                <i class="fas fa-seedling mr-2"></i>
+                <span class="flex items-center">6. Botânica</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-botanica" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="classificacao-plantas" data-explanation="Classificação das plantas">Classificação das Plantas</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="fisiologia-vegetal" data-explanation="Fisiologia das plantas">Fisiologia Vegetal</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="reproducao-plantas" data-explanation="Reprodução das plantas">Reprodução das Plantas</a>
+              </div>
+            </div>
+
+            <!-- Zoologia e Classificação -->
+            <div class="mb-2 relative">
+              <a href="#zoologia" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="zoologia" data-explanation="Classificação dos seres vivos e zoologia.">
+                <i class="fas fa-paw mr-2"></i>
+                <span class="flex items-center">7. Zoologia e Taxonomia</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-zoologia" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="classificacao" data-explanation="Sistemas de classificação">Sistemas de Classificação</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="invertebrados" data-explanation="Principais grupos de invertebrados">Invertebrados</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="vertebrados" data-explanation="Vertebrados e suas características">Vertebrados</a>
+              </div>
+            </div>
+
+            <!-- Imunologia e Saúde -->
+            <div class="mb-2 relative">
+              <a href="#imunologia" class="dropdown-btn flex items-center block px-3 py-2 rounded hover:bg-emerald-100 text-emerald-700 font-medium transition-all"
+                data-section="imunologia" data-explanation="Sistema imune e saúde.">
+                <i class="fas fa-shield-alt mr-2"></i>
+                <span class="flex items-center">8. Imunologia e Saúde</span>
+                <i class="fas fa-chevron-right absolute end-4 transition-all transform"></i>
+              </a>
+              <div id="dd-imunologia" class="dropdown-content pl-6 mt-1">
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="sistema-imune" data-explanation="Componentes do sistema imune">Sistema Imune</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="vacinas" data-explanation="Vacinas e imunização">Vacinas</a>
+                <a href="#" class="nav-link flex items-center block px-3 py-1.5 rounded hover:bg-emerald-100 text-emerald-700" data-section="doencas" data-explanation="Doenças infecciosas e crônicas">Doenças e Prevenção</a>
+              </div>
+            </div>
+
+            <div class="mt-6 border-t pt-4">
+              <h3 class="font-bold mb-2 text-emerald-700">Recursos Úteis</h3>
+              <ul class="space-y-2 text-sm">
+                <li>
+                  <a href="#" class="nav-link text-emerald-600 hover:underline flex items-center" data-section="documentacao">
+                    <i class="fas fa-external-link-alt mr-2 text-xs"></i>BNCC e ENEM
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link text-emerald-600 hover:underline flex items-center" data-section="tutoriais">
+                    <i class="fas fa-book-open mr-2 text-xs"></i>Tutoriais e Simulados
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div id="content" class="flex flex-col flex-1 min-w-0">
+          <div id="explanation"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TEMPLATES -->
+
+    <template id="tpl-introducao">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-play-circle text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Introdução à Biologia do Ensino Médio</h2>
+        </div>
+        <p class="text-gray-700 mb-4">
+          A Biologia é a ciência que estuda a vida em todas as suas formas e níveis de organização. No Ensino Médio, segundo a <strong>BNCC (Base Nacional Comum Curricular)</strong>, o estudo da Biologia está inserido na área de <strong>Ciências da Natureza e suas Tecnologias</strong>, com foco no desenvolvimento de competências para compreender o mundo vivo, a saúde, o ambiente e as tecnologias biológicas.
+        </p>
+        
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mt-4">
+          <h4 class="font-semibold text-emerald-800 mb-2">Eixos Estruturantes da BNCC de Biologia:</h4>
+          <ul class="text-emerald-700 text-sm space-y-1 list-disc list-inside">
+            <li><strong>Vida e evolução</strong> -> origem, diversidade e processos evolutivos</li>
+            <li><strong>Vida e ambiente</strong> -> ecologia, sustentabilidade e impactos humanos</li>
+            <li><strong>Vida e tecnologia</strong> -> biotecnologia, saúde e bioética</li>
+            <li><strong>Vida e sociedade</strong> -> relações entre ciência, tecnologia e sociedade</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
+    <!-- CITOLOGIA -->
+    <template id="tpl-citologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-microscope text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">1. Citologia - O Estudo da Célula</h2>
+        </div>
+        <p class="text-gray-700">A citologia é o ramo da biologia que estuda a estrutura, função e comportamento das células, consideradas as unidades fundamentais da vida.</p>
+      </div>
+    </template>
+
+    <template id="tpl-celula">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-atom text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Célula Procariótica x Eucariótica</h2>
+        </div>
+        <p class="text-gray-700 mb-4">Todos os seres vivos são formados por células. Existem dois tipos principais:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-gray-50 p-4 rounded border">
+            <h4 class="font-bold text-emerald-700">Célula Procariótica</h4>
+            <ul class="text-sm mt-2 space-y-1">
+              <li>• Sem núcleo definido (material genético disperso no citoplasma)</li>
+              <li>• Menor e mais simples</li>
+              <li>• Ex: Bactérias e arqueias</li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-4 rounded border">
+            <h4 class="font-bold text-emerald-700">Célula Eucariótica</h4>
+            <ul class="text-sm mt-2 space-y-1">
+              <li>• Núcleo verdadeiro delimitado por membrana</li>
+              <li>• Maior complexidade e organelas membranosas</li>
+              <li>• Ex: Animais, plantas, fungos e protistas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template id="tpl-organelas">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-microscope text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Organelas Celulares</h2>
+        </div>
+        <p class="text-gray-700 mb-4">As organelas são estruturas especializadas dentro da célula eucariótica que realizam funções específicas.</p>
+        
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm border">
+            <thead class="bg-emerald-100">
+              <tr>
+                <th class="p-2 text-left">Organela</th>
+                <th class="p-2 text-left">Função Principal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b"><td class="p-2 font-medium">Mitocôndria</td><td class="p-2">Respiração celular e produção de ATP (energia)</td></tr>
+              <tr class="border-b"><td class="p-2 font-medium">Cloroplasto</td><td class="p-2">Fotossíntese (presente em células vegetais)</td></tr>
+              <tr class="border-b"><td class="p-2 font-medium">Retículo Endoplasmático</td><td class="p-2">Síntese de proteínas e lipídios</td></tr>
+              <tr class="border-b"><td class="p-2 font-medium">Complexo de Golgi</td><td class="p-2">Modificação, empacotamento e secreção de proteínas</td></tr>
+              <tr class="border-b"><td class="p-2 font-medium">Lisossomo</td><td class="p-2">Digestão intracelular</td></tr>
+              <tr><td class="p-2 font-medium">Ribossomo</td><td class="p-2">Síntese de proteínas</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-membrana">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-border-all text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Membrana Plasmática e Transporte</h2>
+        </div>
+        <p class="text-gray-700 mb-4">A membrana plasmática é uma estrutura lipoproteica que delimita a célula e controla o que entra e sai dela.</p>
+        
+        <h4 class="font-semibold mt-4 mb-2">Mecanismos de Transporte:</h4>
+        <ul class="list-disc list-inside text-gray-700 space-y-1">
+          <li><strong>Transporte Passivo:</strong> Difusão simples, difusão facilitada e osmose (não gasta energia)</li>
+          <li><strong>Transporte Ativo:</strong> Bomba de sódio e potássio (gasta ATP)</li>
+          <li><strong>Endocitose e Exocitose:</strong> Transporte de grandes partículas</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-divisao-celular">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-sync text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Divisão Celular: Mitose e Meiose</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-emerald-50 p-4 rounded">
+            <h4 class="font-bold text-emerald-700">Mitose</h4>
+            <p class="text-sm mt-1">Produz duas células-filhas geneticamente idênticas à célula-mãe. Importante para crescimento, reparo de tecidos e reprodução assexuada.</p>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded">
+            <h4 class="font-bold text-emerald-700">Meiose</h4>
+            <p class="text-sm mt-1">Produz quatro células-filhas com metade do número de cromossomos (n). Essencial para a reprodução sexuada e variabilidade genética.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- GENÉTICA -->
+    <template id="tpl-genetica">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-dna text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">2. Genética</h2>
+        </div>
+        <p class="text-gray-700">A genética estuda a hereditariedade e a variação dos seres vivos, explicando como as características são transmitidas de geração em geração.</p>
+      </div>
+    </template>
+
+    <template id="tpl-mendel">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-chart-bar text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Leis de Mendel</h2>
+        </div>
+        <p class="text-gray-700 mb-4">Gregor Mendel, através de experimentos com ervilhas, estabeleceu as bases da genética moderna.</p>
+        
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>1ª Lei (Segregação dos Fatores):</strong> Os fatores (genes) se segregam durante a formação dos gametas.</li>
+          <li><strong>2ª Lei (Segregação Independente):</strong> Os fatores de características diferentes segregam independentemente.</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-dna-rna">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-dna text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">DNA, RNA e Transcrição</h2>
+        </div>
+        <p class="text-gray-700 mb-4">O DNA é a molécula que armazena a informação genética. O RNA atua na expressão dessa informação.</p>
+        
+        <div class="code-block mb-4">
+          <pre>DNA → Transcrição → RNAm → Tradução → Proteína</pre>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-sintese-proteica">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-link text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Síntese Proteica</h2>
+        </div>
+        <p class="text-gray-700">Processo pelo qual a informação contida no DNA é utilizada para produzir proteínas. Envolve duas etapas principais: <strong>Transcrição</strong> (DNA → RNA) e <strong>Tradução</strong> (RNA → Proteína).</p>
+      </div>
+    </template>
+
+    <template id="tpl-biotecnologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-flask text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Biotecnologia</h2>
+        </div>
+        <p class="text-gray-700 mb-4">Uso de organismos vivos ou seus componentes para produzir ou modificar produtos úteis ao ser humano. Inclui técnicas como engenharia genética, clonagem, transgênicos e terapia gênica.</p>
+      </div>
+    </template>
+
+    <!-- EVOLUÇÃO -->
+    <template id="tpl-evolucao">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-sync-alt text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">3. Evolução</h2>
+        </div>
+        <p class="text-gray-700">A evolução é o processo de mudança nas características hereditárias das populações ao longo das gerações.</p>
+      </div>
+    </template>
+
+    <template id="tpl-teorias">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-book text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Teorias Evolutivas</h2>
+        </div>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li><strong>Lamarckismo:</strong> Uso e desuso de órgãos + herança de caracteres adquiridos.</li>
+          <li><strong>Darwinismo:</strong> Seleção natural atuando sobre variações existentes na população.</li>
+          <li><strong>Neodarwinismo (Teoria Sintética):</strong> Integração da genética mendeliana com a seleção natural de Darwin.</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-evidencias">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-search text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Evidências da Evolução</h2>
+        </div>
+        <p class="text-gray-700">Existem diversas evidências que suportam a teoria da evolução, como fósseis, anatomia comparada, embriologia, biogeografia e evidências moleculares (semelhança de DNA).</p>
+      </div>
+    </template>
+
+    <template id="tpl-selecao-natural">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-leaf text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Seleção Natural</h2>
+        </div>
+        <p class="text-gray-700">Mecanismo proposto por Darwin. Indivíduos com características mais adaptadas ao ambiente têm maior chance de sobreviver e reproduzir, transmitindo essas características para as próximas gerações.</p>
+      </div>
+    </template>
+
+    <!-- ECOLOGIA -->
+    <template id="tpl-ecologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-leaf text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">4. Ecologia</h2>
+        </div>
+        <p class="text-gray-700">Ecologia é o estudo das interações entre os organismos e o ambiente em que vivem.</p>
+      </div>
+    </template>
+
+    <template id="tpl-ecossistema">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-globe text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Ecossistemas</h2>
+        </div>
+        <p class="text-gray-700">Conjunto formado pelos seres vivos (biocenose) e pelos fatores abióticos (biótopo) de uma determinada região, interagindo entre si.</p>
+      </div>
+    </template>
+
+    <template id="tpl-cadeias">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-link text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Cadeias e Teias Alimentares</h2>
+        </div>
+        <p class="text-gray-700 mb-4">Representam o fluxo de energia e matéria nos ecossistemas. A teia alimentar é mais realista que a cadeia, pois mostra as múltiplas interações entre os organismos.</p>
+      </div>
+    </template>
+
+    <template id="tpl-ciclos">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-sync text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Ciclos Biogeoquímicos</h2>
+        </div>
+        <p class="text-gray-700">Processos pelos quais elementos químicos circulam entre os seres vivos e o ambiente. Principais ciclos: Carbono, Nitrogênio, Água e Fósforo.</p>
+      </div>
+    </template>
+
+    <template id="tpl-impactos">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-exclamation-triangle text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Impactos Ambientais e Sustentabilidade</h2>
+        </div>
+        <p class="text-gray-700">Estudo dos efeitos da ação humana sobre o ambiente (poluição, desmatamento, aquecimento global, perda de biodiversidade) e formas de minimizá-los através do desenvolvimento sustentável.</p>
+      </div>
+    </template>
+
+    <!-- FISIOLOGIA HUMANA -->
+    <template id="tpl-fisiologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-heartbeat text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">5. Fisiologia Humana</h2>
+        </div>
+        <p class="text-gray-700">Estudo do funcionamento dos sistemas do corpo humano e como eles mantêm a homeostase.</p>
+      </div>
+    </template>
+
+    <template id="tpl-digestorio">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-utensils text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistema Digestório</h2>
+        </div>
+        <p class="text-gray-700">Responsável pela ingestão, digestão e absorção de alimentos, além da eliminação de resíduos. Principais órgãos: boca, esôfago, estômago, intestino delgado e grosso, fígado e pâncreas.</p>
+      </div>
+    </template>
+
+    <template id="tpl-respiratorio">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-wind text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistema Respiratório</h2>
+        </div>
+        <p class="text-gray-700">Responsável pelas trocas gasosas (oxigênio e gás carbônico) entre o organismo e o ambiente. Principais estruturas: fossas nasais, faringe, laringe, traqueia, brônquios e pulmões.</p>
+      </div>
+    </template>
+
+    <template id="tpl-circulatorio">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-heart text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistema Circulatório</h2>
+        </div>
+        <p class="text-gray-700">Transporta sangue, nutrientes, gases e resíduos pelo corpo. Composto pelo coração, vasos sanguíneos (artérias, veias e capilares) e sangue.</p>
+      </div>
+    </template>
+    <template id="tpl-nervoso">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-brain text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistema Nervoso</h2>
+        </div>
+        <p class="text-gray-700">Coordena e controla as atividades do organismo, permitindo a interação com o ambiente. Dividido em Sistema Nervoso Central (encéfalo e medula) e Periférico.</p>
+      </div>
+    </template>
+
+    <!-- BOTÂNICA -->
+    <template id="tpl-botanica">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-seedling text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">6. Botânica</h2>
+        </div>
+        <p class="text-gray-700">Estudo das plantas, incluindo sua estrutura, fisiologia, reprodução e classificação.</p>
+      </div>
+    </template>
+
+    <template id="tpl-fisiologia-vegetal">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-seedling text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Fisiologia Vegetal</h2>
+        </div>
+        <p class="text-gray-700">Estudo dos processos vitais das plantas, como fotossíntese, respiração, transpiração, transporte de seiva e nutrição mineral.</p>
+      </div>
+    </template>
+
+    <!-- ZOOLOGIA -->
+    <template id="tpl-zoologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-paw text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">7. Zoologia e Taxonomia</h2>
+        </div>
+        <p class="text-gray-700">Estudo dos animais e dos sistemas de classificação dos seres vivos.</p>
+      </div>
+    </template>
+
+    <template id="tpl-classificacao">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-sitemap text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistemas de Classificação</h2>
+        </div>
+        <p class="text-gray-700 mb-4">Os seres vivos são classificados em categorias hierárquicas (Reino, Filo, Classe, Ordem, Família, Gênero e Espécie). O sistema atual é o de Whittaker (5 Reinos) ou o sistema dos 3 Domínios (Bacteria, Archaea e Eukarya).</p>
+      </div>
+    </template>
+
+    <!-- IMUNOLOGIA -->
+    <template id="tpl-imunologia">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-shield-alt text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">8. Imunologia e Saúde</h2>
+        </div>
+        <p class="text-gray-700">Estudo do sistema imune e sua relação com a saúde e as doenças.</p>
+      </div>
+    </template>
+
+    <template id="tpl-sistema-imune">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-shield-alt text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Sistema Imune</h2>
+        </div>
+        <p class="text-gray-700">Conjunto de células, tecidos e moléculas que protegem o organismo contra patógenos. Inclui imunidade inata (inespecífica) e imunidade adaptativa (específica), com células como linfócitos B e T.</p>
+      </div>
+    </template>
+
+    <template id="tpl-vacinas">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-syringe text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Vacinas</h2>
+        </div>
+        <p class="text-gray-700">Preparados que estimulam o sistema imune a produzir anticorpos e memória imunológica contra determinados patógenos, prevenindo doenças.</p>
+      </div>
+    </template>
+
+    <!-- RECURSOS -->
+    <template id="tpl-documentacao">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-book text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">BNCC e ENEM</h2>
+        </div>
+        <ul class="space-y-2 text-gray-700">
+          <li><a href="http://basenacionalcomum.mec.gov.br/" target="_blank" class="text-emerald-600 hover:underline">Base Nacional Comum Curricular (BNCC)</a></li>
+          <li><a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem" target="_blank" class="text-emerald-600 hover:underline">ENEM - Exame Nacional do Ensino Médio</a></li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="tpl-tutoriais">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-graduation-cap text-emerald-600 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Tutoriais e Simulados</h2>
+        </div>
+        <p class="text-gray-700">Recomenda-se resolver questões de vestibulares e ENEM dos últimos anos, além de utilizar plataformas como Khan Academy, Brasil Escola e Bio Aulas para reforçar o conteúdo.</p>
+      </div>
+    </template>
+
+    <footer class="mt-12 border-t pt-8 text-center text-gray-600 text-sm">
+      <p>© 2026 Biologia: Guia Completo do Ensino Médio (BNCC). Material educativo.</p>
+      <p class="mt-2 font-semibold text-emerald-700">Guia Educacional para Ensino Médio</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const templates = {};
+        document.querySelectorAll("template").forEach((t) => {
+          templates[t.id.replace("tpl-", "")] = t.innerHTML;
+        });
+
+        const contentDiv = document.getElementById("explanation");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const dropdownBtns = document.querySelectorAll(".dropdown-btn");
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchResults = document.getElementById("search-results");
+
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+        function openSidebar() {
+          sidebar.classList.remove("-translate-x-full");
+          sidebarOverlay.classList.remove("hidden");
+          document.body.classList.add("overflow-hidden");
+        }
+
+        function closeSidebar() {
+          sidebar.classList.add("-translate-x-full");
+          sidebarOverlay.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openSidebar);
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener("click", closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener("click", closeSidebar);
+
+        function loadSection(sectionId) {
+          if (templates[sectionId]) {
+            contentDiv.innerHTML = templates[sectionId];
+            navLinks.forEach((link) => link.classList.remove("bg-emerald-100", "font-bold"));
+            const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+            if (activeLink) activeLink.classList.add("bg-emerald-100", "font-bold");
+            localStorage.setItem("activeSectionId", sectionId);
+          }
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadSection(link.dataset.section);
+            if (window.innerWidth < 768) {
+              closeSidebar();
+            }
+          });
+        });
+
+        dropdownBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector(".fa-chevron-right");
+            content.classList.toggle("open");
+            if (content.classList.contains("open")) {
+              icon.style.transform = "rotate(90deg)";
+            } else {
+              icon.style.transform = "rotate(0deg)";
+            }
+          });
+        });
+
+        searchInput.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase();
+          searchResults.innerHTML = "";
+          
+          if (query.length > 1) {
+            navLinks.forEach((link) => {
+              const text = link.textContent.toLowerCase();
+              const explanation = link.dataset.explanation ? link.dataset.explanation.toLowerCase() : "";
+              if (text.includes(query) || explanation.includes(query)) {
+                const div = document.createElement("div");
+                div.className = "p-2 hover:bg-gray-100 cursor-pointer text-gray-800";
+                div.textContent = link.textContent;
+                div.addEventListener("click", () => {
+                  loadSection(link.dataset.section);
+                  searchResults.classList.add("hidden");
+                  searchInput.value = "";
+                  if (window.innerWidth < 768) {
+                    closeSidebar();
+                  }
+                });
+                searchResults.appendChild(div);
+              }
+            });
+            searchResults.classList.remove("hidden");
+          } else {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add("hidden");
+          }
+        });
+
+        const lastSection = localStorage.getItem("activeSectionId");
+        const sectionToLoad = lastSection && templates[lastSection] ? lastSection : "introducao";
+
+        const parentDropdownMap = {
+          "celula": "dd-citologia", "organelas": "dd-citologia", "membrana": "dd-citologia", "divisao-celular": "dd-citologia",
+          "mendel": "dd-genetica", "dna-rna": "dd-genetica", "sintese-proteica": "dd-genetica", "biotecnologia": "dd-genetica",
+          "teorias": "dd-evolucao", "evidencias": "dd-evolucao", "selecao-natural": "dd-evolucao", "especiacao": "dd-evolucao",
+          "ecossistema": "dd-ecologia", "cadeias": "dd-ecologia", "ciclos": "dd-ecologia", "impactos": "dd-ecologia",
+          "digestorio": "dd-fisiologia", "respiratorio": "dd-fisiologia", "circulatorio": "dd-fisiologia", "nervoso": "dd-fisiologia",
+          "fisiologia-vegetal": "dd-botanica",
+          "classificacao": "dd-zoologia", "invertebrados": "dd-zoologia", "vertebrados": "dd-zoologia",
+          "sistema-imune": "dd-imunologia", "vacinas": "dd-imunologia", "doencas": "dd-imunologia"
+        };
+
+        const parentId = parentDropdownMap[sectionToLoad];
+        if (parentId) {
+          const dd = document.getElementById(parentId);
+          if (dd) {
+            dd.classList.add("open");
+            const btn = dd.previousElementSibling;
+            if (btn) {
+              const icon = btn.querySelector(".fa-chevron-right");
+              if (icon) icon.style.transform = "rotate(90deg)";
+            }
+          }
+        }
+
+        loadSection(sectionToLoad);
+      });
+    </script>
+  </body>
+</html>
